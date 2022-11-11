@@ -15,6 +15,10 @@
 		3DB74A8C291EC3470045259D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3DB74A77291EC3450045259D /* GameScene.sks */; };
 		3DB74A8D291EC3470045259D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A78291EC3450045259D /* GameScene.swift */; };
 		3DB74A8E291EC3470045259D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB74A79291EC3470045259D /* Assets.xcassets */; };
+		3DB74A99291ECA6E0045259D /* VectorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A98291ECA6E0045259D /* VectorUtils.swift */; };
+		3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9A291ECA840045259D /* TimeUtils.swift */; };
+		3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9C291ECA910045259D /* AnimationUtils.swift */; };
+		3DB74AA0291ECABB0045259D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9F291ECABB0045259D /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		3DB74A83291EC3470045259D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3DB74A86291EC3470045259D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DB74A89291EC3470045259D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3DB74A98291ECA6E0045259D /* VectorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorUtils.swift; sourceTree = "<group>"; };
+		3DB74A9A291ECA840045259D /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
+		3DB74A9C291ECA910045259D /* AnimationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationUtils.swift; sourceTree = "<group>"; };
+		3DB74A9F291ECABB0045259D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +107,28 @@
 		3DB74A96291EC4410045259D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3DB74A9E291ECAA70045259D /* Managers */,
+				3DB74A97291EC9840045259D /* Utils */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3DB74A97291EC9840045259D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3DB74A98291ECA6E0045259D /* VectorUtils.swift */,
+				3DB74A9A291ECA840045259D /* TimeUtils.swift */,
+				3DB74A9C291ECA910045259D /* AnimationUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3DB74A9E291ECAA70045259D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				3DB74A9F291ECABB0045259D /* SoundManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,8 +204,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB74A99291ECA6E0045259D /* VectorUtils.swift in Sources */,
+				3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */,
+				3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */,
 				3DB74A8D291EC3470045259D /* GameScene.swift in Sources */,
 				3DB74A84291EC3470045259D /* GameViewController.swift in Sources */,
+				3DB74AA0291ECABB0045259D /* SoundManager.swift in Sources */,
 				3DB74A82291EC3470045259D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
