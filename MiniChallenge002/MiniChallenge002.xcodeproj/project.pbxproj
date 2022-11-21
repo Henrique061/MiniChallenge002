@@ -48,27 +48,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D88831F292BE55F0095370B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3DB74A77291EC3450045259D /* GameScene.sks */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3D888320292BE5760095370B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		3DB74A70291EC3450045259D = {
 			isa = PBXGroup;
 			children = (
 				3DB74A95291EC43C0045259D /* View */,
 				3DB74A96291EC4410045259D /* ViewModel */,
 				3DB74A94291EC4360045259D /* Model */,
-				3DB74A75291EC3450045259D /* MiniChallenge002 Shared */,
-				3DB74A80291EC3470045259D /* MiniChallenge002 iOS */,
+				3DB74A79291EC3470045259D /* Assets.xcassets */,
 				3DB74A7F291EC3470045259D /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		3DB74A75291EC3450045259D /* MiniChallenge002 Shared */ = {
-			isa = PBXGroup;
-			children = (
-				3DB74A76291EC3450045259D /* Actions.sks */,
-				3DB74A77291EC3450045259D /* GameScene.sks */,
-				3DB74A78291EC3450045259D /* GameScene.swift */,
-				3DB74A79291EC3470045259D /* Assets.xcassets */,
-			);
-			path = "MiniChallenge002 Shared";
 			sourceTree = "<group>";
 		};
 		3DB74A7F291EC3470045259D /* Products */ = {
@@ -82,8 +85,7 @@
 		3DB74A80291EC3470045259D /* MiniChallenge002 iOS */ = {
 			isa = PBXGroup;
 			children = (
-				3DB74A81291EC3470045259D /* AppDelegate.swift */,
-				3DB74A83291EC3470045259D /* GameViewController.swift */,
+				3DB74A76291EC3450045259D /* Actions.sks */,
 				3DB74A85291EC3470045259D /* Main.storyboard */,
 				3DB74A88291EC3470045259D /* LaunchScreen.storyboard */,
 			);
@@ -93,6 +95,7 @@
 		3DB74A94291EC4360045259D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3DB74A81291EC3470045259D /* AppDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -100,6 +103,11 @@
 		3DB74A95291EC43C0045259D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3D888320292BE5760095370B /* ViewControllers */,
+				3DB74A80291EC3470045259D /* MiniChallenge002 iOS */,
+				3D88831F292BE55F0095370B /* Scenes */,
+				3DB74A83291EC3470045259D /* GameViewController.swift */,
+				3DB74A78291EC3450045259D /* GameScene.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
