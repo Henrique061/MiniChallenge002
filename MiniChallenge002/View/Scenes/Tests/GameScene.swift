@@ -29,7 +29,7 @@ class GameScene: SKScene {
     
     //start
     override func didMove(to view: SKView) {
-        let button = ButtonPrefab(color: .green, positionPoint: CGPoint.zero, labelText: "Teste", rectangleSize: CGSize(width: 100, height: 50)) {
+        let button = ButtonPrefab(color: .green, colorSwitch: .blue, positionPoint: CGPoint.zero, labelText: "Teste", rectangleSize: CGSize(width: 100, height: 50)) {
             print("to funfando")
         }
         

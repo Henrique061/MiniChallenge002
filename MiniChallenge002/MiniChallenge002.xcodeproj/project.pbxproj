@@ -20,6 +20,7 @@
 		3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9A291ECA840045259D /* TimeUtils.swift */; };
 		3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9C291ECA910045259D /* AnimationUtils.swift */; };
 		3DB74AA0291ECABB0045259D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9F291ECABB0045259D /* SoundManager.swift */; };
+		3DD3A534292C1377001DAC35 /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD3A533292C1377001DAC35 /* ArrayUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		3DB74A9A291ECA840045259D /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		3DB74A9C291ECA910045259D /* AnimationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationUtils.swift; sourceTree = "<group>"; };
 		3DB74A9F291ECABB0045259D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		3DD3A533292C1377001DAC35 /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				3DB74A98291ECA6E0045259D /* VectorUtils.swift */,
 				3DB74A9A291ECA840045259D /* TimeUtils.swift */,
 				3DB74A9C291ECA910045259D /* AnimationUtils.swift */,
+				3DD3A533292C1377001DAC35 /* ArrayUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB74A99291ECA6E0045259D /* VectorUtils.swift in Sources */,
+				3DD3A534292C1377001DAC35 /* ArrayUtils.swift in Sources */,
 				3D888325292BF73D0095370B /* ButtonPrefab.swift in Sources */,
 				3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */,
 				3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */,

@@ -27,15 +27,26 @@ class AnimationUtils {
     /**
      * Retorna uma animação que simula um efeito de quicar (llixeira quicando quando cai um lixo por exemplo)
      */
-    public static func bounceAnim() -> SKAction {
-        return SKAction()
+    public static func bounceAnim(node: SKNode ,bounceForce: CGFloat, bounceDuration: TimeInterval) -> SKAction {
+        let nodeYPos: CGFloat = node.position.y
+        let bouncedYPos: CGFloat = nodeYPos - bounceForce
+        
+        let bounceDown = SKAction.moveTo(y: bouncedYPos, duration: bounceDuration)
+        let bounceUp = SKAction.moveTo(y: nodeYPos + 20, duration: bounceDuration)
+        let normalPos = SKAction.moveTo(y: nodeYPos, duration: 0.1)
+        
+        return SKAction.sequence([
+            bounceDown,
+            bounceUp,
+            normalPos
+        ])
     }
     
     //MARK: REPEAT FOREVER
     /**
      * Retorna uma animação que repete para sempre um vetor de SKTextures
      */
-    public static func repeatForeverFrameAnim(_ textures: [SKTexture]) -> SKAction {
+    public static func repeatForeverFrameAnim(_ textures: [SKTexture], _ fps: TimeInterval) -> SKAction {
         return SKAction()
     }
     
