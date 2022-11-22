@@ -19,7 +19,7 @@
 		3DB74A99291ECA6E0045259D /* VectorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A98291ECA6E0045259D /* VectorUtils.swift */; };
 		3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9A291ECA840045259D /* TimeUtils.swift */; };
 		3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9C291ECA910045259D /* AnimationUtils.swift */; };
-		3DB74AA0291ECABB0045259D /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9F291ECABB0045259D /* SoundManager.swift */; };
+		3DC6D53A292D3D51003D21EC /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6D539292D3D50003D21EC /* AudioManager.swift */; };
 		3DD3A534292C1377001DAC35 /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD3A533292C1377001DAC35 /* ArrayUtils.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +37,7 @@
 		3DB74A98291ECA6E0045259D /* VectorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorUtils.swift; sourceTree = "<group>"; };
 		3DB74A9A291ECA840045259D /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		3DB74A9C291ECA910045259D /* AnimationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationUtils.swift; sourceTree = "<group>"; };
-		3DB74A9F291ECABB0045259D /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		3DC6D539292D3D50003D21EC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		3DD3A533292C1377001DAC35 /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,7 +164,7 @@
 		3DB74A9E291ECAA70045259D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				3DB74A9F291ECABB0045259D /* SoundManager.swift */,
+				3DC6D539292D3D50003D21EC /* AudioManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -248,8 +248,8 @@
 				3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */,
 				3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */,
 				3DB74A8D291EC3470045259D /* GameScene.swift in Sources */,
+				3DC6D53A292D3D51003D21EC /* AudioManager.swift in Sources */,
 				3DB74A84291EC3470045259D /* GameViewController.swift in Sources */,
-				3DB74AA0291ECABB0045259D /* SoundManager.swift in Sources */,
 				3DB74A82291EC3470045259D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
