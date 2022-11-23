@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D7D7A09292EC2200023CF4A /* spr_buttonClicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7D7A07292EC2200023CF4A /* spr_buttonClicked.png */; };
+		3D7D7A0A292EC2200023CF4A /* spr_buttonIdle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7D7A08292EC2200023CF4A /* spr_buttonIdle.png */; };
 		3D888325292BF73D0095370B /* ButtonPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D888324292BF73D0095370B /* ButtonPrefab.swift */; };
 		3DB74A82291EC3470045259D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A81291EC3470045259D /* AppDelegate.swift */; };
 		3DB74A84291EC3470045259D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A83291EC3470045259D /* GameViewController.swift */; };
@@ -20,12 +22,19 @@
 		3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9A291ECA840045259D /* TimeUtils.swift */; };
 		3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB74A9C291ECA910045259D /* AnimationUtils.swift */; };
 		3DC6D53A292D3D51003D21EC /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6D539292D3D50003D21EC /* AudioManager.swift */; };
+		3DC6D542292D6E57003D21EC /* SoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6D541292D6E57003D21EC /* SoundTests.swift */; };
 		3DD3A534292C1377001DAC35 /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD3A533292C1377001DAC35 /* ArrayUtils.swift */; };
 		D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */; };
 		D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D7D79FD292EC17A0023CF4A /* testMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = testMusic.wav; sourceTree = "<group>"; };
+		3D7D79FE292EC17A0023CF4A /* testSound2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = testSound2.wav; sourceTree = "<group>"; };
+		3D7D79FF292EC17A0023CF4A /* testMusic2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = testMusic2.wav; sourceTree = "<group>"; };
+		3D7D7A00292EC17A0023CF4A /* testSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = testSound.wav; sourceTree = "<group>"; };
+		3D7D7A07292EC2200023CF4A /* spr_buttonClicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spr_buttonClicked.png; sourceTree = "<group>"; };
+		3D7D7A08292EC2200023CF4A /* spr_buttonIdle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spr_buttonIdle.png; sourceTree = "<group>"; };
 		3D888324292BF73D0095370B /* ButtonPrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPrefab.swift; sourceTree = "<group>"; };
 		3DB74A76291EC3450045259D /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		3DB74A77291EC3450045259D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -40,6 +49,7 @@
 		3DB74A9A291ECA840045259D /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
 		3DB74A9C291ECA910045259D /* AnimationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationUtils.swift; sourceTree = "<group>"; };
 		3DC6D539292D3D50003D21EC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		3DC6D541292D6E57003D21EC /* SoundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTests.swift; sourceTree = "<group>"; };
 		3DD3A533292C1377001DAC35 /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
 		D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovimentoPersonagem.swift; sourceTree = "<group>"; };
 		D4D16A7A292D43260078F7F7 /* Pink_Monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink_Monster.png; sourceTree = "<group>"; };
@@ -56,6 +66,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D7D79F8292EC1590023CF4A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3D7D79FD292EC17A0023CF4A /* testMusic.wav */,
+				3D7D79FF292EC17A0023CF4A /* testMusic2.wav */,
+				3D7D7A00292EC17A0023CF4A /* testSound.wav */,
+				3D7D79FE292EC17A0023CF4A /* testSound2.wav */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		3D7D7A01292EC1AD0023CF4A /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				3D7D7A02292EC1B50023CF4A /* UI */,
+			);
+			path = Sprites;
+			sourceTree = "<group>";
+		};
+		3D7D7A02292EC1B50023CF4A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3D7D7A07292EC2200023CF4A /* spr_buttonClicked.png */,
+				3D7D7A08292EC2200023CF4A /* spr_buttonIdle.png */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		3D88831F292BE55F0095370B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +116,7 @@
 				3DB74A78291EC3450045259D /* GameScene.swift */,
 				3DB74A77291EC3450045259D /* GameScene.sks */,
 				D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */,
+				3DC6D541292D6E57003D21EC /* SoundTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -100,6 +139,7 @@
 		3DB74A70291EC3450045259D = {
 			isa = PBXGroup;
 			children = (
+				3DC6D53D292D6C50003D21EC /* AssetsContent */,
 				3DB74A95291EC43C0045259D /* View */,
 				3DB74A96291EC4410045259D /* ViewModel */,
 				3DB74A94291EC4360045259D /* Model */,
@@ -175,6 +215,23 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		3DC6D53D292D6C50003D21EC /* AssetsContent */ = {
+			isa = PBXGroup;
+			children = (
+				3D7D7A01292EC1AD0023CF4A /* Sprites */,
+				3DC6D53E292D6C60003D21EC /* Sounds */,
+			);
+			path = AssetsContent;
+			sourceTree = "<group>";
+		};
+		3DC6D53E292D6C60003D21EC /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3D7D79F8292EC1590023CF4A /* Tests */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -236,9 +293,11 @@
 				3DB74A8C291EC3470045259D /* GameScene.sks in Resources */,
 				3DB74A87291EC3470045259D /* Main.storyboard in Resources */,
 				D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */,
+				3D7D7A0A292EC2200023CF4A /* spr_buttonIdle.png in Resources */,
 				3DB74A8B291EC3470045259D /* Actions.sks in Resources */,
 				3DB74A8A291EC3470045259D /* LaunchScreen.storyboard in Resources */,
 				3DB74A8E291EC3470045259D /* Assets.xcassets in Resources */,
+				3D7D7A09292EC2200023CF4A /* spr_buttonClicked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +317,7 @@
 				3DC6D53A292D3D51003D21EC /* AudioManager.swift in Sources */,
 				D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */,
 				3DB74A84291EC3470045259D /* GameViewController.swift in Sources */,
+				3DC6D542292D6E57003D21EC /* SoundTests.swift in Sources */,
 				3DB74A82291EC3470045259D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,7 +460,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MM9XM3Z7DH;
+				DEVELOPMENT_TEAM = 66824UF4JS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -433,7 +493,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MM9XM3Z7DH;
+				DEVELOPMENT_TEAM = 66824UF4JS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
