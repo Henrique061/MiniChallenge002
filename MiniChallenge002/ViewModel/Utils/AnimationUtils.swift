@@ -14,8 +14,8 @@ class AnimationUtils {
      * Retorna uma animação que simula um efeito de  botão pressioando, modificando sua escala
      */
     public static func pressedAnim(_ scaleFactor: CGFloat) -> SKAction {
-        let scaleDown = SKAction.scale(to: scaleFactor, duration: 0.1)
-        let scaleUp = SKAction.scale(to: 1, duration: 0.1)
+        let scaleDown = SKAction.scale(to: scaleFactor, duration: 0.15)
+        let scaleUp = SKAction.scale(to: 1, duration: 0.15)
         
         return SKAction.sequence([
             scaleDown,

@@ -9,9 +9,8 @@ import Foundation
 import SpriteKit
 
 class ButtonPrefab : SKNode {
-    var texture: SKTexture?
-    var color: UIColor
-    var colorSwitch: UIColor
+    var color: UIColor?
+    var colorSwitch: UIColor?
     var positionPoint: CGPoint
     var labelText: String
     var action: (() -> Void)?
@@ -24,10 +23,7 @@ class ButtonPrefab : SKNode {
     /**
      * Constroi um botao utlizando textura (versao final)
      */
-    init (texture: SKTexture, color: UIColor, colorSwitch: UIColor, positionPoint: CGPoint, labelText: String, action: @escaping () -> Void) {
-        self.texture = texture
-        self.color = color
-        self.colorSwitch = colorSwitch
+    init (positionPoint: CGPoint, spriteWidth: CGFloat, labelText: String, fontSize: CGFloat, action: @escaping () -> Void) {
         self.positionPoint = positionPoint
         self.labelText = labelText
         self.action = action
@@ -35,6 +31,27 @@ class ButtonPrefab : SKNode {
         self.buttonSpriteNode = SKSpriteNode()
         self.isSprite = true
         super.init()
+        self.isUserInteractionEnabled = true
+        
+        // cria sprite
+        self.buttonSpriteNode = SKSpriteNode(imageNamed: "spr_buttonIdle")
+        self.buttonSpriteNode.position = positionPoint
+        self.buttonSpriteNode.size = CGSize(width: spriteWidth, height: spriteWidth / 2)
+        self.buttonSpriteNode.anchorPoint.x = 0.65
+        self.buttonSpriteNode.zPosition = 0
+        
+        // cria texto
+        let text = SKLabelNode(text: labelText)
+        text.fontName = "Party Confetti"
+        text.fontSize = fontSize
+        text.fontColor = .white
+        text.verticalAlignmentMode = .center
+        text.horizontalAlignmentMode = .center
+        text.zPosition = 1
+        
+        // adiciona nodes
+        self.buttonSpriteNode.addChild(text)
+        self.addChild(self.buttonSpriteNode)
     }
     
     //MARK: CONSTRUTOR SHAPE
@@ -67,7 +84,7 @@ class ButtonPrefab : SKNode {
         text.horizontalAlignmentMode = .center
         text.zPosition = 1
         
-        // adiciona os botoens no node principal da classe
+        // adiciona os botoes no node principal da classe
         self.buttonShapeNode.addChild(text)
         self.addChild(self.buttonShapeNode)
     }
@@ -94,13 +111,13 @@ class ButtonPrefab : SKNode {
         let sequenceAnim = SKAction.sequence([
             .run {
                 self.isUserInteractionEnabled = false
-                self.buttonShapeNode.fillColor = self.colorSwitch
+                self.buttonShapeNode.fillColor = self.colorSwitch ?? UIColor.black
             },
             AnimationUtils.pressedAnim(0.7),
             .run(self.action!),
             .run {
                 self.isUserInteractionEnabled = true
-                self.buttonShapeNode.fillColor = self.color
+                self.buttonShapeNode.fillColor = self.color ?? UIColor.yellow
             }
         ])
         
@@ -109,6 +126,22 @@ class ButtonPrefab : SKNode {
     
     //MARK: CLICK SPRITE
     func clickedSprite() {
+        let clickedTexture = SKTexture(image: UIImage(named: "spr_buttonClicked")!)
+        let idleTexture = SKTexture(image: UIImage(named: "spr_buttonIdle")!)
         
+        let sequenceAnim = SKAction.sequence([
+            .run {
+                self.isUserInteractionEnabled = false
+                self.buttonSpriteNode.run(.setTexture(clickedTexture))
+            },
+            AnimationUtils.pressedAnim(0.7),
+            .run(self.action!),
+            .run {
+                self.isUserInteractionEnabled = true
+                self.buttonSpriteNode.run(.setTexture(idleTexture))
+            }
+        ])
+        
+        self.run(sequenceAnim)
     }
 }
