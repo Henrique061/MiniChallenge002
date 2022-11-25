@@ -8,21 +8,28 @@
 import Foundation
 import SpriteKit
 
+public enum Direction : String {
+    case left = "Esquerda"
+    case right = "Direita"
+}
+
 class TreadmillPrefab : SKNode {
     var treadmillNode: SKSpriteNode
     var id: Int
     var texture: SKTexture
     var rollVelocity: Float
     var animationTexturesName: String
+    var rollDirection: Direction
     var junksAttached: Int
     
     //MARK: INIT
-    init(id: Int, texture: SKTexture, rollVelocity: Float, animationTexturesName: String) {
+    init(id: Int, texture: SKTexture, rollVelocity: Float, animationTexturesName: String, rollDirection: Direction) {
         self.treadmillNode = SKSpriteNode()
         self.id = id
         self.texture = texture
         self.rollVelocity = rollVelocity
         self.animationTexturesName = animationTexturesName
+        self.rollDirection = rollDirection
         self.junksAttached = 0
         super.init()
         
