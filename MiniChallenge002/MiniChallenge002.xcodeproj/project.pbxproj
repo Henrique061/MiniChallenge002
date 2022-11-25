@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D1BE228293132FC00642D59 /* LevelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1BE227293132FC00642D59 /* LevelModel.swift */; };
 		3D888325292BF73D0095370B /* ButtonPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D888324292BF73D0095370B /* ButtonPrefab.swift */; };
 		3DB7184B292FE61300BE98FF /* Party Confetti.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DB7184A292FE61300BE98FF /* Party Confetti.ttf */; };
 		3DB7184E292FF25E00BE98FF /* TreadmillPrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB7184D292FF25E00BE98FF /* TreadmillPrefab.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D1BE227293132FC00642D59 /* LevelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelModel.swift; sourceTree = "<group>"; };
 		3D7D79FD292EC17A0023CF4A /* testMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = testMusic.wav; sourceTree = "<group>"; };
 		3D7D79FE292EC17A0023CF4A /* testSound2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = testSound2.wav; sourceTree = "<group>"; };
 		3D7D79FF292EC17A0023CF4A /* testMusic2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = testMusic2.wav; sourceTree = "<group>"; };
@@ -67,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D1BE2262931329200642D59 /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				3D1BE227293132FC00642D59 /* LevelModel.swift */,
+			);
+			path = Level;
+			sourceTree = "<group>";
+		};
 		3D7D79F8292EC1590023CF4A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +190,7 @@
 		3DB74A94291EC4360045259D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3D1BE2262931329200642D59 /* Level */,
 				3D888323292BF6DE0095370B /* Prefabs */,
 				3DB74A81291EC3470045259D /* AppDelegate.swift */,
 			);
@@ -318,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB74A99291ECA6E0045259D /* VectorUtils.swift in Sources */,
+				3D1BE228293132FC00642D59 /* LevelModel.swift in Sources */,
 				3DD3A534292C1377001DAC35 /* ArrayUtils.swift in Sources */,
 				3D888325292BF73D0095370B /* ButtonPrefab.swift in Sources */,
 				3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */,
