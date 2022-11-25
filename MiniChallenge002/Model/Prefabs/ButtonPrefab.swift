@@ -59,6 +59,7 @@ class ButtonPrefab : SKNode {
         self.buttonShapeNode.position = positionPoint
         self.buttonShapeNode.fillColor = color
         self.buttonShapeNode.zPosition = 0
+        self.buttonShapeNode.name = "jogar"
         
         // cria node do texto dentro do botao
         let text = SKLabelNode(text: labelText)
