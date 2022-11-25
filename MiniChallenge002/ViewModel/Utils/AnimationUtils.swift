@@ -14,8 +14,8 @@ class AnimationUtils {
      * Retorna uma animação que simula um efeito de  botão pressioando, modificando sua escala
      */
     public static func pressedAnim(_ scaleFactor: CGFloat) -> SKAction {
-        let scaleDown = SKAction.scale(to: scaleFactor, duration: 0.1)
-        let scaleUp = SKAction.scale(to: 1, duration: 0.1)
+        let scaleDown = SKAction.scale(to: scaleFactor, duration: 0.15)
+        let scaleUp = SKAction.scale(to: 1, duration: 0.15)
         
         return SKAction.sequence([
             scaleDown,
@@ -46,19 +46,19 @@ class AnimationUtils {
     /**
      * Retorna uma animação que repete para sempre um vetor de SKTextures
      */
-    public static func repeatForeverFrameAnim(_ textures: [SKTexture], _ fps: TimeInterval) -> SKAction {
-        return SKAction()
+    public static func repeatForeverFrameAnim(texturesName: String, numberOfFrames: Int, fps: TimeInterval) -> SKAction {
+        return SKAction.repeatForever(.animate(with: .init(format: "\(texturesName)%@", frameCount: 0...numberOfFrames), timePerFrame: fps))
     }
     
     //MARK: REPEAT COUNTED
     /**
-     * Retorna uma animação que repete por um número determinado de vezes, um vetor de SKTextures
+     * Retorna uma animação que repete por um número determinado de vezes, um vetor de SKTextures. Esse número de repetições é determinado pelo count.
      */
-    public static func repeatCountedFrameAnim(_ textures: [SKTexture], _ count: Int) -> SKAction {
-        return SKAction()
+    public static func repeatCountedFrameAnim(texturesName: String, numberOfFrames: Int, fps: TimeInterval, count: Int) -> SKAction {
+        return SKAction.repeat(.animate(with: .init(format: "\(texturesName)%@", frameCount: 0...numberOfFrames), timePerFrame: fps), count: count)
     }
     
-    //MARK: PRESSED ANIM
+    //MARK: STOP ANIM
     /**
      * Para todas as animações de um Node
      */
