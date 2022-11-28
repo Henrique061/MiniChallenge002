@@ -79,6 +79,13 @@
 			path = Level;
 			sourceTree = "<group>";
 		};
+		3D5CAB95293539C4001964E1 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		3D7D79F8292EC1590023CF4A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +100,7 @@
 		3D7D7A01292EC1AD0023CF4A /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				3D5CAB95293539C4001964E1 /* Player */,
 				3D7D7A02292EC1B50023CF4A /* UI */,
 			);
 			path = Sprites;
@@ -144,8 +152,7 @@
 			children = (
 				3D888324292BF73D0095370B /* ButtonPrefab.swift */,
 				3DB7184D292FF25E00BE98FF /* TreadmillPrefab.swift */,
-                D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */,
-
+				D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */,
 			);
 			path = Prefabs;
 			sourceTree = "<group>";
