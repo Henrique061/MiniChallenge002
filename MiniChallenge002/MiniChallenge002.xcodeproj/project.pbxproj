@@ -28,6 +28,7 @@
 		D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */; };
 		D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
 		D4F5544A292FE546000D2CAF /* ClasseGenericaLixo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */; };
+		D4F5544F293542FB000D2CAF /* MenuMudancaFase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F5544E293542FB000D2CAF /* MenuMudancaFase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovimentoPersonagem.swift; sourceTree = "<group>"; };
 		D4D16A7A292D43260078F7F7 /* Pink_Monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink_Monster.png; sourceTree = "<group>"; };
 		D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasseGenericaLixo.swift; sourceTree = "<group>"; };
+		D4F5544E293542FB000D2CAF /* MenuMudancaFase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuMudancaFase.swift; path = ViewModel/MenuMudancaFase.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		3D888322292BED0C0095370B /* Oficials */ = {
 			isa = PBXGroup;
 			children = (
+				D4F5544E293542FB000D2CAF /* MenuMudancaFase.swift */,
 			);
 			path = Oficials;
 			sourceTree = "<group>";
@@ -144,8 +147,7 @@
 			children = (
 				3D888324292BF73D0095370B /* ButtonPrefab.swift */,
 				3DB7184D292FF25E00BE98FF /* TreadmillPrefab.swift */,
-                D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */,
-
+				D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */,
 			);
 			path = Prefabs;
 			sourceTree = "<group>";
@@ -344,6 +346,7 @@
 				3DC6D53A292D3D51003D21EC /* AudioManager.swift in Sources */,
 				D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */,
 				3DB74A84291EC3470045259D /* GameViewController.swift in Sources */,
+				D4F5544F293542FB000D2CAF /* MenuMudancaFase.swift in Sources */,
 				3DC6D542292D6E57003D21EC /* SoundTests.swift in Sources */,
 				3DB74A82291EC3470045259D /* AppDelegate.swift in Sources */,
 			);
