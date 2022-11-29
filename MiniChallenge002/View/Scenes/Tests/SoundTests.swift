@@ -30,6 +30,7 @@ class SoundTests : SKScene {
         }
         
         self.addChild(buttonTeste)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

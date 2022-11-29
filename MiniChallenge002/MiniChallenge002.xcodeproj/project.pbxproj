@@ -28,6 +28,7 @@
 		D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */; };
 		D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
 		D4F5544A292FE546000D2CAF /* ClasseGenericaLixo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */; };
+		D4F5544D29315D75000D2CAF /* AleatoriedadeLixo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F5544C29315D75000D2CAF /* AleatoriedadeLixo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovimentoPersonagem.swift; sourceTree = "<group>"; };
 		D4D16A7A292D43260078F7F7 /* Pink_Monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink_Monster.png; sourceTree = "<group>"; };
 		D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasseGenericaLixo.swift; sourceTree = "<group>"; };
+		D4F5544C29315D75000D2CAF /* AleatoriedadeLixo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AleatoriedadeLixo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,8 +146,7 @@
 			children = (
 				3D888324292BF73D0095370B /* ButtonPrefab.swift */,
 				3DB7184D292FF25E00BE98FF /* TreadmillPrefab.swift */,
-                D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */,
-
+				D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */,
 			);
 			path = Prefabs;
 			sourceTree = "<group>";
@@ -215,6 +216,7 @@
 		3DB74A96291EC4410045259D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D4F5544B29315D5A000D2CAF /* Game */,
 				3DB74A9E291ECAA70045259D /* Managers */,
 				3DB74A97291EC9840045259D /* Utils */,
 			);
@@ -255,6 +257,14 @@
 				3D7D79F8292EC1590023CF4A /* Tests */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		D4F5544B29315D5A000D2CAF /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				D4F5544C29315D75000D2CAF /* AleatoriedadeLixo.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F5544A292FE546000D2CAF /* ClasseGenericaLixo.swift in Sources */,
+				D4F5544D29315D75000D2CAF /* AleatoriedadeLixo.swift in Sources */,
 				3DB74A99291ECA6E0045259D /* VectorUtils.swift in Sources */,
 				3D1BE228293132FC00642D59 /* LevelModel.swift in Sources */,
 				3DD3A534292C1377001DAC35 /* ArrayUtils.swift in Sources */,
