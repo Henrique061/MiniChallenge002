@@ -58,6 +58,27 @@ class ButtonPrefab : SKNode {
     /**
      * Constroi um botao de testes, utilizando apenas forma de retangulo
      */
+    init(positionPoint: CGPoint, spriteWidth: CGFloat, labeltext: String, action: @escaping() -> Void) {
+        self.positionPoint = positionPoint
+        self.labelText = labeltext
+        self.action = action
+        self.buttonShapeNode = SKShapeNode()
+        self.buttonSpriteNode = SKSpriteNode()
+        self.isSprite = true
+        super.init()
+        self.isUserInteractionEnabled = true
+        
+        self.buttonSpriteNode = SKSpriteNode(imageNamed: "triangulo")
+        self.buttonSpriteNode.position = positionPoint
+        self.buttonSpriteNode.size = CGSize(width: spriteWidth, height: spriteWidth / 2)
+        self.buttonSpriteNode.anchorPoint.x = 0.65
+        self.buttonSpriteNode.zPosition = 0
+        
+        self.addChild(self.buttonSpriteNode)
+        
+    }
+    
+    
     init (color: UIColor, colorSwitch: UIColor, positionPoint: CGPoint, labelText: String, rectangleSize: CGSize, action: @escaping () -> Void) {
         self.color = color
         self.colorSwitch = colorSwitch

@@ -14,15 +14,13 @@ class Menu: SKScene{
     var nome: SKLabelNode?
     
     class func menuScene() -> Menu {
-        // Load 'GameScene.sks' as an SKScene.
+     
         guard let scene = SKScene(fileNamed: "Menu") as? Menu else {
-            print("Failed to load GameScene.sks")
+            print("Failed to load MENU.sks")
             abort()
         }
-        
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .resizeFill
-        
         return scene
     }
     
@@ -44,16 +42,16 @@ class Menu: SKScene{
         }
         addChild(ajustes)
         
-        
-         jogar = ButtonPrefab(color: .green, colorSwitch: .brown, positionPoint: CGPoint(x: 0, y: 0), labelText: "Jogar", rectangleSize: CGSize(width: 100, height: 50)) {
+        let botao = ButtonPrefab(positionPoint:  CGPoint(x: 0, y:0), spriteWidth: 150, labelText: "Jogar", fontSize: 30) {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
-             let scene:SKScene = Info(size: self.size)
-          
+            let scene:SKScene = Info(size: self.size)
+            
             self.view?.presentScene(scene, transition: transition)
         }
+          addChild(botao)
 
-        addChild(jogar!)
+
     }
     
-   
 }
+
