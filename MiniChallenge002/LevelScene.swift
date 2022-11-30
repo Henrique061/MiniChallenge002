@@ -10,27 +10,31 @@ import SpriteKit
 import GameController
 
 class LevelScene : SKScene {
+    // scene
     let sceneName = "LevelScene"
     var audioManager: AudioManager? = nil
+    let cameraNode = SKCameraNode()
+    
+    //controller
+    var virtualController: GCVirtualController? = nil
+    
+    //player
+    var playerMovement: PlayerMovement?
+    var playerNode: PlayerPrefab = PlayerPrefab(trashColor: .yellow)
+    
+    // time
+    var lastTimeInterval: TimeInterval = 0
+    var deltaTime: TimeInterval = 0
     
     //nodes
     var gameNode = SKNode()
     var pauseNode = SKNode()
     
-    //MARK: INIT
-    override init() {
-        super.init()
-        self.setSceneParams()
-        self.configNodes()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     //MARK: DID LOADS
     override func sceneDidLoad() {
-        
+        self.setSceneParams()
+        self.configNodes()
+        self.connectVirtuallController()
     }
     
     //MARK: INITIALIZATION
@@ -38,17 +42,77 @@ class LevelScene : SKScene {
         self.name = sceneName
         self.size = CGSize(width: 1920, height: 1080)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.camera = self.cameraNode
         self.audioManager = AudioManager(scene: self)
         self.gameNode.position = CGPoint.zero
         self.pauseNode.position = CGPoint.zero
     }
     
     private func configNodes() {
+        // bg
+        let background = SKSpriteNode(imageNamed: "cenário")
+        background.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        background.position = CGPoint(x: 0.0, y: -self.size.height / 2)
+        background.size = CGSize(width: 4000, height: self.size.height + 400)
+        background.zPosition = -1
+        background.physicsBody = SKPhysicsBody(edgeLoopFrom: background.frame)
+        
+        // treadmill
         let treadmillNode = TreadmillPrefab()
+        treadmillNode.zPosition = 0
         
+        // player
+        self.playerNode = PlayerPrefab(trashColor: .yellow)
+        self.playerNode.zPosition = 1
+        self.playerMovement = PlayerMovement(player: playerNode)
+        
+        // game nodes
         self.gameNode.addChild(treadmillNode)
+        self.gameNode.addChild(background)
+        self.gameNode.addChild(self.playerNode)
         
+        //pause nodes
+        
+        // scene nodes
         self.addChild(self.gameNode)
         self.addChild(self.pauseNode)
+    }
+    
+    //MARK: UPDATE
+    override func update(_ currentTime: TimeInterval) {
+        // delta time
+        self.deltaTime = currentTime - self.lastTimeInterval
+        self.lastTimeInterval = currentTime
+        
+        let moveX = CGFloat((virtualController?.controller?.extendedGamepad?.leftThumbstick.xAxis.value)!)
+        self.playerMovement?.movePlayer(moveX)
+        
+        self.moveCamera()
+    }
+    
+    //MARK: CAMERA
+    private func moveCamera() {
+        let cameraBounds = self.frame.width / 2
+        let bounds = self.calculateAccumulatedFrame().width/2 - cameraBounds
+        
+        let positionPlayer = self.playerNode.playerNode.position.x
+        print("playerPos: \(positionPlayer)")
+        
+        if positionPlayer < bounds && positionPlayer > -(bounds) {
+            print("camPos: \(String(describing: self.camera?.position))")
+            
+            self.camera?.position.x = positionPlayer
+        }
+    }
+    
+    //MARK: VIRTUAL CONTROLLER
+    func connectVirtuallController() {
+        
+        let controllerConfic = GCVirtualController.Configuration()
+        controllerConfic.elements = [GCInputLeftThumbstick]
+        
+        let controller = GCVirtualController(configuration: controllerConfic)
+        controller.connect()
+        self.virtualController = controller
     }
 }

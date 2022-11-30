@@ -20,11 +20,14 @@ class TreadmillPrefab : SKNode {
         super.init()
         
         //cria posicao
-        var positionPoint = CGPoint.zero
+        let positionPoint = CGPoint(x: 0, y: -50)
         
         // cria node
-        var treadmillNode = SKSpriteNode(texture: SKTexture.init(imageNamed: "Esteira"))
+        let treadmillNode = SKSpriteNode(texture: SKTexture.init(imageNamed: "Esteira"))
         treadmillNode.position = positionPoint
+        treadmillNode.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        treadmillNode.size = CGSize(width: 3800, height: 1400)
+
         self.addChild(treadmillNode)
     }
     
