@@ -35,6 +35,7 @@
 		3DC6D53A292D3D51003D21EC /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6D539292D3D50003D21EC /* AudioManager.swift */; };
 		3DC6D542292D6E57003D21EC /* SoundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC6D541292D6E57003D21EC /* SoundTests.swift */; };
 		3DD3A534292C1377001DAC35 /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD3A533292C1377001DAC35 /* ArrayUtils.swift */; };
+		914F94642937B3AE00FF2A04 /* LevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914F94632937B3AE00FF2A04 /* LevelScene.swift */; };
 		D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */; };
 		D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
 		D4F5544A292FE546000D2CAF /* ClasseGenericaLixo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */; };
@@ -75,6 +76,7 @@
 		3DC6D539292D3D50003D21EC /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		3DC6D541292D6E57003D21EC /* SoundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTests.swift; sourceTree = "<group>"; };
 		3DD3A533292C1377001DAC35 /* ArrayUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
+		914F94632937B3AE00FF2A04 /* LevelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelScene.swift; sourceTree = SOURCE_ROOT; };
 		D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovimentoPersonagem.swift; sourceTree = "<group>"; };
 		D4D16A7A292D43260078F7F7 /* Pink_Monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink_Monster.png; sourceTree = "<group>"; };
 		D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasseGenericaLixo.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		3D888322292BED0C0095370B /* Oficials */ = {
 			isa = PBXGroup;
 			children = (
+				914F94632937B3AE00FF2A04 /* LevelScene.swift */,
 			);
 			path = Oficials;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */,
 				3DB74A8D291EC3470045259D /* GameScene.swift in Sources */,
 				3DB7184E292FF25E00BE98FF /* TreadmillPrefab.swift in Sources */,
+				914F94642937B3AE00FF2A04 /* LevelScene.swift in Sources */,
 				3DC6D53A292D3D51003D21EC /* AudioManager.swift in Sources */,
 				D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */,
 				3DB74A84291EC3470045259D /* GameViewController.swift in Sources */,

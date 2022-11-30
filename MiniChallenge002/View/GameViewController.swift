@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scene = SoundTests()
+        let scene = LevelScene()
 
         // Present the scene
         let skView = self.view as! SKView
