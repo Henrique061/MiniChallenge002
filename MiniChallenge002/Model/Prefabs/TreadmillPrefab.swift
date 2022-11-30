@@ -8,19 +8,29 @@
 import Foundation
 import SpriteKit
 
+public enum Direction : String {
+    case left = "Esquerda"
+    case right = "Direita"
+}
+
 class TreadmillPrefab : SKNode {
     var treadmillNode: SKSpriteNode
     var id: Int
     var texture: SKTexture
     var rollVelocity: Float
     var animationTexturesName: String
+    var rollDirection: Direction
+    var junksAttached: Int
     
-    init(id: Int, texture: SKTexture, rollVelocity: Float, animationTexturesName: String) {
+    //MARK: INIT
+    init(id: Int, texture: SKTexture, rollVelocity: Float, animationTexturesName: String, rollDirection: Direction) {
         self.treadmillNode = SKSpriteNode()
         self.id = id
         self.texture = texture
         self.rollVelocity = rollVelocity
         self.animationTexturesName = animationTexturesName
+        self.rollDirection = rollDirection
+        self.junksAttached = 0
         super.init()
         
         //cria posicao
@@ -48,10 +58,20 @@ class TreadmillPrefab : SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: GETTERS SETTERS
     public func setRollVelocity(_ value: Float) {
         self.rollVelocity = value
     }
     
+    public func getJunksAttached() -> Int {
+        return self.junksAttached
+    }
+    
+    public func setJunksAttached(_ value: Int) {
+        self.junksAttached = value
+    }
+    
+    //MARK: METHODS
     public func startRollAnimation() {
         self.treadmillNode.run(AnimationUtils.repeatForeverFrameAnim(texturesName: self.animationTexturesName, numberOfFrames: 4, fps: 0.3))
     }

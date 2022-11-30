@@ -25,11 +25,11 @@ class SoundTests : SKScene {
 //        self.audioManager?.stopAll()
 //        self.audioManager?.playAudio("testMusic")
         
-        let buttonTeste = ButtonPrefab(positionPoint: CGPoint.zero, spriteWidth: 500, labelText: "Jogar", fontSize: 100) {
-            print("teste")
-        }
+        let playerTeste = SKSpriteNode(imageNamed: "LixoAmarelo0")
+        playerTeste.size = CGSize(width: 250, height: 250)
+        playerTeste.run(AnimationUtils.repeatForeverFrameAnim(texturesName: "LixoAmarelo", numberOfFrames: 3, fps: 0.15))
+        self.addChild(playerTeste)
         
-        self.addChild(buttonTeste)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

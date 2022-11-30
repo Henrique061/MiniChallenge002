@@ -8,7 +8,16 @@
 import Foundation
 import SpriteKit
 
-public struct LevelModel {
+public enum JunkVariety: String, Codable {
+    case recycleOrganic = "Reciclados e Orgânicos"
+    case recycleVariety = "Variedade de reciclados"
+}
+
+public struct LevelModel : Codable {
     public var levelId: Int
-    
+    public var maxTotalJunk: Int
+    public var minTotalJunk: Int
+    public var maxTreadmillJunk: Int
+    public var junkVariety: JunkVariety
+    public var numOfVariety: Int
 }

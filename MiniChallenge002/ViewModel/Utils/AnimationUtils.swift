@@ -47,7 +47,7 @@ class AnimationUtils {
      * Retorna uma animação que repete para sempre um vetor de SKTextures
      */
     public static func repeatForeverFrameAnim(texturesName: String, numberOfFrames: Int, fps: TimeInterval) -> SKAction {
-        return SKAction.repeatForever(.animate(with: .init(format: "\(texturesName)%@", frameCount: 0...numberOfFrames), timePerFrame: fps))
+        return SKAction.repeatForever(.animate(with: .init(format: "\(texturesName)%@", frameCount: 1...numberOfFrames), timePerFrame: fps))
     }
     
     //MARK: REPEAT COUNTED
@@ -55,7 +55,7 @@ class AnimationUtils {
      * Retorna uma animação que repete por um número determinado de vezes, um vetor de SKTextures. Esse número de repetições é determinado pelo count.
      */
     public static func repeatCountedFrameAnim(texturesName: String, numberOfFrames: Int, fps: TimeInterval, count: Int) -> SKAction {
-        return SKAction.repeat(.animate(with: .init(format: "\(texturesName)%@", frameCount: 0...numberOfFrames), timePerFrame: fps), count: count)
+        return SKAction.repeat(.animate(with: .init(format: "\(texturesName)%@", frameCount: 1...numberOfFrames), timePerFrame: fps), count: count)
     }
     
     //MARK: STOP ANIM
