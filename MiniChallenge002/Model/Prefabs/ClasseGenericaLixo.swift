@@ -32,7 +32,7 @@ class Lixo : SKNode {
         
         
     // criar node das imagens
-        var lixoNode = SKSpriteNode(imageNamed: nomeImagem)
+        let lixoNode = SKSpriteNode(imageNamed: nomeImagem)
         lixoNode.position = positionPoint
         
         
