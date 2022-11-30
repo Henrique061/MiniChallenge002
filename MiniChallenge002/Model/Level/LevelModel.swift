@@ -20,5 +20,4 @@ public struct LevelModel : Codable {
     public var maxTreadmillJunk: Int
     public var junkVariety: JunkVariety
     public var numOfVariety: Int
-    public var maxJunkVariety: Int
 }
