@@ -26,28 +26,29 @@ class MenuMudancaFase: SKScene {
         lixo.position = .init(x: -225, y: 200)
         lixo.size = CGSize(width: 50, height: 50)
         lixo.zPosition = 5
-        lixo.physicsBody?.velocity = CGVector(dx: 0, dy: 50)
+        
         
         addChild(lixo)
         
-        
         //lixeira
-        lixeira.position = CGPoint(x: -200, y: -100)
-        lixeira.size = CGSize(width: 400, height: 500)
-        self.addChild(lixeira)
+        
+        self.addChild(criarLixeira())
         
     }
     
     
     override func update(_ currentTime: TimeInterval) {
         
-        if round(lixo.position.y) == 10.0 ||
+        lixo.physicsBody?.velocity = CGVector(dx: 0, dy: -200)
+        
+        // para arredondar o eixo y e parar de caior
+        if round(lixo.position.y) == 8.0 ||
+            round(lixo.position.y) == 9.0 ||
+            round(lixo.position.y) == 10.0 ||
             round(lixo.position.y) == 11.0 ||
             round(lixo.position.y) == 12.0 ||
             round(lixo.position.y) == 13.0 ||
             round(lixo.position.y) == 14.0 ||
-            round(lixo.position.y) == 16.0 ||
-            round(lixo.position.y) == 17.0 ||
             round(lixo.position.y) == 15.0 ||
             round(lixo.position.y) < 0 // parar de cair
         {
@@ -58,6 +59,19 @@ class MenuMudancaFase: SKScene {
     // criando lixinhos
     
     let lixo = SKSpriteNode(imageNamed: "MacaOrganico")
+    
+//    var lixos: [SKSpriteNode] = ["MacaOrganico", "OvoOrganico","PeixeOrganico"]
+    
+    
+    
+   let imagens = ["MacaOrganico", "OvoOrganico", "PeixeOrganico" ]
+    
+
+//        let lixos = [SKSpriteNode(fileNamed: "MacaOrganico"),
+//                     SKSpriteNode(imageNamed: "OvoOrganico"),
+//                     SKSpriteNode(imageNamed: "PeixeOrganico")]
+
+
     
     // criando o botao de jogar
     func botaoJogar() -> SKNode  {
@@ -72,6 +86,13 @@ class MenuMudancaFase: SKScene {
     }
     
     // criando node que será a lixeira
-    var lixeira = SKSpriteNode(imageNamed: "Lixoamarelo")
+    func criarLixeira() -> SKSpriteNode {
+        let lixeira = SKSpriteNode(imageNamed: "Lixoamarelo")
+        lixeira.position = CGPoint(x: -200, y: -100)
+        lixeira.size = CGSize(width: 400, height: 500)
+        
+        return lixeira
+    }
+    
     
 }
