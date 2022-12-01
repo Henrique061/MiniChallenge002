@@ -36,7 +36,7 @@ class ButtonPrefab : SKNode {
         // cria sprite
         self.buttonSpriteNode = SKSpriteNode(imageNamed: "spr_buttonIdle")
         self.buttonSpriteNode.position = positionPoint
-        self.buttonSpriteNode.size = CGSize(width: spriteWidth, height: spriteWidth / 2)
+        self.buttonSpriteNode.size = CGSize(width: spriteWidth, height: spriteWidth / 3)
         self.buttonSpriteNode.anchorPoint.x = 0.65
         self.buttonSpriteNode.zPosition = 0
         
