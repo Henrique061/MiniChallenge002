@@ -17,6 +17,7 @@ class LevelScene : SKScene {
     
     // level
     let levelManager: LevelManager = LevelManager()
+    var junksInScene: [Lixo] = []
     var gameStarted = false
     
     //controller
@@ -49,6 +50,21 @@ class LevelScene : SKScene {
         self.setSceneParams()
         self.configNodes()
         self.connectVirtuallController()
+        
+        self.junksInScene = self.levelManager.generateJunksLevel()
+        
+        for junk in self.junksInScene {
+            self.gameNode.addChild(junk)
+        }
+        
+        print("""
+                correct junk qnt: \(levelManager.CorrectJunkQuantity)
+                correct junk type: \(levelManager.CorrectJunkType)
+                game level: \(levelManager.GameLevel)
+                junk qnt: \(levelManager.JunkQuantity)
+                junk variety: \(levelManager.getActualLevelModel().junkVariety.rawValue)
+                num of variety: \(levelManager.getActualLevelModel().numOfVariety)
+                """)
     }
     
     //MARK: INITIALIZATION
@@ -77,7 +93,7 @@ class LevelScene : SKScene {
         
         // player
         self.playerNode = PlayerPrefab(trashColor: .yellow)
-        self.playerNode.zPosition = 1
+        self.playerNode.zPosition = 4
         self.playerMovement = PlayerMovement(player: playerNode)
         
         // game nodes

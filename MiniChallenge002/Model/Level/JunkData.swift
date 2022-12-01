@@ -56,4 +56,15 @@ class JunkData {
         
         return junksType
     }
+    
+//    public func getLixosByType(_ tipo: TipoLixo) -> [Lixo] {
+//        var lixos: [Lixo] = []
+//        let lixosNome: [String] = JunkData.getJunkList(tipo)
+//        
+//        for nome in lixosNome {
+//            lixos.append(Lixo(xPos: <#T##CGFloat#>, tipoLixo: <#T##TipoLixo#>, nomeImagem: <#T##String#>, esteiraIndex: <#T##Int#>))
+//        }
+//        
+//        return lixos
+//    }
 }

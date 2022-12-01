@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-public enum JunkPosition : CGFloat {
+public enum JunkPosition : CGFloat, CaseIterable {
     case treadmill_0 = -180
     case treadmill_1 = -105
     case treadmill_2 = -10
