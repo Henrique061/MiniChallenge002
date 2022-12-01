@@ -385,10 +385,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0259CC292D3C8F001934D6 /* Menu.sks in Resources */,
 				3DB74A8C291EC3470045259D /* GameScene.sks in Resources */,
 				BA0259D0292D5226001934D6 /* AjustesScene.sks in Resources */,
 				BA86537D292EB38000A199AE /* Info.sks in Resources */,
+				3D5CABAE293559AA001964E1 /* Level-008.json in Resources */,
 				3DB74A87291EC3470045259D /* Main.storyboard in Resources */,
 				D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */,
 				3DB74A8B291EC3470045259D /* Actions.sks in Resources */,
@@ -413,8 +413,6 @@
 				3DD3A534292C1377001DAC35 /* ArrayUtils.swift in Sources */,
 				3D888325292BF73D0095370B /* ButtonPrefab.swift in Sources */,
 				3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */,
-				BA0259D2292D5240001934D6 /* AjustesScene.swift in Sources */,
-				BA0259CE292D3CFC001934D6 /* Menu.swift in Sources */,
 				3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */,
 				3DB74A8D291EC3470045259D /* GameScene.swift in Sources */,
 				914F94662937C9FB00FF2A04 /* PlayerPrefab.swift in Sources */,
