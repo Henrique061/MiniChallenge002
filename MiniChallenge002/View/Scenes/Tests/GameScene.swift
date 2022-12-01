@@ -12,6 +12,8 @@ class GameScene: SKScene {
     
     fileprivate var label : SKLabelNode?
     fileprivate var spinnyNode : SKShapeNode?
+    public var cont: Int = 0
+    public var score: Int = 0
 
     class func newGameScene() -> GameScene {
       
@@ -23,29 +25,108 @@ class GameScene: SKScene {
         
         return scene
     }
+   
+
+     lazy var texto: SKLabelNode = {
+       var texto = SKLabelNode(fontNamed: "Party Confetti")
+        texto.fontSize = CGFloat(100)
+        texto.zPosition = 0
+        texto.fontColor = SKColor.black
+        texto.horizontalAlignmentMode = .center
+        texto.verticalAlignmentMode = .center
+         
+        texto.text = ("\(cont)")
+         return texto
+    }()
+    
+ 
+   lazy var contador: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "Party Confetti")
+        label.fontSize = CGFloat(100)
+        label.zPosition = 0
+        label.fontColor = SKColor.magenta
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        label.text = "\(counterStartValue)"
+        return label
+    }()
+    var counter = 0
+    var counterTime = Timer()
+    var counterStartValue = 60
+    
+    var isGameOver = false
     
     //start
     override func didMove(to view: SKView) {
-        var texto: SKLabelNode?
+      
+        backgroundColor = .white
         self.scaleMode = .resizeFill
-        let button = ButtonPrefab(color: .green, colorSwitch: .blue, positionPoint: CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.5), labelText: "Teste", rectangleSize: CGSize(width: 100, height: 50)) {
-            print("to funfando")
-        }
+       
+        texto.position = CGPoint(x: self.size.width * 0.79, y: self.size.height * 0.28)
+        addChild(texto)
         
-        self.addChild(button)
+        contador.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.9)
+        addChild(contador)
         
-        let botao = ButtonPrefab(positionPoint: CGPoint(x:self.size.width * 0.8, y: self.size.height * 0.40), spriteWidth: 20, labeltext: "") {
-            Contador.shared.addScore()
-            texto  = SKLabelNode(fileNamed: "Score: \(Contador.shared.contador)")
-        }
+  
+        counter = counterStartValue
+        startCounter()
+        
+        var botaoRemove = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.15), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 2", action: {
+            self.removeScore()
+            self.texto.text = ("\(self.cont)")
 
-        self.addChild(botao)
-        self.addChild(texto!)
-    
+        })
+  
+        let botaoAdd = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.4), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 1", action: {
+            self.addScore()
+            self.texto.text=("\(self.cont)")
+   
+        })
+        
+        var botaoOk = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.25) , spriteSize: CGSize(width: 285, height: 300), labelText: "", fontSize: 0, textureName: "ok", action: {
+            
+        })
+        self.addChild(botaoAdd)
+        self.addChild(botaoRemove)
+        self.addChild(botaoOk)
+     
+      
     }
     
+    public func addScore(){
+        self.cont += 1
+    }
+    
+    public func removeScore(){
+        self.cont -= 1
+    }
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
+    
+    func startCounter(){
+        counterTime = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decrementCounter), userInfo: nil, repeats: true)
+    }
+    @objc func decrementCounter(){
+        if !isGameOver{
+            counter -= 1
+           contador.text = "\(counter)"
+            let minutos = counter/60
+            let segundos = counter % 60
+            let minutoTexto = minutos < 10 ? "0\(minutos)" : "\(minutos)"
+            let segundosTexto = segundos < 10 ? "0\(segundos)" : "\(segundos)"
+            
+            contador.text = "\(minutoTexto):\(segundosTexto)"
+           
+            }
+        if counter <= 0{
+            isGameOver = true
+            
+          
+        }
+        
+    }
 }
 
+ 

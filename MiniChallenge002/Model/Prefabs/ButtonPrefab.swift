@@ -17,26 +17,28 @@ class ButtonPrefab : SKNode {
     var rectangleSize: CGSize?
     var buttonShapeNode: SKShapeNode
     var buttonSpriteNode: SKSpriteNode
+    var textureName: String
     var isSprite: Bool
     
     //MARK: CONSTRUTOR SPRITE
     /**
      * Constroi um botao utlizando textura (versao final)
      */
-    init (positionPoint: CGPoint, spriteWidth: CGFloat, labelText: String, fontSize: CGFloat, action: @escaping () -> Void) {
+    init (positionPoint: CGPoint, spriteSize: CGSize, labelText: String, fontSize: CGFloat, textureName: String, action: @escaping () -> Void) {
         self.positionPoint = positionPoint
         self.labelText = labelText
         self.action = action
         self.buttonShapeNode = SKShapeNode()
         self.buttonSpriteNode = SKSpriteNode()
+        self.textureName = textureName
         self.isSprite = true
         super.init()
         self.isUserInteractionEnabled = true
         
         // cria sprite
-        self.buttonSpriteNode = SKSpriteNode(imageNamed: "spr_buttonIdle")
+        self.buttonSpriteNode = SKSpriteNode(imageNamed: textureName)
         self.buttonSpriteNode.position = positionPoint
-        self.buttonSpriteNode.size = CGSize(width: spriteWidth, height: spriteWidth / 2)
+        self.buttonSpriteNode.size = spriteSize
         self.buttonSpriteNode.anchorPoint.x = 0.65
         self.buttonSpriteNode.zPosition = 0
         
@@ -65,6 +67,7 @@ class ButtonPrefab : SKNode {
         self.buttonShapeNode = SKShapeNode()
         self.buttonSpriteNode = SKSpriteNode()
         self.isSprite = true
+        self.textureName = ""
         super.init()
         self.isUserInteractionEnabled = true
         
@@ -89,6 +92,7 @@ class ButtonPrefab : SKNode {
         self.buttonShapeNode = SKShapeNode()
         self.buttonSpriteNode = SKSpriteNode()
         self.isSprite = false
+        self.textureName = ""
         super.init()
         self.isUserInteractionEnabled = true
         
@@ -154,13 +158,11 @@ class ButtonPrefab : SKNode {
         let sequenceAnim = SKAction.sequence([
             .run {
                 self.isUserInteractionEnabled = false
-                self.buttonSpriteNode.run(.setTexture(clickedTexture))
             },
             AnimationUtils.pressedAnim(0.7),
             .run(self.action!),
             .run {
                 self.isUserInteractionEnabled = true
-                self.buttonSpriteNode.run(.setTexture(idleTexture))
             }
         ])
         

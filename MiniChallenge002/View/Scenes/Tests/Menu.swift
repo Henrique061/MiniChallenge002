@@ -11,27 +11,17 @@ class Menu: SKScene{
     
     var jogar: SKNode?
     
-    var nome: SKLabelNode?
+    var nome:SKSpriteNode?
     
-    class func menuScene() -> Menu {
-     
-        guard let scene = SKScene(fileNamed: "Menu") as? Menu else {
-            print("Failed to load MENU.sks")
-            abort()
-        }
-        // Set the scale mode to scale to fit the window
-        scene.scaleMode = .resizeFill
-        return scene
-    }
-    
+    var config: SKSpriteNode?
+
     override func didMove(to view: SKView) {
         
-        backgroundColor = .white
-        nome = SKLabelNode(text: "NOME JOGO")
-        nome!.position = CGPoint(x: 0, y: 100)
-        nome!.fontColor = SKColor.black
-        nome!.fontSize = 40
-        
+        backgroundColor = .red
+        nome = SKSpriteNode(imageNamed: "trash catch")
+        nome?.size = CGSize(width: 190, height: 190)
+        nome!.position = CGPoint(x: 0, y: 90)
+
         addChild(nome!)
         
         let ajustes = ButtonPrefab(color: .red, colorSwitch: .black, positionPoint: CGPoint(x: 350, y: 150), labelText: "", rectangleSize: CGSize(width: 50, height: 25)) {
@@ -42,9 +32,10 @@ class Menu: SKScene{
         }
         addChild(ajustes)
         
-        let botao = ButtonPrefab(positionPoint:  CGPoint(x: 0, y:0), spriteWidth: 150, labelText: "Jogar", fontSize: 30) {
+        let botao = ButtonPrefab(positionPoint:  CGPoint(x: 20, y: -90), spriteSize: CGSize(width: 150, height: 50), labelText: "Jogar", fontSize: 30, textureName: "spr_buttonIdle") {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = Info(size: self.size)
+                
             
             self.view?.presentScene(scene, transition: transition)
         }

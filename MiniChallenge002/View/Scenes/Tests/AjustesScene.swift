@@ -27,7 +27,7 @@ class AjustesScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        var musica = SKLabelNode(fontNamed: "SFUI-Bold")
+        var musica = SKLabelNode(fontNamed: "Party Confetti")
         musica.text = "Musica"
         musica.fontColor = .white
         musica.position = CGPoint(x: self.size.width * 0.2, y: self.size.height * 0.3)
