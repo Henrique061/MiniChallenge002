@@ -16,6 +16,7 @@ class LevelManager {
     private var correctJunkQuantity: Int
     private var levelsModel: [LevelModel]
     private var correctJunkType: TipoLixo
+    private var collectOrganic: Bool
     
     //MARK: GETTERS AND SETTERS
     public var GameLevel: Int {
@@ -54,6 +55,8 @@ class LevelManager {
         self.correctJunkQuantity = 0
         self.levelsModel = JsonUtils.getLevelsFromBundle()
         self.levelsModel.sort(by: { $0.levelId < $1.levelId }) // sort em ordem crescente de levelId
+        self.correctJunkType = .organico
+        self.collectOrganic = false
     }
     
     //MARK: METHODS
@@ -84,26 +87,30 @@ class LevelManager {
         // initialization
         var lixos: [Lixo] = []
         let level = self.getActualLevelModel()
-        var junkTypes: [TipoLixo] = randomJunkVariety(level)
         
         //setup
         if (level.junkVariety == .recycleOrganic) { self.setupRecycleOrganic() }
         else { self.setupRecycleVariety() }
-        
-        // random junk
-        for _ in 1 ... self.junkQuantity {
-            
-        }
-        
-        return lixos
     }
     
+    //MARK: SETUP ORGANIC
     private func setupRecycleOrganic() {
+        let level = self.getActualLevelModel()
+        let chooseOrganic: Int = Int.random(in: 0...1)
+        
+        if chooseOrganic == 1 { self.collectOrganic = true }
+        else { self.collectOrganic = false }
+        
         
     }
     
+    //MARK: SETUP RECYCLES
     private func setupRecycleVariety() {
+        let level = self.getActualLevelModel()
         self.correctJunkType = TipoLixo.allCases[Int.random(in: 0 ..< TipoLixo.allCases.count)]
+        var junkTypes: [TipoLixo] = randomJunkVariety(level)
+        
+        
     }
     
     private func randomJunkVariety(_ level: LevelModel) -> [TipoLixo] {

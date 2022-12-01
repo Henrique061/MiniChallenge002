@@ -43,15 +43,15 @@ class Lixo : SKNode {
             default: self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_0.rawValue); break
         }
         
-        if tipoLixo == .organico { isOrganic = true }
+        if tipoLixo == .organico { self.isOrganic = true }
         else { self.isOrganic = false }
         
         super.init()
         
     // criar node das imagens
         let lixoNode = SKSpriteNode(imageNamed: nomeImagem)
-        lixoNode.position = positionPoint
         lixoNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        lixoNode.position = self.positionPoint
         lixoNode.setScale(0.9)
         
     //add node na cena
