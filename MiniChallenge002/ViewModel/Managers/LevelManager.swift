@@ -91,6 +91,8 @@ class LevelManager {
         //setup
         if (level.junkVariety == .recycleOrganic) { self.setupRecycleOrganic() }
         else { self.setupRecycleVariety() }
+        
+        return []
     }
     
     //MARK: SETUP ORGANIC
