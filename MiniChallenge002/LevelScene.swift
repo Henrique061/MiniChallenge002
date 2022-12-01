@@ -15,6 +15,10 @@ class LevelScene : SKScene {
     var audioManager: AudioManager? = nil
     let cameraNode = SKCameraNode()
     
+    // level
+    let levelManager: LevelManager = LevelManager()
+    var gameStarted = false
+    
     //controller
     var virtualController: GCVirtualController? = nil
     
@@ -29,6 +33,16 @@ class LevelScene : SKScene {
     //nodes
     var gameNode = SKNode()
     var pauseNode = SKNode()
+    
+    //MARK: INIT
+//    init(levelManager: LevelManager) {
+//        self.levelManager = levelManager
+//        super.init()
+//    }
+    
+//    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     //MARK: DID LOADS
     override func sceneDidLoad() {
@@ -84,10 +98,19 @@ class LevelScene : SKScene {
         self.deltaTime = currentTime - self.lastTimeInterval
         self.lastTimeInterval = currentTime
         
+        // move player
         let moveX = CGFloat((virtualController?.controller?.extendedGamepad?.leftThumbstick.xAxis.value)!)
         self.playerMovement?.movePlayer(moveX)
         
+        // methods
         self.moveCamera()
+        
+        if gameStarted { self.countdownTime() }
+    }
+    
+    //MARK: METHODS
+    private func countdownTime() {
+        self.levelManager.timeCountdown(self.deltaTime)
     }
     
     //MARK: CAMERA
@@ -96,11 +119,8 @@ class LevelScene : SKScene {
         let bounds = self.calculateAccumulatedFrame().width/2 - cameraBounds
         
         let positionPlayer = self.playerNode.playerNode.position.x
-        print("playerPos: \(positionPlayer)")
         
         if positionPlayer < bounds && positionPlayer > -(bounds) {
-            print("camPos: \(String(describing: self.camera?.position))")
-            
             self.camera?.position.x = positionPlayer
         }
     }
