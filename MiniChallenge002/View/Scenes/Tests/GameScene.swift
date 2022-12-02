@@ -72,7 +72,7 @@ class GameScene: SKScene {
         counter = counterStartValue
         startCounter()
         
-        var botaoRemove = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.15), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 2",  buttonType: .withoutAnim, action: {
+        let botaoRemove = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.15), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 2",  buttonType: .withoutAnim, action: {
             self.removeScore()
             self.texto.text = ("\(self.cont)")
 

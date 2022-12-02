@@ -331,6 +331,9 @@ class LevelScene : SKScene {
         if !isGameOver { return }
         self.counterTime.invalidate()
         self.virtualController?.disconnect()
+        let transition:SKTransition = SKTransition.fade(withDuration: 1)
+                   let scene:SKScene = GameOver(size: self.size)
+                   self.view?.presentScene(scene, transition: transition)
         print("perdeu")
     }
 }

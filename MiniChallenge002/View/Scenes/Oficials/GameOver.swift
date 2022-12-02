@@ -18,7 +18,7 @@ class GameOver: SKScene{
         
         backgroundColor = .white
         
-        var perdeu = SKLabelNode(fontNamed: "Party Confetti")
+        let perdeu = SKLabelNode(fontNamed: "Party Confetti")
         perdeu.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
         perdeu.fontSize = 150
         perdeu.text = "Você Perdeu!"
@@ -27,7 +27,7 @@ class GameOver: SKScene{
         
         addChild(perdeu)
         
-        var jogarNovamente = SKLabelNode(fontNamed: "Party Confetti")
+        let jogarNovamente = SKLabelNode(fontNamed: "Party Confetti")
         jogarNovamente.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
         jogarNovamente.fontSize = 70
         jogarNovamente.text = "Jogar Novamente?"
@@ -42,13 +42,13 @@ class GameOver: SKScene{
         
         addChild(lixoPerdeu!)
         
-        var jogarSim = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.2), spriteSize: CGSize(width: 600, height: 250), labelText: "Sim", fontSize: 60, textureName: "Botão verde garrafa", buttonType: .sprite, action: {
+        let jogarSim = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.2), spriteSize: CGSize(width: 600, height: 250), labelText: "Sim", fontSize: 60, textureName: "Botão verde garrafa", buttonType: .withoutAnim, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = LevelScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)
             
         })
-        var jogarNao = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.2), spriteSize: CGSize(width: 500, height: 400), labelText: "Não", fontSize: 60, textureName: "Botão vermelho lata", buttonType: .sprite, action: {
+        let jogarNao = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.2), spriteSize: CGSize(width: 500, height: 400), labelText: "Não", fontSize: 60, textureName: "Botão vermelho lata", buttonType: .withoutAnim, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = MenuScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)

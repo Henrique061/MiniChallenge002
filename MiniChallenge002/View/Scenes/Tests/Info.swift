@@ -27,9 +27,19 @@ class Info: SKScene {
     override func didMove(to view: SKView) {
         
         backgroundColor = .white
-        let jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.78, y: self.size.height * 0.25), spriteSize: CGSize(width:500, height: 166), labelText: "Jogar", fontSize: 100, textureName: "spr_buttonIdle", buttonType: .sprite, action: {
+        
+        let nome = SKLabelNode(fontNamed: "Party Confetti")
+        nome.text = "Voltar"
+        nome.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+        nome.position = CGPoint(x: self.size.width * 0.12, y: self.size.height * 0.88)
+        nome.fontSize = 60
+        nome.horizontalAlignmentMode = .left
+
+        addChild(nome)
+        
+        let jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.78, y: self.size.height * 0.20), spriteSize: CGSize(width:500, height: 166), labelText: "Jogar", fontSize: 100, textureName: "spr_buttonIdle", buttonType: .sprite, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
-            let scene:SKScene = GameScene(size: self.size)
+            let scene:SKScene = LevelScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)
         })
         
@@ -55,15 +65,21 @@ class Info: SKScene {
         addChild(texto)
         
         let texto1 = SKLabelNode(fontNamed: "Party Confetti")
-        texto1.text = "lalalalallalallalalallalalalalallalalalallalalal"
+        texto1.text = "A reciclagem de uma única lata de alumínio economiza energia suficiente para manter uma TV ligada durante três horas."
         texto1.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
-        texto1.position = CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.3)
-        texto1.fontSize = 80
+        texto1.position = CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.25)
+        texto1.fontSize = 60
         texto1.lineBreakMode = NSLineBreakMode.byWordWrapping
         texto1.numberOfLines = 0
         texto1.preferredMaxLayoutWidth = 500
         
         addChild(texto1)
+        let voltar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.09, y: self.size.height * 0.9), spriteSize: CGSize(width: 60, height: 70), labelText: "", fontSize: 0, textureName: "voltar", buttonType: .withoutAnim, action: {
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = MenuScene(size: self.size)
+            self.view?.presentScene(scene, transition: transition)
+        })
+        addChild(voltar)
         
     }
 }

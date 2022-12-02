@@ -34,7 +34,7 @@ class MenuScene: SKScene{
         addChild(nome)
 //        self.addChild(teste)
         
-        let ajustes = ButtonPrefab(positionPoint: CGPoint(x: 750, y: 350), spriteSize: CGSize(width: 150, height: 200), labelText: "", fontSize: 0, textureName: "engrenagem", buttonType: .sprite, action: {
+        let ajustes = ButtonPrefab(positionPoint: CGPoint(x: 750, y: 390), spriteSize: CGSize(width: 120, height:150), labelText: "", fontSize: 0, textureName: "engrenagem", buttonType: .sprite, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = AjustesScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)

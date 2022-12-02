@@ -19,21 +19,80 @@ class CreditosScene: SKScene{
     
     override func didMove(to view: SKView) {
         
-   
+        
         backgroundColor = .white
-        var lixo = SKSpriteNode(imageNamed: "LixoVerde21")
+        let lixo = SKSpriteNode(imageNamed: "LixoVerde21")
         lixo.position = CGPoint(x: self.size.width * 0.75, y: self.size.height * 0.38)
         lixo.size = CGSize(width: 900, height: 900)
         
         addChild(lixo)
         
-        var creditos = SKLabelNode(fontNamed: "Party Confetti")
+        let creditos = SKLabelNode(fontNamed: "Party Confetti")
         creditos.position = CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.85)
         creditos.text = "Créditos"
         creditos.fontSize = 110
-        creditos.fontColor = .black
+        creditos.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+        
         addChild(creditos)
+        
+        let musica = SKLabelNode(fontNamed: "Party Confetti")
+        musica.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.7)
+        musica.text = "Música: "
+        musica.fontSize = 70
+        musica.fontColor = .black
+        musica.horizontalAlignmentMode = .left
+        addChild(musica)
+        
+       let efeitosSonoros = SKLabelNode(fontNamed: "Party Confetti")
+        efeitosSonoros.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.6)
+        efeitosSonoros.text = "Efeitos Sonoros: "
+        efeitosSonoros.fontSize = 70
+        efeitosSonoros.fontColor = .black
+        efeitosSonoros.horizontalAlignmentMode = .left
+        addChild(efeitosSonoros)
+        
+        let design = SKLabelNode(fontNamed: "Party Confetti")
+        design.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.5)
+        design.text = "Design: Mari Higashi "
+        design.fontSize = 70
+        design.fontColor = .black
+        design.horizontalAlignmentMode = .left
+        addChild(design)
+        
+        
+       let devs = SKLabelNode(fontNamed: "Party Confetti")
+        devs.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.3)
+        devs.text = "Desenvolvedores: Henrique Batista, Jamile Polycarpo, Luana Moraes "
+        devs.fontSize = 70
+        devs.fontColor = .black
+        devs.horizontalAlignmentMode = .left
+        devs.lineBreakMode = NSLineBreakMode.byWordWrapping
+        devs.numberOfLines = 0
+        devs.preferredMaxLayoutWidth = 1000
+        addChild(devs)
+        
+       let nome = SKLabelNode(fontNamed: "Party Confetti")
+        nome.text = "Voltar"
+        nome.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+        nome.position = CGPoint(x: self.size.width * 0.12, y: self.size.height * 0.88)
+        nome.fontSize = 60
+        nome.horizontalAlignmentMode = .left
+
+        addChild(nome)
+        
+        let voltar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.09, y: self.size.height * 0.9), spriteSize: CGSize(width: 60, height: 70), labelText: "", fontSize: 0, textureName: "voltar", buttonType: .withoutAnim, action: {
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = MenuScene(size: self.size)
+            self.view?.presentScene(scene, transition: transition)
+        })
+        addChild(voltar)
+        
+        
+        
     }
+    
+    
+    
     
     
     
