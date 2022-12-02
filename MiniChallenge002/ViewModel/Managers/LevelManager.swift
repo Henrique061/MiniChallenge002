@@ -54,7 +54,7 @@ class LevelManager {
     
     //MARK: INIT
     init() {
-        self.gameLevel = 4
+        self.gameLevel = 1
         self.timeLeft = 90
         self.junkQuantity = 0
         self.correctJunkQuantity = 0
@@ -228,7 +228,7 @@ class LevelManager {
     
     public func getTypeCollectColor() -> UIColor {
         switch self.correctJunkType {
-        case .organico: return UIColor(red: 0.105, green: 0.156, blue: 0.121, alpha: 1)
+        case .organico: return UIColor(red: 0.59, green: 0.35, blue: 0.09, alpha: 1)
         case .metal: return UIColor(red: 0.984, green: 0.878, blue: 0.105, alpha: 1)
         case .papel: return UIColor(red: 0.101, green: 0.564, blue: 0.796, alpha: 1)
         case .plastico: return UIColor(red: 0.772, green: 0.192, blue: 0.168, alpha: 1)

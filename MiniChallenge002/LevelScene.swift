@@ -42,7 +42,7 @@ class LevelScene : SKScene {
     var hudNode = SKNode()
     
     // counter
-    public var cont: Int = 0
+    public var junkCounter: Int = 0
     public var score: Int = 0
     var counter = 0
     var counterTime = Timer()
@@ -56,7 +56,7 @@ class LevelScene : SKScene {
        texto.horizontalAlignmentMode = .center
        texto.verticalAlignmentMode = .center
         
-       texto.text = ("\(cont)")
+       texto.text = ("\(junkCounter)")
         return texto
    }()
    
@@ -75,6 +75,7 @@ class LevelScene : SKScene {
         var label = SKLabelNode(fontNamed: "Party Confetti")
         label.fontSize = CGFloat(100)
         label.zPosition = 10
+        label.position.y = 425
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
         
@@ -147,22 +148,23 @@ class LevelScene : SKScene {
         self.timeLeftCount.text = "\(self.levelManager.TimeLeft)"
         
         self.collectTypeLbl.text = "Conte os \(self.levelManager.getTypeCollectInfo())!"
-        self.collectTypeLbl.fontColor = UIColor(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: 1)
+        self.collectTypeLbl.fontColor = self.levelManager.getTypeCollectColor()
         
         // counter nodes
         self.botaoRemove = ButtonPrefab(positionPoint: CGPoint(x: self.frame.width * 0.41, y: -400), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 2", buttonType: .withoutAnim, action: {
             self.removeScore()
-            self.junkCountLbl.text = ("\(self.cont)")
+            self.junkCountLbl.text = ("\(self.junkCounter)")
         })
   
         self.botaoAdd = ButtonPrefab(positionPoint: CGPoint(x: self.frame.width * 0.41, y: -100), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 1", buttonType: .withoutAnim, action: {
             self.addScore()
-            self.junkCountLbl.text=("\(self.cont)")
+            self.junkCountLbl.text=("\(self.junkCounter)")
         })
         
         self.botaoOk = ButtonPrefab(positionPoint: CGPoint(x: self.frame.width * 0.3, y: -300) , spriteSize: CGSize(width: 285, height: 300), labelText: "", fontSize: 0, textureName: "ok", buttonType: .withoutAnim, action: {
-            
+            self.pressedOk()
         })
+        
         botaoOk!.zPosition = 10
         botaoRemove!.zPosition = 10
         botaoAdd!.zPosition = 10
@@ -179,6 +181,7 @@ class LevelScene : SKScene {
         self.hudNode.addChild(self.botaoOk!)
         self.hudNode.addChild(self.botaoAdd!)
         self.hudNode.addChild(self.botaoRemove!)
+        self.hudNode.addChild(self.collectTypeLbl)
 
         //pause nodes
         
@@ -202,7 +205,7 @@ class LevelScene : SKScene {
         self.lastTimeInterval = currentTime
         
         // move player
-        let moveX = CGFloat((virtualController?.controller?.extendedGamepad?.leftThumbstick.xAxis.value)!)
+        let moveX = CGFloat((virtualController?.controller?.extendedGamepad?.leftThumbstick.xAxis.value ?? 0))
         self.playerMovement?.movePlayer(moveX)
         
         // methods
@@ -235,19 +238,20 @@ class LevelScene : SKScene {
         
         if counter <= 0{
             isGameOver = true
+            self.gameOver()
         }
     }
     
     //MARK: COUNTER
     private func removeScore() {
-        if self.cont > 0 {
-            self.cont -= 1
+        if self.junkCounter > 0 {
+            self.junkCounter -= 1
         }
     }
     
     private func addScore() {
-        if self.cont < self.levelManager.getActualLevelModel().maxTotalJunk {
-            self.cont += 1
+        if self.junkCounter < self.levelManager.getActualLevelModel().maxTotalJunk {
+            self.junkCounter += 1
         }
     }
     
@@ -305,5 +309,28 @@ class LevelScene : SKScene {
                 junk.moveDirection = .left
             }
         }
+    }
+    
+    //MARK: OK PRESSED
+    private func pressedOk() {
+        if junkCounter == self.levelManager.CorrectJunkQuantity {
+            self.levelManager.TimeLeft += 30
+            self.counterTime.invalidate()
+            self.virtualController?.disconnect()
+            print("Ganhou")
+        }
+        
+        else {
+            self.counter -= 10
+            self.levelManager.TimeLeft -= 10
+        }
+    }
+    
+    //MARK: GAMEOVER
+    private func gameOver() {
+        if !isGameOver { return }
+        self.counterTime.invalidate()
+        self.virtualController?.disconnect()
+        print("perdeu")
     }
 }
