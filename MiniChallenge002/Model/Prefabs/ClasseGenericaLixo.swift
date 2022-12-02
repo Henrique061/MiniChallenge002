@@ -23,11 +23,14 @@ public enum TipoLixo : String, CaseIterable {
 }
 
 class Lixo : SKNode {
+    var lixoNode = SKSpriteNode()
     var positionPoint: CGPoint
     var tipoLixo: TipoLixo
     var nomeImagem: String
     var esteiraIndex: Int
     var isOrganic: Bool
+    var rollVelocity: CGFloat
+    var moveDirection: Direction
     
     //MARK: CONSTRUTOR
     init(xPos: CGFloat, tipoLixo: TipoLixo, nomeImagem: String, esteiraIndex: Int) {
@@ -35,12 +38,28 @@ class Lixo : SKNode {
         self.nomeImagem = nomeImagem
         self.esteiraIndex = esteiraIndex
         self.positionPoint = .zero // esteira 0 = -180 / esteira 1 = -105 / esteira 2 = -10
+        self.rollVelocity = CGFloat.random(in: 0.5...8.0)
         
         switch esteiraIndex {
-            case 0: self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_0.rawValue); break
-            case 1: self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_1.rawValue); break
-            case 2: self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_2.rawValue); break
-            default: self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_0.rawValue); break
+            case 0:
+                self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_0.rawValue)
+                self.moveDirection = .left
+                break
+            
+            case 1:
+                self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_1.rawValue)
+                self.moveDirection = .right
+                break
+            
+            case 2:
+                self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_2.rawValue)
+                self.moveDirection = .left
+                break
+            
+            default:
+                self.positionPoint = CGPoint(x: xPos, y: JunkPosition.treadmill_0.rawValue);
+                self.moveDirection = .left
+                break
         }
         
         if tipoLixo == .organico { self.isOrganic = true }
@@ -49,10 +68,10 @@ class Lixo : SKNode {
         super.init()
         
     // criar node das imagens
-        let lixoNode = SKSpriteNode(imageNamed: nomeImagem)
-        lixoNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
-        lixoNode.position = self.positionPoint
-        lixoNode.setScale(0.9)
+        self.lixoNode = SKSpriteNode(imageNamed: nomeImagem)
+        self.lixoNode.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        self.lixoNode.position = self.positionPoint
+        self.lixoNode.setScale(0.9)
         
     //add node na cena
         self.addChild(lixoNode)

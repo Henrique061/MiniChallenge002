@@ -155,7 +155,7 @@ class LevelManager {
     //MARK: SETUP ORGANIC
     private func setupRecycleOrganic() -> [JunkNamesByType] {
         var junksList: [JunkNamesByType] = []
-        let level = self.getActualLevelModel()
+        _ = self.getActualLevelModel()
         let chooseOrganic: Int = Int.random(in: 0...1)
         
         if chooseOrganic == 1 { self.collectOrganic = true }

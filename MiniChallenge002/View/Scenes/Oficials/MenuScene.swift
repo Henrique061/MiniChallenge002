@@ -34,22 +34,22 @@ class MenuScene: SKScene{
         addChild(nome)
 //        self.addChild(teste)
         
-        let ajustes = ButtonPrefab(positionPoint: CGPoint(x: 750, y: 350), spriteSize: CGSize(width: 150, height: 200), labelText: "", fontSize: 0, textureName: "engrenagem") {
+        let ajustes = ButtonPrefab(positionPoint: CGPoint(x: 750, y: 350), spriteSize: CGSize(width: 150, height: 200), labelText: "", fontSize: 0, textureName: "engrenagem", buttonType: .sprite, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = AjustesScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)
-        }
+        })
 
         addChild(ajustes)
         
         //botao de jogar
-        let botao = ButtonPrefab(positionPoint:  CGPoint(x: 20, y: -250), spriteSize: CGSize(width: 500, height: 166), labelText: "Jogar", fontSize: 100, textureName: "spr_buttonIdle") {
+        let botao = ButtonPrefab(positionPoint:  CGPoint(x: 20, y: -250), spriteSize: CGSize(width: 500, height: 166), labelText: "Jogar", fontSize: 100, textureName: "spr_buttonIdle",  buttonType: .sprite, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = Info(size: self.size)
                 
             
             self.view?.presentScene(scene, transition: transition)
-        }
+        })
           addChild(botao)
 
 

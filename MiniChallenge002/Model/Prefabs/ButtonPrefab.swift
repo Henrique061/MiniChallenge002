@@ -8,6 +8,12 @@
 import Foundation
 import SpriteKit
 
+public enum ButtonType {
+    case sprite
+    case test
+    case withoutAnim
+}
+
 class ButtonPrefab : SKNode {
     var color: UIColor?
     var colorSwitch: UIColor?
@@ -18,20 +24,20 @@ class ButtonPrefab : SKNode {
     var buttonShapeNode: SKShapeNode
     var buttonSpriteNode: SKSpriteNode
     var textureName: String
-    var isSprite: Bool
+    var buttonType: ButtonType
     
     //MARK: CONSTRUTOR SPRITE
     /**
      * Constroi um botao utlizando textura (versao final)
      */
-    init (positionPoint: CGPoint, spriteSize: CGSize, labelText: String, fontSize: CGFloat, textureName: String, action: @escaping () -> Void) {
+    init (positionPoint: CGPoint, spriteSize: CGSize, labelText: String, fontSize: CGFloat, textureName: String, buttonType: ButtonType, action: @escaping () -> Void) {
         self.positionPoint = positionPoint
         self.labelText = labelText
         self.action = action
         self.buttonShapeNode = SKShapeNode()
         self.buttonSpriteNode = SKSpriteNode()
         self.textureName = textureName
-        self.isSprite = true
+        self.buttonType = buttonType
         super.init()
         self.isUserInteractionEnabled = true
         
@@ -41,7 +47,6 @@ class ButtonPrefab : SKNode {
         self.buttonSpriteNode.size = spriteSize
         self.buttonSpriteNode.anchorPoint.x = 0.65
         self.buttonSpriteNode.zPosition = 0
-        
         
         // cria texto
         let text = SKLabelNode(text: labelText)
@@ -67,7 +72,7 @@ class ButtonPrefab : SKNode {
         self.action = action
         self.buttonShapeNode = SKShapeNode()
         self.buttonSpriteNode = SKSpriteNode()
-        self.isSprite = true
+        self.buttonType = .test
         self.textureName = ""
         super.init()
         self.isUserInteractionEnabled = true
@@ -92,7 +97,7 @@ class ButtonPrefab : SKNode {
         self.action = action
         self.buttonShapeNode = SKShapeNode()
         self.buttonSpriteNode = SKSpriteNode()
-        self.isSprite = false
+        self.buttonType = .test
         self.textureName = ""
         super.init()
         self.isUserInteractionEnabled = true
@@ -123,13 +128,17 @@ class ButtonPrefab : SKNode {
     //MARK: TOUCH BEGAN
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // sequencia de animacao se for um botao de shape
-        if !self.isSprite {
+        if self.buttonType == .test {
             self.clickedShape()
         }
         
         // sequencia de animacao se for um botao de sprite
-        else {
+        else if self.buttonType == .sprite {
             self.clickedSprite()
+        }
+        
+        else {
+            self.clickedWithoutAnim()
         }
     }
     
@@ -153,9 +162,6 @@ class ButtonPrefab : SKNode {
     
     //MARK: CLICK SPRITE
     func clickedSprite() {
-        let clickedTexture = SKTexture(image: UIImage(named: "spr_buttonClicked")!)
-        let idleTexture = SKTexture(image: UIImage(named: "spr_buttonIdle")!)
-        
         let sequenceAnim = SKAction.sequence([
             .run {
                 self.isUserInteractionEnabled = false
@@ -168,5 +174,12 @@ class ButtonPrefab : SKNode {
         ])
         
         self.run(sequenceAnim)
+    }
+    
+    //MARK: CLICK WITHOUT ANIM
+    func clickedWithoutAnim() {
+        let actionAnim = SKAction.run(self.action!)
+        
+        self.run(actionAnim)
     }
 }

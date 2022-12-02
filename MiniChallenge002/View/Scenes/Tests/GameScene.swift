@@ -72,19 +72,19 @@ class GameScene: SKScene {
         counter = counterStartValue
         startCounter()
         
-        var botaoRemove = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.15), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 2", action: {
+        var botaoRemove = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.15), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 2",  buttonType: .withoutAnim, action: {
             self.removeScore()
             self.texto.text = ("\(self.cont)")
 
         })
   
-        let botaoAdd = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.4), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 1", action: {
+        let botaoAdd = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.4), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 1",  buttonType: .withoutAnim, action: {
             self.addScore()
             self.texto.text=("\(self.cont)")
    
         })
         
-        var botaoOk = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.25) , spriteSize: CGSize(width: 285, height: 300), labelText: "", fontSize: 0, textureName: "ok", action: {
+        var botaoOk = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.25) , spriteSize: CGSize(width: 285, height: 300), labelText: "", fontSize: 0, textureName: "ok",  buttonType: .withoutAnim, action: {
             
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = GameOver(size: self.size)

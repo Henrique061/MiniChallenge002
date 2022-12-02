@@ -56,19 +56,19 @@ class AjustesScene: SKScene {
         som.horizontalAlignmentMode = .left
         addChild(som)
         
-        let politica = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.5), spriteSize: CGSize(width: 380, height: 160), labelText: "", fontSize: 0,textureName: "politica", action:  {
+        let politica = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.5), spriteSize: CGSize(width: 380, height: 160), labelText: "", fontSize: 0,textureName: "politica",  buttonType: .withoutAnim, action:  {
             
     
         })
         addChild(politica)
         
-        let termos = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.3), spriteSize: CGSize(width: 380, height: 160), labelText: "", fontSize: 0, textureName: "termo", action:  {
+        let termos = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.3), spriteSize: CGSize(width: 380, height: 160), labelText: "", fontSize: 0, textureName: "termo", buttonType: .withoutAnim, action:  {
             
     
         })
         addChild(termos)
         
-        let creditos = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.7), spriteSize: CGSize(width: 380, height: 160), labelText: "", fontSize: 0, textureName: "creditos", action:  {
+        let creditos = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.7), spriteSize: CGSize(width: 380, height: 160), labelText: "", fontSize: 0, textureName: "creditos", buttonType: .withoutAnim, action:  {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = CreditosScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)
@@ -77,30 +77,30 @@ class AjustesScene: SKScene {
         })
         addChild(creditos)
         
-        let voltar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.09, y: self.size.height * 0.9), spriteSize: CGSize(width: 60, height: 70), labelText: "", fontSize: 0, textureName: "voltar", action: {
+        let voltar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.09, y: self.size.height * 0.9), spriteSize: CGSize(width: 60, height: 70), labelText: "", fontSize: 0, textureName: "voltar", buttonType: .withoutAnim, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = MenuScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)
         })
         addChild(voltar)
         
-        var ligado = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , action: {
+        var ligado = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
             
         })
         addChild(ligado)
         
-        var desligado = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , action: {
+        var desligado = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
             
             
         })
         addChild(desligado)
         
-        var ligadoSom = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , action: {
+        var ligadoSom = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
             
         })
         addChild(ligadoSom)
         
-        var desligadoSom = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , action: {
+        var desligadoSom = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
             
         })
         addChild(desligadoSom)
