@@ -586,6 +586,7 @@
 				DEVELOPMENT_TEAM = 66824UF4JS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MiniChallenge002-iOS-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Trash Catch";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -621,6 +622,7 @@
 				DEVELOPMENT_TEAM = 66824UF4JS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MiniChallenge002-iOS-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Trash Catch";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
