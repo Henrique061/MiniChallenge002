@@ -35,6 +35,17 @@
 		D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */; };
 		D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
 		D4F5544A292FE546000D2CAF /* ClasseGenericaLixo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */; };
+		D4F5544F293542FB000D2CAF /* MenuMudancaFase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F5544E293542FB000D2CAF /* MenuMudancaFase.swift */; };
+        BA0259CC292D3C8F001934D6 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = BA0259CB292D3C8F001934D6 /* Menu.sks */; };
+        BA0259CE292D3CFC001934D6 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0259CD292D3CFC001934D6 /* Menu.swift */; };
+        BA0259D0292D5226001934D6 /* AjustesScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BA0259CF292D5226001934D6 /* AjustesScene.sks */; };
+        BA0259D2292D5240001934D6 /* AjustesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0259D1292D5240001934D6 /* AjustesScene.swift */; };
+        BA3BD64D29312E5F00FD0F3B /* Contador.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3BD64C29312E5F00FD0F3B /* Contador.swift */; };
+        BA86537D292EB38000A199AE /* Info.sks in Resources */ = {isa = PBXBuildFile; fileRef = BA86537C292EB38000A199AE /* Info.sks */; };
+        BA86537F292EB3C500A199AE /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86537E292EB3C500A199AE /* Info.swift */; };
+        D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */; };
+        D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
+		
 		DF14C5F3293974FC00EE8FCD /* CreditosScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14C5F2293974FC00EE8FCD /* CreditosScene.swift */; };
 		DF14C5F52939817300EE8FCD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14C5F42939817300EE8FCD /* GameOver.swift */; };
 		DF1AB91229392E3700470539 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = DF1AB91129392E3700470539 /* Menu.sks */; };
@@ -80,6 +91,17 @@
 		D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovimentoPersonagem.swift; sourceTree = "<group>"; };
 		D4D16A7A292D43260078F7F7 /* Pink_Monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink_Monster.png; sourceTree = "<group>"; };
 		D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasseGenericaLixo.swift; sourceTree = "<group>"; };
+		D4F5544E293542FB000D2CAF /* MenuMudancaFase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuMudancaFase.swift; path = ViewModel/MenuMudancaFase.swift; sourceTree = SOURCE_ROOT; };
+        BA0259CB292D3C8F001934D6 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Menu.sks; sourceTree = "<group>"; };
+        BA0259CD292D3CFC001934D6 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+        BA0259CF292D5226001934D6 /* AjustesScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = AjustesScene.sks; sourceTree = "<group>"; };
+        BA0259D1292D5240001934D6 /* AjustesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjustesScene.swift; sourceTree = "<group>"; };
+        BA3BD64C29312E5F00FD0F3B /* Contador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contador.swift; sourceTree = "<group>"; };
+        BA86537C292EB38000A199AE /* Info.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Info.sks; sourceTree = "<group>"; };
+        BA86537E292EB3C500A199AE /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+        D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovimentoPersonagem.swift; sourceTree = "<group>"; };
+        D4D16A7A292D43260078F7F7 /* Pink_Monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink_Monster.png; sourceTree = "<group>"; };
+		
 		DF14C5F2293974FC00EE8FCD /* CreditosScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditosScene.swift; sourceTree = "<group>"; };
 		DF14C5F42939817300EE8FCD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		DF1AB91129392E3700470539 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Menu.sks; sourceTree = "<group>"; };
@@ -180,6 +202,7 @@
 		3D888322292BED0C0095370B /* Oficials */ = {
 			isa = PBXGroup;
 			children = (
+				D4F5544E293542FB000D2CAF /* MenuMudancaFase.swift */,
 				DF14C5F2293974FC00EE8FCD /* CreditosScene.swift */,
 				914F94632937B3AE00FF2A04 /* LevelScene.swift */,
 				DF1AB91329392EC600470539 /* MenuScene.swift */,
@@ -425,6 +448,8 @@
 				D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */,
 				916403572937D7BD007FF497 /* PlayerMovement.swift in Sources */,
 				3DB74A84291EC3470045259D /* GameViewController.swift in Sources */,
+				D4F5544F293542FB000D2CAF /* MenuMudancaFase.swift in Sources */,
+				3DC6D542292D6E57003D21EC /* SoundTests.swift in Sources */,
 				BA86537F292EB3C500A199AE /* Info.swift in Sources */,
 				DF1AB91429392EC600470539 /* MenuScene.swift in Sources */,
 				3DC6D542292D6E57003D21EC /* SoundTests.swift in Sources */,

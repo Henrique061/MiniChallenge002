@@ -26,7 +26,6 @@ class Info: SKScene {
     
     override func didMove(to view: SKView) {
         
-        
         backgroundColor = .white
         let jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.78, y: self.size.height * 0.25), spriteSize: CGSize(width:500, height: 166), labelText: "Jogar", fontSize: 100, textureName: "spr_buttonIdle", buttonType: .sprite, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
