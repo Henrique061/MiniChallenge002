@@ -12,27 +12,41 @@ class MenuMudancaFase: SKScene {
     
     override func didMove(to view: SKView) {
         
-        backgroundColor = .white
+        backgroundColor = .black
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.scaleMode = .resizeFill
         addChild(botaoJogar())
         
+        let lataSelecionada = latas[Int.random(in: 1..<4)]
         
-        //lixo
-        lixo.physicsBody = SKPhysicsBody()
-        lixo.physicsBody?.affectedByGravity = true
-        lixo.physicsBody?.isDynamic = true
-        lixo.position = .init(x: -225, y: 200)
-        lixo.size = CGSize(width: 50, height: 50)
-        lixo.zPosition = 5
+        var lixos: [String] = JunkData.getJunkList(.papel)
+        switch lataSelecionada {
+        case "Lixoamarelo":
+            lixos = JunkData.getJunkList(.metal)
+        case "Lixomarrom":
+            lixos = JunkData.getJunkList(.organico)
+        case "Lixoverde":
+            lixos = JunkData.getJunkList(.vidro)
+        case "Lixovermelho":
+            lixos = JunkData.getJunkList(.plastico)
+        default:
+            lixos = JunkData.getJunkList(.papel)
+        }
         
-        
-        addChild(lixo)
-        
+        for nomeLixo in lixos {
+            lixo = SKSpriteNode(imageNamed: nomeLixo)
+            lixo.physicsBody = SKPhysicsBody()
+            lixo.physicsBody?.affectedByGravity = true
+            lixo.physicsBody?.isDynamic = true
+            lixo.position = .init(x: -225, y: 200)
+            lixo.size = CGSize(width: 100, height: 100)
+            lixo.zPosition = 5
+            addChild(lixo)
+        }
+ 
         //lixeira
-        
-        self.addChild(criarLixeira())
+        self.addChild(criarLixeira(tipo: lataSelecionada))
         
     }
     
@@ -57,21 +71,11 @@ class MenuMudancaFase: SKScene {
     }
     
     // criando lixinhos
+    var lixo = SKSpriteNode(imageNamed: "MacaOrganico")
+    var latas = ["Lixoamarelo","Lixomarrom","Lixoverde","Lixovermelho","Lixoazul"]
+   
     
-    let lixo = SKSpriteNode(imageNamed: "MacaOrganico")
-    
-//    var lixos: [SKSpriteNode] = ["MacaOrganico", "OvoOrganico","PeixeOrganico"]
-    
-    
-    
-   let imagens = ["MacaOrganico", "OvoOrganico", "PeixeOrganico" ]
-    
-
-//        let lixos = [SKSpriteNode(fileNamed: "MacaOrganico"),
-//                     SKSpriteNode(imageNamed: "OvoOrganico"),
-//                     SKSpriteNode(imageNamed: "PeixeOrganico")]
-
-
+    var yPos: CGFloat = 200
     
     // criando o botao de jogar
     func botaoJogar() -> SKNode  {
@@ -86,8 +90,8 @@ class MenuMudancaFase: SKScene {
     }
     
     // criando node que será a lixeira
-    func criarLixeira() -> SKSpriteNode {
-        let lixeira = SKSpriteNode(imageNamed: "Lixoamarelo")
+    func criarLixeira(tipo: String) -> SKSpriteNode {
+        let lixeira = SKSpriteNode(imageNamed: tipo)
         lixeira.position = CGPoint(x: -200, y: -100)
         lixeira.size = CGSize(width: 400, height: 500)
         

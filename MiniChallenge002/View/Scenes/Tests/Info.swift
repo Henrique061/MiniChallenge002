@@ -26,7 +26,7 @@ class Info: SKScene {
     
     override func didMove(to view: SKView) {
         
-        var jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.85, y: self.size.height * 0.25), spriteWidth: 150, labelText: "Jogar", fontSize: 30, action: {
+        let jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.85, y: self.size.height * 0.25), spriteWidth: 150, labelText: "Jogar", fontSize: 30, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = GameScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)
