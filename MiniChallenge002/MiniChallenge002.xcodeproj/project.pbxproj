@@ -36,6 +36,7 @@
 		D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
 		D4F5544A292FE546000D2CAF /* ClasseGenericaLixo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */; };
 		D4F5544F293542FB000D2CAF /* MenuMudancaFase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F5544E293542FB000D2CAF /* MenuMudancaFase.swift */; };
+		D4F76120293A902B0027584F /* PoliticaPrivacidade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F7611F293A902B0027584F /* PoliticaPrivacidade.swift */; };
 		DF14C5F3293974FC00EE8FCD /* CreditosScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14C5F2293974FC00EE8FCD /* CreditosScene.swift */; };
 		DF14C5F52939817300EE8FCD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14C5F42939817300EE8FCD /* GameOver.swift */; };
 		DF1AB91229392E3700470539 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = DF1AB91129392E3700470539 /* Menu.sks */; };
@@ -82,6 +83,7 @@
 		D4D16A7A292D43260078F7F7 /* Pink_Monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink_Monster.png; sourceTree = "<group>"; };
 		D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasseGenericaLixo.swift; sourceTree = "<group>"; };
 		D4F5544E293542FB000D2CAF /* MenuMudancaFase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuMudancaFase.swift; path = ViewModel/MenuMudancaFase.swift; sourceTree = SOURCE_ROOT; };
+		D4F7611F293A902B0027584F /* PoliticaPrivacidade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoliticaPrivacidade.swift; sourceTree = "<group>"; };
 		DF14C5F2293974FC00EE8FCD /* CreditosScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditosScene.swift; sourceTree = "<group>"; };
 		DF14C5F42939817300EE8FCD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		DF1AB91129392E3700470539 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Menu.sks; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				DF1AB91329392EC600470539 /* MenuScene.swift */,
 				BA0259D1292D5240001934D6 /* AjustesScene.swift */,
 				DF14C5F42939817300EE8FCD /* GameOver.swift */,
+				D4F7611F293A902B0027584F /* PoliticaPrivacidade.swift */,
 			);
 			path = Oficials;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				914F94662937C9FB00FF2A04 /* PlayerPrefab.swift in Sources */,
 				3DB7184E292FF25E00BE98FF /* TreadmillPrefab.swift in Sources */,
 				914F94642937B3AE00FF2A04 /* LevelScene.swift in Sources */,
+				D4F76120293A902B0027584F /* PoliticaPrivacidade.swift in Sources */,
 				3DC6D53A292D3D51003D21EC /* AudioManager.swift in Sources */,
 				DFEC8022293922040024F295 /* Menu.swift in Sources */,
 				916403592937FA20007FF497 /* LevelManager.swift in Sources */,

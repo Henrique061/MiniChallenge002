@@ -57,7 +57,9 @@ class AjustesScene: SKScene {
         addChild(som)
         
         let politica = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.5), spriteSize: CGSize(width: 380, height: 160), labelText: "", fontSize: 0,textureName: "politica",  buttonType: .withoutAnim, action:  {
-            
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = PoliticaPrivacidade(size: self.size)
+            self.view?.presentScene(scene, transition: transition)
     
         })
         addChild(politica)
