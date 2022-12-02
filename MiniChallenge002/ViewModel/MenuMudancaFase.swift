@@ -9,10 +9,21 @@ import Foundation
 import SpriteKit
 
 class MenuMudancaFase: SKScene {
+    let levelManager: LevelManager
+    
+    init(levelManager: LevelManager) {
+        self.levelManager = levelManager
+        super.init(size: CGSize(width: 1920, height: 1080))
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMove(to view: SKView) {
-        
-        backgroundColor = .black
+        self.size = CGSize(width: 1920, height: 1080)
+        print("level info: \(self.levelManager.GameLevel)")
+        backgroundColor = .white
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.scaleMode = .resizeFill
@@ -20,7 +31,7 @@ class MenuMudancaFase: SKScene {
         
         //add contador
         var textoNode: SKLabelNode
-        textoNode = SKLabelNode(fontNamed: "Chalkduster")
+        textoNode = SKLabelNode(fontNamed: "Party Confetti")
         textoNode.text = "20"
         textoNode.zPosition = 10
         textoNode.position = CGPoint(x: -198, y: -180)
@@ -32,19 +43,25 @@ class MenuMudancaFase: SKScene {
             }
         }
         
-        let lataSelecionada = latas[Int.random(in: 1..<4)]
+        var lataSelecionada: String = ""
+        let lataCor: TrashColor = self.levelManager.getPlayerTrashColor()
         
         var lixos: [String] = JunkData.getJunkList(.papel)
-        switch lataSelecionada {
-        case "Lixoamarelo":
+        switch lataCor {
+        case .yellow:
+            lataSelecionada = "Lixo amarelo"
             lixos = JunkData.getJunkList(.metal)
-        case "Lixomarrom":
+        case .brown:
+            lataSelecionada = "Lixo marrom"
             lixos = JunkData.getJunkList(.organico)
-        case "Lixoverde":
+        case .green:
+            lataSelecionada = "Lixo verde"
             lixos = JunkData.getJunkList(.vidro)
-        case "Lixovermelho":
+        case .red:
+            lataSelecionada = "Lixo vermelho"
             lixos = JunkData.getJunkList(.plastico)
         default:
+            lataSelecionada = "Lixo azul"
             lixos = JunkData.getJunkList(.papel)
         }
         
@@ -94,10 +111,10 @@ class MenuMudancaFase: SKScene {
     
     // criando o botao de jogar
     func botaoJogar() -> SKNode  {
-        let botaoJogar = ButtonPrefab(positionPoint: CGPoint(x: 250, y: -100), spriteSize: CGSize(width: 200, height: 65), labelText: "Jogar", fontSize: 30, textureName: "spr_buttonIdle", buttonType: .sprite) {
+        self.levelManager.addOneLevel()
+        let botaoJogar = ButtonPrefab(positionPoint: CGPoint(x: 0, y: 0), spriteSize: CGSize(width: 200, height: 65), labelText: "Jogar", fontSize: 30, textureName: "spr_buttonIdle", buttonType: .sprite) {
             let transition:SKTransition = SKTransition.fade(withDuration: 1) //determinar a transição entre telas
-            let scene:SKScene = LevelScene(size: self.size) // chamando tela principal
-            
+            let scene:SKScene = LevelScene(levelManager: self.levelManager) // chamando tela principal
             self.view?.presentScene(scene, transition: transition) // chamar a transição
         }
         

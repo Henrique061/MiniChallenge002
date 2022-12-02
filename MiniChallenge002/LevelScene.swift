@@ -16,7 +16,7 @@ class LevelScene : SKScene {
     let cameraNode = SKCameraNode()
     
     // level
-    let levelManager: LevelManager = LevelManager()
+    let levelManager: LevelManager
     var junksInScene: [Lixo] = []
     var gameStarted = false
     
@@ -81,17 +81,16 @@ class LevelScene : SKScene {
         
         return label
     }()
-   
-    
+
     //MARK: INIT
-//    init(levelManager: LevelManager) {
-//        self.levelManager = levelManager
-//        super.init()
-//    }
+    init(levelManager: LevelManager) {
+        self.levelManager = levelManager
+        super.init(size: CGSize(width: 1920, height: 1080))
+    }
     
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: DID LOADS
     override func sceneDidLoad() {
@@ -317,6 +316,9 @@ class LevelScene : SKScene {
             self.levelManager.TimeLeft += 30
             self.counterTime.invalidate()
             self.virtualController?.disconnect()
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = MenuMudancaFase(levelManager: self.levelManager)
+            self.view?.presentScene(scene, transition: transition)
             print("Ganhou")
         }
         
@@ -332,8 +334,8 @@ class LevelScene : SKScene {
         self.counterTime.invalidate()
         self.virtualController?.disconnect()
         let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                   let scene:SKScene = GameOver(size: self.size)
-                   self.view?.presentScene(scene, transition: transition)
+        let scene:SKScene = GameOver(size: self.size)
+        self.view?.presentScene(scene, transition: transition)
         print("perdeu")
     }
 }

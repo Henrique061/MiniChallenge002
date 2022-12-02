@@ -10,12 +10,10 @@ import SpriteKit
 
 
 class GameOver: SKScene{
-    
-    
     var lixoPerdeu: SKSpriteNode?
     
     override func didMove(to view: SKView) {
-        
+        let levelManager = LevelManager()
         backgroundColor = .white
         
         let perdeu = SKLabelNode(fontNamed: "Party Confetti")
@@ -44,7 +42,7 @@ class GameOver: SKScene{
         
         let jogarSim = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.2), spriteSize: CGSize(width: 600, height: 250), labelText: "Sim", fontSize: 60, textureName: "Botão verde garrafa", buttonType: .withoutAnim, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
-            let scene:SKScene = LevelScene(size: self.size)
+            let scene:SKScene = LevelScene(levelManager: levelManager)
             self.view?.presentScene(scene, transition: transition)
             
         })
