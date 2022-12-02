@@ -16,7 +16,7 @@ public struct JunkNamesByType {
 class LevelManager {
     //MARK: VAR
     private var gameLevel: Int
-    private var timeLeft: TimeInterval
+    private var timeLeft: Int
     private var junkQuantity: Int
     private var correctJunkQuantity: Int
     private var levelsModel: [LevelModel]
@@ -29,7 +29,7 @@ class LevelManager {
         set(value) { self.gameLevel = value }
     }
     
-    public var TimeLeft: TimeInterval {
+    public var TimeLeft: Int {
         get { return self.timeLeft }
         set(value) { self.timeLeft = value }
     }
@@ -54,7 +54,7 @@ class LevelManager {
     
     //MARK: INIT
     init() {
-        self.gameLevel = 20
+        self.gameLevel = 4
         self.timeLeft = 90
         self.junkQuantity = 0
         self.correctJunkQuantity = 0
@@ -69,7 +69,7 @@ class LevelManager {
         self.gameLevel += 1
     }
     
-    public func timeCountdown(_ countdown: TimeInterval) {
+    public func timeCountdown(_ countdown: Int) {
         self.timeLeft -= countdown
     }
     
@@ -204,5 +204,35 @@ class LevelManager {
         print("junk types: \(junkTypes)")
         
         return junkTypes
+    }
+    
+    public func getPlayerTrashColor() -> TrashColor {
+        switch self.correctJunkType {
+            case .organico: return .brown
+            case .metal: return .yellow
+            case .papel: return .blue
+            case .plastico: return .red
+            case .vidro: return .green
+        }
+    }
+    
+    public func getTypeCollectInfo() -> String {
+        switch self.correctJunkType {
+            case .organico: return "orgânicos"
+            case .metal: return "metais"
+            case .papel: return "papéis"
+            case .plastico: return "plásticos"
+            case .vidro: return "vidros"
+        }
+    }
+    
+    public func getTypeCollectColor() -> UIColor {
+        switch self.correctJunkType {
+        case .organico: return UIColor(red: 0.105, green: 0.156, blue: 0.121, alpha: 1)
+        case .metal: return UIColor(red: 0.984, green: 0.878, blue: 0.105, alpha: 1)
+        case .papel: return UIColor(red: 0.101, green: 0.564, blue: 0.796, alpha: 1)
+        case .plastico: return UIColor(red: 0.772, green: 0.192, blue: 0.168, alpha: 1)
+        case .vidro: return UIColor(red: 0.137, green: 0.643, blue: 0.219, alpha: 1)
+        }
     }
 }

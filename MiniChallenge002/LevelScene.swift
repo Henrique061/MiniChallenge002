@@ -52,7 +52,7 @@ class LevelScene : SKScene {
       var texto = SKLabelNode(fontNamed: "Party Confetti")
        texto.fontSize = CGFloat(100)
        texto.zPosition = 10
-       texto.fontColor = SKColor.black
+       texto.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
        texto.horizontalAlignmentMode = .center
        texto.verticalAlignmentMode = .center
         
@@ -65,11 +65,21 @@ class LevelScene : SKScene {
        var label = SKLabelNode(fontNamed: "Party Confetti")
        label.fontSize = CGFloat(100)
        label.zPosition = 10
-       label.fontColor = SKColor.black
+       label.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
        label.horizontalAlignmentMode = .left
        label.verticalAlignmentMode = .center
        return label
    }()
+    
+    lazy var collectTypeLbl: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "Party Confetti")
+        label.fontSize = CGFloat(100)
+        label.zPosition = 10
+        label.horizontalAlignmentMode = .center
+        label.verticalAlignmentMode = .center
+        
+        return label
+    }()
    
     
     //MARK: INIT
@@ -84,10 +94,11 @@ class LevelScene : SKScene {
     
     //MARK: DID LOADS
     override func sceneDidLoad() {
+        self.generateJunks()
         self.setSceneParams()
         self.configNodes()
         self.connectVirtuallController()
-        self.generateJunks()
+        self.configTime()
         
         print("""
                 correct junk qnt: \(levelManager.CorrectJunkQuantity)
@@ -125,7 +136,7 @@ class LevelScene : SKScene {
         treadmillNode.zPosition = 0
         
         // player
-        self.playerNode = PlayerPrefab(trashColor: .yellow)
+        self.playerNode = PlayerPrefab(trashColor: self.levelManager.getPlayerTrashColor())
         self.playerNode.zPosition = 4
         self.playerMovement = PlayerMovement(player: playerNode)
         
@@ -134,6 +145,9 @@ class LevelScene : SKScene {
         
         self.timeLeftCount.position = CGPoint(x: self.frame.width * -0.45, y: 425)
         self.timeLeftCount.text = "\(self.levelManager.TimeLeft)"
+        
+        self.collectTypeLbl.text = "Conte os \(self.levelManager.getTypeCollectInfo())!"
+        self.collectTypeLbl.fontColor = UIColor(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: 1)
         
         // counter nodes
         self.botaoRemove = ButtonPrefab(positionPoint: CGPoint(x: self.frame.width * 0.41, y: -400), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 2", buttonType: .withoutAnim, action: {
@@ -194,17 +208,11 @@ class LevelScene : SKScene {
         // methods
         self.moveCamera()
         self.moveJunks()
-        
-        if gameStarted { self.countdownTime() }
     }
     
     //MARK: TIME
-    private func countdownTime() {
-        self.levelManager.timeCountdown(self.deltaTime)
-    }
-    
     private func configTime() {
-        self.counter = Int(self.levelManager.TimeLeft)
+        self.counter = self.levelManager.TimeLeft
         self.startCounter()
     }
     
@@ -214,14 +222,15 @@ class LevelScene : SKScene {
     
     @objc func decrementCounter(){
         if !isGameOver {
-            counter -= 1
-            timeLeftCount.text = "\(counter)"
-            let minutos = counter/60
-            let segundos = counter % 60
+            self.counter -= 1
+            self.levelManager.TimeLeft = self.counter
+            self.timeLeftCount.text = "\(counter)"
+            let minutos = self.counter/60
+            let segundos = self.counter % 60
             let minutoTexto = minutos < 10 ? "0\(minutos)" : "\(minutos)"
             let segundosTexto = segundos < 10 ? "0\(segundos)" : "\(segundos)"
             
-            timeLeftCount.text = "\(minutoTexto):\(segundosTexto)"
+            self.timeLeftCount.text = "\(minutoTexto):\(segundosTexto)"
         }
         
         if counter <= 0{
@@ -237,7 +246,9 @@ class LevelScene : SKScene {
     }
     
     private func addScore() {
-        self.cont += 1
+        if self.cont < self.levelManager.getActualLevelModel().maxTotalJunk {
+            self.cont += 1
+        }
     }
     
     //MARK: CAMERA
