@@ -173,7 +173,7 @@ class ButtonPrefab : SKNode {
             }
         ])
         
-        self.run(sequenceAnim)
+        self.buttonSpriteNode.run(sequenceAnim)
     }
     
     //MARK: CLICK WITHOUT ANIM

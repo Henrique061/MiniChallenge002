@@ -100,6 +100,7 @@ class LevelManager {
         var choosedJunkName: String = ""
         var lixos: [Lixo] = []
         let level = self.getActualLevelModel()
+        self.correctJunkQuantity = 0
         
         //setup
         if (level.junkVariety == .recycleOrganic) { junksList = self.setupRecycleOrganic() }
@@ -166,8 +167,10 @@ class LevelManager {
         if let choosedRecycle: TipoLixo = recycleTypes.randomElement() {
             junksList.append(JunkNamesByType(type: .organico, junkList: JunkData.getJunkList(.organico)))
             junksList.append(JunkNamesByType(type: choosedRecycle, junkList: JunkData.getJunkList(choosedRecycle)))
+            
+            if self.collectOrganic { self.correctJunkType = .organico }
+            else { self.correctJunkType = choosedRecycle }
         }
-        
         return junksList
     }
     
