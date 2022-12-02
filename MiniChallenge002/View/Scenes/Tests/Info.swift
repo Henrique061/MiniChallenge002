@@ -26,7 +26,8 @@ class Info: SKScene {
     
     override func didMove(to view: SKView) {
         
-        let jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.85, y: self.size.height * 0.25), spriteWidth: 150, labelText: "Jogar", fontSize: 30, action: {
+        backgroundColor = .white
+        let jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.78, y: self.size.height * 0.25), spriteSize: CGSize(width:500, height: 166), labelText: "Jogar", fontSize: 100, textureName: "spr_buttonIdle", buttonType: .sprite, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = GameScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)
@@ -34,20 +35,35 @@ class Info: SKScene {
         
         addChild(jogar)
         
-        let retangulo = SKShapeNode(rectOf: CGSize(width: 100, height: 250))
+        let lixo = SKSpriteNode(imageNamed: "LixoVerde2")
+        lixo.size = CGSize(width: 1300, height: 1500)
         
-        retangulo.position = CGPoint(x: self.size.width * 0.2, y: self.size.height * 0.35)
+        lixo.position = CGPoint(x: self.size.width * 0.17, y: self.size.height * 0.2)
         
-        addChild(retangulo)
+        addChild(lixo)
         
         
-        let texto = SKLabelNode(fontNamed: "SFUI-Bold")
-        texto.text = "O Lixo organico blalalalalalalalalal"
-        texto.fontColor = .white
-        texto.position = CGPoint(x: self.size.width * 0.6, y: self.size.height * 0.7)
-        texto.fontSize = 30
+        let texto = SKLabelNode(fontNamed: "Party Confetti")
+        texto.text = "Você Sabia?"
+        texto.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+        texto.position = CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.77)
+        texto.fontSize = 100
+        texto.lineBreakMode = NSLineBreakMode.byWordWrapping
+        texto.numberOfLines = 0
+        texto.preferredMaxLayoutWidth = 500
         
         addChild(texto)
+        
+        let texto1 = SKLabelNode(fontNamed: "Party Confetti")
+        texto1.text = "lalalalallalallalalallalalalalallalalalallalalal"
+        texto1.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+        texto1.position = CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.3)
+        texto1.fontSize = 80
+        texto1.lineBreakMode = NSLineBreakMode.byWordWrapping
+        texto1.numberOfLines = 0
+        texto1.preferredMaxLayoutWidth = 500
+        
+        addChild(texto1)
+        
     }
-    
 }

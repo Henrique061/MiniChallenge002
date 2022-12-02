@@ -13,6 +13,7 @@ class PlayerMovement {
     var player: PlayerPrefab
     let playerStateMachine: GKStateMachine
     let walkSpeed: CGFloat = 12
+    var actualSpeed: CGFloat = 0
     
     var isFacingRight = true
     var isWalking = false
@@ -28,6 +29,7 @@ class PlayerMovement {
     
     //MARK: MOVE
     public func movePlayer(_ moveValue: CGFloat) {
+        self.actualSpeed = moveValue * self.walkSpeed
         self.player.playerNode.position.x += moveValue * self.walkSpeed
         
         if moveValue == 0 && isWalking { self.playerStateMachine.enter(PlayerIdle.self); isWalking.toggle() }
