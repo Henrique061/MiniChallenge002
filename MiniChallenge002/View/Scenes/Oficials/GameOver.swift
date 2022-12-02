@@ -40,13 +40,13 @@ class GameOver: SKScene{
         
         addChild(lixoPerdeu!)
         
-        let jogarSim = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.2), spriteSize: CGSize(width: 600, height: 250), labelText: "Sim", fontSize: 60, textureName: "Botão verde garrafa", buttonType: .withoutAnim, action: {
+        let jogarSim = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.2), spriteSize: CGSize(width: 600, height: 250), labelText: "Sim", fontSize: 60, textPosition: CGPoint(x: -120, y: 15), textureName: "Botão verde garrafa", buttonType: .withoutAnim, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = LevelScene(levelManager: levelManager)
             self.view?.presentScene(scene, transition: transition)
             
         })
-        let jogarNao = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.2), spriteSize: CGSize(width: 500, height: 400), labelText: "Não", fontSize: 60, textureName: "Botão vermelho lata", buttonType: .withoutAnim, action: {
+        let jogarNao = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.2), spriteSize: CGSize(width: 500, height: 400), labelText: "Não", fontSize: 60, textPosition: CGPoint(x: -90, y: 0), textureName: "Botão vermelho lata", buttonType: .withoutAnim, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = MenuScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)

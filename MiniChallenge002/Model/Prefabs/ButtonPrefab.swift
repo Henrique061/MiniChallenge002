@@ -25,6 +25,7 @@ class ButtonPrefab : SKNode {
     var buttonSpriteNode: SKSpriteNode
     var textureName: String
     var buttonType: ButtonType
+    var textPosition = CGPoint.zero
     
     //MARK: CONSTRUTOR SPRITE
     /**
@@ -55,6 +56,44 @@ class ButtonPrefab : SKNode {
         text.fontColor = .white
         text.verticalAlignmentMode = .center
         text.horizontalAlignmentMode = .center
+        text.zPosition = 1
+        
+        // adiciona nodes
+        self.buttonSpriteNode.addChild(text)
+        self.addChild(self.buttonSpriteNode)
+    }
+    
+    //MARK: CONSTRUTOR SPRITE
+    /**
+     * Constroi um botao utlizando textura e setando posicao da fonte (versao final)
+     */
+    init (positionPoint: CGPoint, spriteSize: CGSize, labelText: String, fontSize: CGFloat, textPosition: CGPoint, textureName: String, buttonType: ButtonType, action: @escaping () -> Void) {
+        self.positionPoint = positionPoint
+        self.labelText = labelText
+        self.action = action
+        self.buttonShapeNode = SKShapeNode()
+        self.buttonSpriteNode = SKSpriteNode()
+        self.textureName = textureName
+        self.buttonType = buttonType
+        self.textPosition = textPosition
+        super.init()
+        self.isUserInteractionEnabled = true
+        
+        // cria sprite
+        self.buttonSpriteNode = SKSpriteNode(imageNamed: textureName)
+        self.buttonSpriteNode.position = positionPoint
+        self.buttonSpriteNode.size = spriteSize
+        self.buttonSpriteNode.anchorPoint.x = 0.65
+        self.buttonSpriteNode.zPosition = 0
+        
+        // cria texto
+        let text = SKLabelNode(text: labelText)
+        text.fontName = "Party Confetti"
+        text.fontSize = fontSize
+        text.fontColor = .white
+        text.verticalAlignmentMode = .center
+        text.horizontalAlignmentMode = .center
+        text.position = textPosition
         text.zPosition = 1
         
         // adiciona nodes
