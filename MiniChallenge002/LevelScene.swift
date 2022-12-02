@@ -147,7 +147,7 @@ class LevelScene : SKScene {
         self.timeLeftCount.text = "\(self.levelManager.TimeLeft)"
         
         self.collectTypeLbl.text = "Conte os \(self.levelManager.getTypeCollectInfo())!"
-        self.collectTypeLbl.fontColor = UIColor(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: 1)
+        self.collectTypeLbl.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
         // counter nodes
         self.botaoRemove = ButtonPrefab(positionPoint: CGPoint(x: self.frame.width * 0.41, y: -400), spriteSize: CGSize(width: 150, height: 170), labelText: "", fontSize: 0, textureName: "triangulo 2", buttonType: .withoutAnim, action: {

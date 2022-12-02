@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
 //        let scene = SoundTests()
-        let scene = MenuMudancaFase()
+        let scene = MenuScene()
 
         // Present the scene
         let skView = self.view as! SKView

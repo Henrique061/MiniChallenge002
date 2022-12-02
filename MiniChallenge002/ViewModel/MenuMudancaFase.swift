@@ -94,9 +94,9 @@ class MenuMudancaFase: SKScene {
     
     // criando o botao de jogar
     func botaoJogar() -> SKNode  {
-        let botaoJogar = ButtonPrefab(positionPoint: CGPoint(x: 250, y: -100), spriteWidth: 200, labelText: "Jogar", fontSize: 25) {
+        let botaoJogar = ButtonPrefab(positionPoint: CGPoint(x: 250, y: -100), spriteSize: CGSize(width: 200, height: 65), labelText: "Jogar", fontSize: 30, textureName: "spr_buttonIdle", buttonType: .sprite) {
             let transition:SKTransition = SKTransition.fade(withDuration: 1) //determinar a transição entre telas
-            let scene:SKScene = MovimentoPersonagem(size: self.size) // chamando tela principal
+            let scene:SKScene = LevelScene(size: self.size) // chamando tela principal
             
             self.view?.presentScene(scene, transition: transition) // chamar a transição
         }
