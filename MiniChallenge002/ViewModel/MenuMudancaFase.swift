@@ -32,16 +32,23 @@ class MenuMudancaFase: SKScene {
         //add contador
         var textoNode: SKLabelNode
         textoNode = SKLabelNode(fontNamed: "Party Confetti")
-        textoNode.text = "20"
+        textoNode.text = "\(self.levelManager.CorrectJunkQuantity)"
         textoNode.zPosition = 10
-        textoNode.position = CGPoint(x: -198, y: -180)
+        textoNode.position = CGPoint(x: self.size.width * -0.3, y: self.size.height * -0.32)
+        textoNode.fontSize = 120
         addChild(textoNode)
         // converter SKLabelNode p/ inteiro
-        var cont: Int = 0 {
-            didSet {
-                textoNode.text = "Teste: \(cont)"
-            }
-        }
+        
+        var texto = SKLabelNode(fontNamed: "Party Confetti")
+        texto.fontSize = 100
+        texto.text = "Parabéns vá para próxima fase!"
+        texto.horizontalAlignmentMode = .left
+        texto.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+        texto.position = CGPoint(x: self.size.width * -0.1, y: self.size.height * 0.1)
+        texto.lineBreakMode = NSLineBreakMode.byWordWrapping
+        texto.numberOfLines = 0
+        texto.preferredMaxLayoutWidth = 1000
+        addChild(texto)
         
         var lataSelecionada: String = ""
         let lataCor: TrashColor = self.levelManager.getPlayerTrashColor()
@@ -70,7 +77,7 @@ class MenuMudancaFase: SKScene {
             lixo.physicsBody = SKPhysicsBody()
             lixo.physicsBody?.affectedByGravity = true
             lixo.physicsBody?.isDynamic = true
-            lixo.position = .init(x: -210, y: 200)
+            lixo.position = CGPoint(x: self.size.width * -0.3, y: self.size.height * 0.9)
             lixo.size = CGSize(width: 100, height: 100)
             lixo.zPosition = 5
             addChild(lixo)
@@ -103,6 +110,7 @@ class MenuMudancaFase: SKScene {
     
     // criando lixinhos
     var lixo = SKSpriteNode(imageNamed: "MacaOrganico")
+    
     var latas = ["Lixoamarelo","Lixomarrom","Lixoverde","Lixovermelho","Lixoazul"]
     
    
@@ -112,7 +120,7 @@ class MenuMudancaFase: SKScene {
     // criando o botao de jogar
     func botaoJogar() -> SKNode  {
         self.levelManager.addOneLevel()
-        let botaoJogar = ButtonPrefab(positionPoint: CGPoint(x: 0, y: 0), spriteSize: CGSize(width: 200, height: 65), labelText: "Jogar", fontSize: 30, textureName: "spr_buttonIdle", buttonType: .sprite) {
+        let botaoJogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.2, y: self.size.height * -0.3), spriteSize: CGSize(width: 600, height: 200), labelText: "Jogar", fontSize:70, textureName: "spr_buttonIdle", buttonType: .sprite) {
             let transition:SKTransition = SKTransition.fade(withDuration: 1) //determinar a transição entre telas
             let scene:SKScene = LevelScene(levelManager: self.levelManager) // chamando tela principal
             self.view?.presentScene(scene, transition: transition) // chamar a transição
@@ -124,8 +132,8 @@ class MenuMudancaFase: SKScene {
     // criando node que será a lixeira
     func criarLixeira(tipo: String) -> SKSpriteNode {
         let lixeira = SKSpriteNode(imageNamed: tipo)
-        lixeira.position = CGPoint(x: -200, y: -100)
-        lixeira.size = CGSize(width: 400, height: 500)
+        lixeira.position = CGPoint(x: self.size.width * -0.3, y: self.size.height * -0.1)
+        lixeira.size = CGSize(width: 900, height: 1000)
         
         return lixeira
     }
