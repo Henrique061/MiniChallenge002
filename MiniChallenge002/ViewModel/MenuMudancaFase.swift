@@ -18,6 +18,20 @@ class MenuMudancaFase: SKScene {
         self.scaleMode = .resizeFill
         addChild(botaoJogar())
         
+        //add contador
+        var textoNode: SKLabelNode
+        textoNode = SKLabelNode(fontNamed: "Chalkduster")
+        textoNode.text = "20"
+        textoNode.zPosition = 10
+        textoNode.position = CGPoint(x: -198, y: -180)
+        addChild(textoNode)
+        // converter SKLabelNode p/ inteiro
+        var cont: Int = 0 {
+            didSet {
+                textoNode.text = "Teste: \(cont)"
+            }
+        }
+        
         let lataSelecionada = latas[Int.random(in: 1..<4)]
         
         var lixos: [String] = JunkData.getJunkList(.papel)
@@ -39,11 +53,13 @@ class MenuMudancaFase: SKScene {
             lixo.physicsBody = SKPhysicsBody()
             lixo.physicsBody?.affectedByGravity = true
             lixo.physicsBody?.isDynamic = true
-            lixo.position = .init(x: -225, y: 200)
+            lixo.position = .init(x: -210, y: 200)
             lixo.size = CGSize(width: 100, height: 100)
             lixo.zPosition = 5
             addChild(lixo)
+            
         }
+        
  
         //lixeira
         self.addChild(criarLixeira(tipo: lataSelecionada))
@@ -52,9 +68,6 @@ class MenuMudancaFase: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        
-        lixo.physicsBody?.velocity = CGVector(dx: 0, dy: -200)
-        
         // para arredondar o eixo y e parar de caior
         if round(lixo.position.y) == 8.0 ||
             round(lixo.position.y) == 9.0 ||
@@ -66,6 +79,7 @@ class MenuMudancaFase: SKScene {
             round(lixo.position.y) == 15.0 ||
             round(lixo.position.y) < 0 // parar de cair
         {
+            lixo.physicsBody?.velocity = CGVector(dx: 0, dy: -150)
             lixo.removeFromParent() // para sumir
         }
     }
@@ -73,6 +87,7 @@ class MenuMudancaFase: SKScene {
     // criando lixinhos
     var lixo = SKSpriteNode(imageNamed: "MacaOrganico")
     var latas = ["Lixoamarelo","Lixomarrom","Lixoverde","Lixovermelho","Lixoazul"]
+    
    
     
     var yPos: CGFloat = 200
