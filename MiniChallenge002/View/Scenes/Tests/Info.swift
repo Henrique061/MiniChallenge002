@@ -46,7 +46,7 @@ class Info: SKScene {
         
         let texto = SKLabelNode(fontNamed: "Party Confetti")
         texto.text = "Você Sabia?"
-        texto.fontColor = .green
+        texto.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
         texto.position = CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.77)
         texto.fontSize = 100
         texto.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -57,7 +57,7 @@ class Info: SKScene {
         
         let texto1 = SKLabelNode(fontNamed: "Party Confetti")
         texto1.text = "lalalalallalallalalallalalalalallalalalallalalal"
-        texto1.fontColor = .green
+        texto1.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
         texto1.position = CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.3)
         texto1.fontSize = 80
         texto1.lineBreakMode = NSLineBreakMode.byWordWrapping

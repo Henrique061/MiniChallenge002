@@ -86,6 +86,10 @@ class GameScene: SKScene {
         
         var botaoOk = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.25) , spriteSize: CGSize(width: 285, height: 300), labelText: "", fontSize: 0, textureName: "ok", action: {
             
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = GameOver(size: self.size)
+            self.view?.presentScene(scene, transition: transition)
+            
         })
         self.addChild(botaoAdd)
         self.addChild(botaoRemove)

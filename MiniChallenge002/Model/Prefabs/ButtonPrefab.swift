@@ -42,6 +42,7 @@ class ButtonPrefab : SKNode {
         self.buttonSpriteNode.anchorPoint.x = 0.65
         self.buttonSpriteNode.zPosition = 0
         
+        
         // cria texto
         let text = SKLabelNode(text: labelText)
         text.fontName = "Party Confetti"

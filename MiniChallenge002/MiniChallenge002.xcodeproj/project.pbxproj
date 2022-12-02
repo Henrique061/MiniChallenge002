@@ -35,6 +35,8 @@
 		D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */; };
 		D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
 		D4F5544A292FE546000D2CAF /* ClasseGenericaLixo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */; };
+		DF14C5F3293974FC00EE8FCD /* CreditosScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14C5F2293974FC00EE8FCD /* CreditosScene.swift */; };
+		DF14C5F52939817300EE8FCD /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF14C5F42939817300EE8FCD /* GameOver.swift */; };
 		DF1AB91229392E3700470539 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = DF1AB91129392E3700470539 /* Menu.sks */; };
 		DF1AB91429392EC600470539 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1AB91329392EC600470539 /* MenuScene.swift */; };
 		DFEC8022293922040024F295 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0259CD292D3CFC001934D6 /* Menu.swift */; };
@@ -78,6 +80,8 @@
 		D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovimentoPersonagem.swift; sourceTree = "<group>"; };
 		D4D16A7A292D43260078F7F7 /* Pink_Monster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink_Monster.png; sourceTree = "<group>"; };
 		D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClasseGenericaLixo.swift; sourceTree = "<group>"; };
+		DF14C5F2293974FC00EE8FCD /* CreditosScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditosScene.swift; sourceTree = "<group>"; };
+		DF14C5F42939817300EE8FCD /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		DF1AB91129392E3700470539 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Menu.sks; sourceTree = "<group>"; };
 		DF1AB91329392EC600470539 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +167,6 @@
 		3D888321292BECEF0095370B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				BA0259D1292D5240001934D6 /* AjustesScene.swift */,
 				BA0259CD292D3CFC001934D6 /* Menu.swift */,
 				3DB74A78291EC3450045259D /* GameScene.swift */,
 				BA86537E292EB3C500A199AE /* Info.swift */,
@@ -177,8 +180,11 @@
 		3D888322292BED0C0095370B /* Oficials */ = {
 			isa = PBXGroup;
 			children = (
+				DF14C5F2293974FC00EE8FCD /* CreditosScene.swift */,
 				914F94632937B3AE00FF2A04 /* LevelScene.swift */,
 				DF1AB91329392EC600470539 /* MenuScene.swift */,
+				BA0259D1292D5240001934D6 /* AjustesScene.swift */,
+				DF14C5F42939817300EE8FCD /* GameOver.swift */,
 			);
 			path = Oficials;
 			sourceTree = "<group>";
@@ -397,8 +403,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF14C5F3293974FC00EE8FCD /* CreditosScene.swift in Sources */,
 				D4F5544A292FE546000D2CAF /* ClasseGenericaLixo.swift in Sources */,
 				3DB74A99291ECA6E0045259D /* VectorUtils.swift in Sources */,
+				DF14C5F52939817300EE8FCD /* GameOver.swift in Sources */,
 				DFEC8023293922140024F295 /* AjustesScene.swift in Sources */,
 				3D1BE228293132FC00642D59 /* LevelModel.swift in Sources */,
 				91AA1B44293835060087F432 /* JsonUtils.swift in Sources */,
@@ -562,7 +570,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 66824UF4JS;
+				DEVELOPMENT_TEAM = XD47C3K8T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MiniChallenge002-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -594,9 +602,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME[sdk=*]" = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 66824UF4JS;
+				DEVELOPMENT_TEAM = XD47C3K8T7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MiniChallenge002-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
