@@ -15,15 +15,21 @@ class PlayerMovement {
     let walkSpeed: CGFloat = 12
     var actualSpeed: CGFloat = 0
     
+    var animTexture: SKTexture
+    var animTextures: [SKTexture]
+    
     var isFacingRight = true
     var isWalking = false
     
     //MARK: INIT
     init(player: PlayerPrefab) {
         self.player = player
+        self.animTexture = SKTexture(imageNamed: "\(player.trashAnimName)0")
+        self.animTextures = [SKTexture(imageNamed: "\(player.trashAnimName)1"), SKTexture(imageNamed: "\(player.trashAnimName)2"), SKTexture(imageNamed: "\(player.trashAnimName)3")]
+        
         self.playerStateMachine = GKStateMachine(states: [
-            PlayerIdle(self.player),
-            PlayerWalk(self.player)
+            PlayerIdle(self.player, self.animTexture),
+            PlayerWalk(self.player, self.animTextures)
         ])
     }
     
@@ -59,27 +65,31 @@ class PlayerMovement {
 //MARK: IDLE STATE
 class PlayerIdle : GKState {
     var player: PlayerPrefab
+    var animTexture: SKTexture
     
-    init(_ player: PlayerPrefab) {
+    init(_ player: PlayerPrefab, _ animTexture: SKTexture) {
         self.player = player
+        self.animTexture = animTexture
     }
     
     override func didEnter(from previousState: GKState?) {
         self.player.playerNode.removeAllActions()
-        self.player.playerNode.run(.setTexture(.init(imageNamed: "\(player.trashAnimName)0")))
+        self.player.playerNode.run(.setTexture(self.animTexture))
     }
 }
 
 //MARK: WALK STATE
 class PlayerWalk : GKState {
     var player: PlayerPrefab
+    var animTextures: [SKTexture]
     
-    init(_ player: PlayerPrefab) {
+    init(_ player: PlayerPrefab, _ animTextures: [SKTexture]) {
         self.player = player
+        self.animTextures = animTextures
     }
     
     override func didEnter(from previousState: GKState?) {
         self.player.playerNode.removeAllActions()
-        self.player.playerNode.run((AnimationUtils.repeatForeverFrameAnim(texturesName: player.trashAnimName, numberOfFrames: 3, fps: 0.15)))
+        self.player.playerNode.run(.repeatForever(.animate(with: self.animTextures, timePerFrame: 0.15)))
     }
 }

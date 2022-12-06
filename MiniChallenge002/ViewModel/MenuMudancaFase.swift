@@ -41,13 +41,13 @@ class MenuMudancaFase: SKScene {
         
         var texto = SKLabelNode(fontNamed: "Party Confetti")
         texto.fontSize = 100
-        texto.text = "Parabéns vá para próxima fase!"
+        texto.text = "Muito bem, passe para a próxima fase!"
         texto.horizontalAlignmentMode = .left
         texto.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
         texto.position = CGPoint(x: self.size.width * -0.1, y: self.size.height * 0.1)
         texto.lineBreakMode = NSLineBreakMode.byWordWrapping
         texto.numberOfLines = 0
-        texto.preferredMaxLayoutWidth = 1000
+        texto.preferredMaxLayoutWidth = 900
         addChild(texto)
         
         var lataSelecionada: String = ""
@@ -62,7 +62,7 @@ class MenuMudancaFase: SKScene {
             lataSelecionada = "Lixo marrom"
             lixos = JunkData.getJunkList(.organico)
         case .green:
-            lataSelecionada = "Lixo verde"
+            lataSelecionada = "Lixo verde "
             lixos = JunkData.getJunkList(.vidro)
         case .red:
             lataSelecionada = "Lixo vermelho"
@@ -80,7 +80,7 @@ class MenuMudancaFase: SKScene {
             lixo.position = CGPoint(x: self.size.width * -0.3, y: self.size.height * 0.9)
             lixo.size = CGSize(width: 100, height: 100)
             lixo.zPosition = 5
-            addChild(lixo)
+            //addChild(lixo)
             
         }
         

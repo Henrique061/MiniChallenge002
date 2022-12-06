@@ -46,7 +46,7 @@ class AjustesScene: SKScene {
         musica.fontSize = 70
         musica.horizontalAlignmentMode = .left
         
-        addChild(musica)
+        //addChild(musica)
         
         let som = SKLabelNode(fontNamed: "Party Confetti")
         som.text = "Efeitos Sonoros"
@@ -54,7 +54,7 @@ class AjustesScene: SKScene {
         som.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.4)
         som.fontSize = 70
         som.horizontalAlignmentMode = .left
-        addChild(som)
+        //addChild(som)
         
         let politica = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.8, y: self.size.height * 0.5), spriteSize: CGSize(width: 380, height: 160), labelText: "", fontSize: 0,textureName: "politica",  buttonType: .withoutAnim, action:  {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
@@ -89,23 +89,23 @@ class AjustesScene: SKScene {
        let ligado = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
             
         })
-        addChild(ligado)
+        //addChild(ligado)
         
         let desligado = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
             
             
         })
-        addChild(desligado)
+        //addChild(desligado)
         
         let ligadoSom = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
             
         })
-        addChild(ligadoSom)
+        //addChild(ligadoSom)
         
        let desligadoSom = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
             
         })
-        addChild(desligadoSom)
+        //addChild(desligadoSom)
     }
     
     
