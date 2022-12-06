@@ -58,7 +58,7 @@
 		3DB74A76291EC3450045259D /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		3DB74A78291EC3450045259D /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		3DB74A79291EC3470045259D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3DB74A7E291EC3470045259D /* MiniChallenge002.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniChallenge002.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DB74A7E291EC3470045259D /* Trash Catch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trash Catch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB74A81291EC3470045259D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DB74A83291EC3470045259D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3DB74A86291EC3470045259D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 		3DB74A7F291EC3470045259D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3DB74A7E291EC3470045259D /* MiniChallenge002.app */,
+				3DB74A7E291EC3470045259D /* Trash Catch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -358,7 +358,7 @@
 			);
 			name = "MiniChallenge002 iOS";
 			productName = "MiniChallenge002 iOS";
-			productReference = 3DB74A7E291EC3470045259D /* MiniChallenge002.app */;
+			productReference = 3DB74A7E291EC3470045259D /* Trash Catch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -603,8 +603,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.henriqueassis.MiniChallenge002;
-				PRODUCT_NAME = MiniChallenge002;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henriqueassis.TrashCatch;
+				PRODUCT_NAME = "Trash Catch";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -639,8 +639,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.henriqueassis.MiniChallenge002;
-				PRODUCT_NAME = MiniChallenge002;
+				PRODUCT_BUNDLE_IDENTIFIER = com.henriqueassis.TrashCatch;
+				PRODUCT_NAME = "Trash Catch";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
