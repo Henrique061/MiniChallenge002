@@ -70,6 +70,7 @@ class PlayerIdle : GKState {
     init(_ player: PlayerPrefab, _ animTexture: SKTexture) {
         self.player = player
         self.animTexture = animTexture
+        self.animTexture.preload {}
     }
     
     override func didEnter(from previousState: GKState?) {
@@ -86,6 +87,9 @@ class PlayerWalk : GKState {
     init(_ player: PlayerPrefab, _ animTextures: [SKTexture]) {
         self.player = player
         self.animTextures = animTextures
+        for texture in animTextures {
+            texture.preload {}
+        }
     }
     
     override func didEnter(from previousState: GKState?) {
