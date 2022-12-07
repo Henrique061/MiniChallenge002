@@ -18,6 +18,7 @@ class PoliticaPrivacidade: SKScene {
         self.scaleMode = .resizeFill
         
         let politicaPrivacidade = SKLabelNode(text: "O jogo Trash Catch foi criado e é mantido por Henrique Batista, Jamile Polycarpo, Luana Moraes e Mari Higashi. O intuito do aplicativo é entreter o usuário e também conscientizá-lo sobre a separação correta de lixo. Não é feita nenhuma coleta de dados pessoais ou sensíveis, e também não há necessidade de fazer login do usuário. A Política de Privacidade foi atualizada pela última vez em 02/12/2022. Reservamo-nos o direito de modificar, a qualquer momento, as normas vigentes, caso haja futuras alterações em nosso aplicativo, seja pela disponibilização de novas funcionalidades, supressão ou modificações daquelas já existentes ou ainda a disponibilidade de uma versão premium. Para quaisquer dúvidas e sugestões sobre a Política de Privacidade, entre em contato conosco por meio dos email abaixo: Luana Moraes - moraes.luana@unifesp.br")
+        politicaPrivacidade.fontName = "SFProCompact"
         politicaPrivacidade.fontColor = .black
         politicaPrivacidade.zPosition = 5
         politicaPrivacidade.lineBreakMode = NSLineBreakMode.byWordWrapping

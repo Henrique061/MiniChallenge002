@@ -41,7 +41,7 @@ class CreditosScene: SKScene{
         musica.fontSize = 70
         musica.fontColor = .black
         musica.horizontalAlignmentMode = .left
-        addChild(musica)
+        //addChild(musica)
         
        let efeitosSonoros = SKLabelNode(fontNamed: "Party Confetti")
         efeitosSonoros.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.6)
@@ -49,10 +49,10 @@ class CreditosScene: SKScene{
         efeitosSonoros.fontSize = 70
         efeitosSonoros.fontColor = .black
         efeitosSonoros.horizontalAlignmentMode = .left
-        addChild(efeitosSonoros)
+        //addChild(efeitosSonoros)
         
         let design = SKLabelNode(fontNamed: "Party Confetti")
-        design.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.5)
+        design.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.6)
         design.text = "Design: Mari Higashi "
         design.fontSize = 70
         design.fontColor = .black
@@ -61,7 +61,7 @@ class CreditosScene: SKScene{
         
         
        let devs = SKLabelNode(fontNamed: "Party Confetti")
-        devs.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.3)
+        devs.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.4)
         devs.text = "Desenvolvedores: Henrique Batista, Jamile Polycarpo, Luana Moraes "
         devs.fontSize = 70
         devs.fontColor = .black
