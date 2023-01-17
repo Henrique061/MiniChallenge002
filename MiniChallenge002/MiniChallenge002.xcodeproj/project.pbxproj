@@ -31,6 +31,9 @@
 		916403592937FA20007FF497 /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916403582937FA20007FF497 /* LevelManager.swift */; };
 		91AA1B41293833D60087F432 /* JSON in Resources */ = {isa = PBXBuildFile; fileRef = 91AA1B40293833D60087F432 /* JSON */; };
 		91AA1B44293835060087F432 /* JsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AA1B43293835060087F432 /* JsonUtils.swift */; };
+		91CC89E329763983002F0CA2 /* LevelMusic_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91CC89E229763983002F0CA2 /* LevelMusic_2.wav */; };
+		91CC89E529763992002F0CA2 /* MenuMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91CC89E429763992002F0CA2 /* MenuMusic.wav */; };
+		91CC89E72976399A002F0CA2 /* LevelMusic_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91CC89E62976399A002F0CA2 /* LevelMusic_1.wav */; };
 		BA86537F292EB3C500A199AE /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86537E292EB3C500A199AE /* Info.swift */; };
 		D4D16A79292D42CE0078F7F7 /* MovimentoPersonagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D16A78292D42CE0078F7F7 /* MovimentoPersonagem.swift */; };
 		D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D16A7A292D43260078F7F7 /* Pink_Monster.png */; };
@@ -76,6 +79,9 @@
 		916403582937FA20007FF497 /* LevelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		91AA1B40293833D60087F432 /* JSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JSON; sourceTree = "<group>"; };
 		91AA1B43293835060087F432 /* JsonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtils.swift; sourceTree = "<group>"; };
+		91CC89E229763983002F0CA2 /* LevelMusic_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LevelMusic_2.wav; sourceTree = "<group>"; };
+		91CC89E429763992002F0CA2 /* MenuMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuMusic.wav; sourceTree = "<group>"; };
+		91CC89E62976399A002F0CA2 /* LevelMusic_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LevelMusic_1.wav; sourceTree = "<group>"; };
 		BA0259CD292D3CFC001934D6 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		BA0259D1292D5240001934D6 /* AjustesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjustesScene.swift; sourceTree = "<group>"; };
 		BA86537E292EB3C500A199AE /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
@@ -313,6 +319,8 @@
 		3DC6D53E292D6C60003D21EC /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				91CC89E12976395B002F0CA2 /* Sfx */,
+				91CC89E02976393B002F0CA2 /* Musics */,
 				3D7D79F8292EC1590023CF4A /* Tests */,
 			);
 			path = Sounds;
@@ -332,6 +340,23 @@
 				91AA1B43293835060087F432 /* JsonUtils.swift */,
 			);
 			path = JsonModel;
+			sourceTree = "<group>";
+		};
+		91CC89E02976393B002F0CA2 /* Musics */ = {
+			isa = PBXGroup;
+			children = (
+				91CC89E429763992002F0CA2 /* MenuMusic.wav */,
+				91CC89E62976399A002F0CA2 /* LevelMusic_1.wav */,
+				91CC89E229763983002F0CA2 /* LevelMusic_2.wav */,
+			);
+			path = Musics;
+			sourceTree = "<group>";
+		};
+		91CC89E12976395B002F0CA2 /* Sfx */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sfx;
 			sourceTree = "<group>";
 		};
 		D4F7611E293A7A690027584F /* JunksStroke */ = {
@@ -400,13 +425,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB74A87291EC3470045259D /* Main.storyboard in Resources */,
+				91CC89E329763983002F0CA2 /* LevelMusic_2.wav in Resources */,
 				D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */,
 				3DB74A8B291EC3470045259D /* Actions.sks in Resources */,
 				3DB74A8A291EC3470045259D /* LaunchScreen.storyboard in Resources */,
 				DF1AB91229392E3700470539 /* Menu.sks in Resources */,
 				91AA1B41293833D60087F432 /* JSON in Resources */,
+				91CC89E72976399A002F0CA2 /* LevelMusic_1.wav in Resources */,
 				3DB7184B292FE61300BE98FF /* Party Confetti.ttf in Resources */,
 				3DB74A8E291EC3470045259D /* Assets.xcassets in Resources */,
+				91CC89E529763992002F0CA2 /* MenuMusic.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
