@@ -120,6 +120,15 @@ class LevelScene : SKScene {
         self.gameNode.position = CGPoint.zero
         self.pauseNode.position = CGPoint.zero
         self.scene?.scaleMode = .fill
+        
+        //stoping music from menu
+        let menuMusic: [String : String] = ["file" : "MenuMusic"]
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "StopSound"), object: self, userInfo: menuMusic)
+        UserDefaults.standard.set(true, forKey: "playMenuMusicAgain")
+        
+        //adding music to the scene
+        let levelMusicNumber = Int.random(in: 1...2)
+        audioManager?.addGameMusic(fileName: "LevelMusic_\(levelMusicNumber)")
     }
     
     private func configNodes() {

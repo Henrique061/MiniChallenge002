@@ -516,8 +516,36 @@ class AudioManager {
     //MARK: SET VOLUME
     /**
      * Muda o volume de um áudio específico, dentro de um determinado tempo para completar a ação
+     * Volume vai de 0 a 1
      */
     public func setVolume(audioName: String, volume: Float, fadeDuration: TimeInterval) {
         self.getAudio(audioName).run(.changeVolume(to: volume, duration: fadeDuration))
+    }
+    
+    //MARK: SET MUSICS VOLUME
+    /**
+     * Muda o volume de todos as musicas, dentro de um determinado tempo para completar a acao.
+     * Volume vai de 0 a 1
+     */
+    public func setMusicsVolume(volume: Float, fadeDuration: TimeInterval) {
+        let musicNodes: [SKNode] = gameBGMNode.children
+        
+        for node in musicNodes {
+            node.run(.changeVolume(to: volume, duration: fadeDuration))
+        }
+    }
+    
+    //MARK: SET SOUNDS VOLUME
+    /**
+     * Muda o volume de todos as musicas, dentro de um determinado tempo para completar a acao.
+     * Volume vai de 0 a 1
+     */
+    public func setSoundsVolume(volume: Float, fadeDuration: TimeInterval) {
+        var soundNodes: [SKNode] = gameSFXNode.children
+        soundNodes.append(contentsOf: uiSFXNode.children)
+        
+        for node in soundNodes {
+            node.run(.changeVolume(to: volume, duration: fadeDuration))
+        }
     }
 }

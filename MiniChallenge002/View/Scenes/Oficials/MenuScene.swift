@@ -18,6 +18,14 @@ class MenuScene: SKScene{
 
     override func didMove(to view: SKView) {
         self.size = CGSize(width: 1920, height: 1080)
+        
+        //audio
+        if UserDefaults.standard.bool(forKey: "playMenuMusicAgain")
+        {
+            let menuMusic: [String : String] = ["file" : "MenuMusic"]
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "PlaySound"), object: self, userInfo: menuMusic)
+            UserDefaults.standard.set(false, forKey: "playMenuMusicAgain")
+        }
 
         //Logo
         backgroundColor = .white
