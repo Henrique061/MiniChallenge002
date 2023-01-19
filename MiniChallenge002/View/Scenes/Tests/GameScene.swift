@@ -91,6 +91,7 @@ class GameScene: SKScene {
             self.view?.presentScene(scene, transition: transition)
             
         })
+        
         self.addChild(botaoAdd)
         self.addChild(botaoRemove)
         self.addChild(botaoOk)

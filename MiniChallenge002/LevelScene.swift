@@ -38,8 +38,9 @@ class LevelScene : SKScene {
     
     //nodes
     var gameNode = SKNode()
-    var pauseNode = SKNode()
     var hudNode = SKNode()
+    var pauseNode = SKNode()
+    var pause = SKSpriteNode(imageNamed: "Botao pause")
     
     // counter
     public var junkCounter: Int = 0
@@ -181,12 +182,16 @@ class LevelScene : SKScene {
         self.hudNode.addChild(self.botaoAdd!)
         self.hudNode.addChild(self.botaoRemove!)
         self.hudNode.addChild(self.collectTypeLbl)
+        self.hudNode.addChild(self.pauseNode) //????
 
         //pause nodes
+        self.pauseNode.removeFromParent()
         
         // scene nodes
         self.addChild(self.gameNode)
         self.addChild(self.pauseNode)
+        pause.size = CGSize(width: 30, height: 30)
+        pause.position = CGPointMake(30, 30)
     }
     
     private func generateJunks() {
@@ -253,6 +258,12 @@ class LevelScene : SKScene {
             self.junkCounter += 1
         }
     }
+    
+    //MARK: PAUSE
+    func pausarJogo() {
+        
+    }
+    
     
     //MARK: CAMERA
     private func moveCamera() {
