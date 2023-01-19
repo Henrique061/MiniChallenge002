@@ -31,6 +31,7 @@ class LevelScene : SKScene {
     var botaoOk: ButtonPrefab?
     var botaoRemove: ButtonPrefab?
     var botaoAdd: ButtonPrefab?
+    var pauseButton: ButtonPrefab?
     
     // time
     var lastTimeInterval: TimeInterval = 0
@@ -40,7 +41,6 @@ class LevelScene : SKScene {
     var gameNode = SKNode()
     var hudNode = SKNode()
     var pauseNode = SKNode()
-    var pause = SKSpriteNode(imageNamed: "Botao pause")
     
     // counter
     public var junkCounter: Int = 0
@@ -48,6 +48,12 @@ class LevelScene : SKScene {
     var counter = 0
     var counterTime = Timer()
     var isGameOver = false
+    
+    // pause
+    var gameIsPaused: Bool = false
+    var resumirJogo: ButtonPrefab? // node do botao de resumir o game na tela de pause
+    var sairJogo: ButtonPrefab? // node do botao de voltar pro menu principal na tela de pause
+    
     
     lazy var junkCountLbl: SKLabelNode = {
       var texto = SKLabelNode(fontNamed: "Party Confetti")
@@ -165,9 +171,29 @@ class LevelScene : SKScene {
             self.pressedOk()
         })
         
+        // pause button
+        self.pauseButton = ButtonPrefab(positionPoint: CGPoint(x: self.frame.width * 0.45, y: 425), spriteSize: CGSize(width: 130, height: 200), labelText: "", fontSize: 0, textureName: "Botao pause", buttonType: .withoutAnim, action: pausarJogo)
+        
+        // botao de resumir jogo
+        self.resumirJogo = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.1), spriteSize: CGSize(width: 600, height: 250), labelText: "Jogar", fontSize: 60, textPosition: CGPoint(x: -120, y: 15), textureName: "Botão verde garrafa", buttonType: .withoutAnim, action: pausarJogo)
+        
+        // botao de sair do jogo
+        self.sairJogo = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.3, y: self.size.height * 0.1), spriteSize: CGSize(width: 500, height: 400), labelText: "Sair", fontSize: 60, textPosition: CGPoint(x: -90, y: 0), textureName: "Botão vermelho lata", buttonType: .withoutAnim, action: {
+            self.virtualController?.disconnect()
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = MenuScene(size: self.size)
+            self.view?.presentScene(scene, transition: transition)
+        })
+        
+        // hud
         botaoOk!.zPosition = 10
         botaoRemove!.zPosition = 10
         botaoAdd!.zPosition = 10
+        pauseButton!.zPosition = 10
+        
+        // pause
+        resumirJogo!.zPosition = 20
+        sairJogo!.zPosition = 20
         
         // game nodes
         self.gameNode.addChild(self.playerNode)
@@ -182,16 +208,15 @@ class LevelScene : SKScene {
         self.hudNode.addChild(self.botaoAdd!)
         self.hudNode.addChild(self.botaoRemove!)
         self.hudNode.addChild(self.collectTypeLbl)
-        self.hudNode.addChild(self.pauseNode) //????
+        self.hudNode.addChild(self.pauseButton!)
 
         //pause nodes
-        self.pauseNode.removeFromParent()
+        //self.pauseNode.addChild(quadradoNode)
+        self.pauseNode.addChild(resumirJogo!)
+        self.pauseNode.addChild(sairJogo!)
         
         // scene nodes
         self.addChild(self.gameNode)
-        self.addChild(self.pauseNode)
-        pause.size = CGSize(width: 30, height: 30)
-        pause.position = CGPointMake(30, 30)
     }
     
     private func generateJunks() {
@@ -207,6 +232,8 @@ class LevelScene : SKScene {
         // delta time
         self.deltaTime = currentTime - self.lastTimeInterval
         self.lastTimeInterval = currentTime
+        
+        if gameIsPaused { return }
         
         // move player
         let moveX = CGFloat((virtualController?.controller?.extendedGamepad?.leftThumbstick.xAxis.value ?? 0))
@@ -261,7 +288,22 @@ class LevelScene : SKScene {
     
     //MARK: PAUSE
     func pausarJogo() {
+        // se o jogo estiver rolando, ele pausa
+        if !self.gameIsPaused {
+            self.gameNode.isPaused = true // pausa o node pai do jogo
+            self.gameIsPaused = true
+            self.counterTime.invalidate() // para o tempo
+            
+            self.addChild(self.pauseNode)
+            
+            return
+        }
         
+        // codigo de quando resume o jogo aqui vvv
+        self.gameNode.isPaused = false // pausa o node pai do jogo
+        self.gameIsPaused = false
+        self.removeChildren(in: [self.pauseNode])
+        self.configTime()
     }
     
     
