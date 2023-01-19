@@ -33,6 +33,7 @@ class VolumeOptions {
             if fromMenu {
                 label.position = CGPoint(x: scene.size.width * xDesligado, y: scene.size.height * yMusica)
                 label.text = "Desligado"
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "MuteSound"), object: self, userInfo: ["file" : "MenuMusic"])
                 return
             }
             
@@ -43,8 +44,10 @@ class VolumeOptions {
         // se esta mudo, vai para ativo
         UserDefaults.standard.set(1.0, forKey: musicVolumeKey)
         if fromMenu {
+            print("era pra desmutar")
             label.position = CGPoint(x: scene.size.width * xLigado, y: scene.size.height * yMusica)
             label.text = "Ligado"
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "UnmuteSound"), object: self, userInfo: ["file" : "MenuMusic"])
             return
         }
         

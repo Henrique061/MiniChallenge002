@@ -29,6 +29,7 @@ class MovimentoPersonagem: SKScene {
         retangulo.zPosition = -1
         addChild(player)
         self.camera?.position = player.position
+        
 // add camera seguindo o jogador
         connectVirtuallController()
         self.addChild(retangulo)

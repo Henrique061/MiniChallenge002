@@ -97,48 +97,16 @@ class GameViewController: UIViewController {
     }
     
     @objc func muteBackgroundSound(_ notification: Notification) {
-        let name = (notification as NSNotification).userInfo!["file"] as! String
-         
-        if (bgSoundPlayer != nil){
-             
-            bgSoundPlayer!.stop()
-            bgSoundPlayer = nil
-        }
-         
-        if (name != ""){
-            let fileURL:URL = Bundle.main.url(forResource:name, withExtension: "wav")!
-             
-            do {
-                bgSoundPlayer = try AVAudioPlayer(contentsOf: fileURL)
-            } catch _{
-                bgSoundPlayer = nil
-            }
-            
-            UserDefaults.standard.set(0.0, forKey: "bgmVolume")
-            bgSoundPlayer!.volume = 0
-        }
+        if (bgSoundPlayer == nil) { print("som nao achado"); return }
+
+        UserDefaults.standard.set(0.0, forKey: "bgmVolume")
+        bgSoundPlayer!.volume = 0.0
     }
     
     @objc func unmuteBackgroundSound(_ notification: Notification) {
-        let name = (notification as NSNotification).userInfo!["file"] as! String
+        if (bgSoundPlayer == nil) { print("som nao achado"); return }
          
-        if (bgSoundPlayer != nil){
-             
-            bgSoundPlayer!.stop()
-            bgSoundPlayer = nil
-        }
-         
-        if (name != ""){
-            let fileURL:URL = Bundle.main.url(forResource:name, withExtension: "wav")!
-             
-            do {
-                bgSoundPlayer = try AVAudioPlayer(contentsOf: fileURL)
-            } catch _{
-                bgSoundPlayer = nil
-            }
-             
-            bgSoundPlayer!.volume = 1
-            UserDefaults.standard.set(1.0, forKey: "bgmVolume")
-        }
+        UserDefaults.standard.set(1.0, forKey: "bgmVolume")
+        bgSoundPlayer!.volume = 1.0
     }
 }

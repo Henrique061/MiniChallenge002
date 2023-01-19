@@ -97,47 +97,62 @@ class AjustesScene: SKScene {
         addChild(voltar)
         
         //MARK: LIGADO E DESLIGADO
-        onOffMusica.fontColor = .black
-        onOffMusica.fontSize = 55
-        onOffMusica.horizontalAlignmentMode = .left
-        addChild(onOffMusica)
+        self.onOffMusica.fontColor = .black
+        self.onOffMusica.fontSize = 55
+        self.onOffMusica.horizontalAlignmentMode = .left
+        addChild(self.onOffMusica)
         
-        onOffEfeitos.fontColor = .black
-        onOffEfeitos.fontSize = 55
-        onOffEfeitos.horizontalAlignmentMode = .left
-        addChild(onOffEfeitos)
+        self.onOffEfeitos.fontColor = .black
+        self.onOffEfeitos.fontSize = 55
+        self.onOffEfeitos.horizontalAlignmentMode = .left
+        
+        self.checkOnOffLabel()
+        addChild(self.onOffEfeitos)
        
-        //MARK: SETAS DE MUTE
+        //MARK: SETAS DE MUTE MUSICA
         let esquerdaBgm = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
-            
+            VolumeOptions.toggleMusicVolume(onOffLabel: self.onOffMusica, scene: self)
         })
         addChild(esquerdaBgm)
         
         let direitaBgm = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
-            
+            VolumeOptions.toggleMusicVolume(onOffLabel: self.onOffMusica, scene: self)
         })
         addChild(direitaBgm)
         
+        //MARK: SETAS DE MUTE EFEITOS
         let esquerdaSfx = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
-            
+            VolumeOptions.toggleSoundEffectsVolume(onOffLabel: self.onOffEfeitos, scene: self)
         })
         addChild(esquerdaSfx)
         
        let direitaSfx = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
-            
+           VolumeOptions.toggleSoundEffectsVolume(onOffLabel: self.onOffEfeitos, scene: self)
         })
         addChild(direitaSfx)
     }
     
-    //MARK: SET LIGADO e DESLIGADO
-    private func setOnOffMusicaLabel() {
-        onOffMusica.text = "Ligado"
-        onOffMusica.position = CGPoint(x: self.size.width * xLigado, y: self.size.height * yEfeitos)
+    private func checkOnOffLabel() {
+        // se o volume da musica esta ligado, fica na label de "ligado"
+        if UserDefaults.standard.float(forKey: "bgmVolume") >= 1 {
+            self.onOffMusica.text = "Ligado"
+            self.onOffMusica.position = CGPoint(x: self.size.width * xLigado, y: self.size.height * yMusica)
+        }
+        
+        else {
+            self.onOffMusica.text = "Desligado"
+            self.onOffMusica.position = CGPoint(x: self.size.width * xDesligado, y: self.size.height * yMusica)
+        }
+        
+        // se o volume dos efeitos sonoros esta ligado, fica na label de "ligado"
+        if UserDefaults.standard.float(forKey: "sfxVolume") >= 1 {
+            self.onOffEfeitos.text = "Ligado"
+            self.onOffEfeitos.position = CGPoint(x: self.size.width * xLigado, y: self.size.height * yEfeitos)
+        }
+        
+        else {
+            self.onOffEfeitos.text = "Desligado"
+            self.onOffEfeitos.position = CGPoint(x: self.size.width * xDesligado, y: self.size.height * yEfeitos)
+        }
     }
-    
-    private func setOnOffEfeitosLabel() {
-        onOffEfeitos.text = "Desligado"
-        onOffEfeitos.position = CGPoint(x: self.size.width * xDesligado, y: self.size.height * yMusica)
-    }
-    
 }

@@ -96,6 +96,7 @@ class LevelScene : SKScene {
     override func sceneDidLoad() {
         self.generateJunks()
         self.setSceneParams()
+        self.setVolumes()
         self.configNodes()
         self.connectVirtuallController()
         self.configTime()
@@ -196,6 +197,19 @@ class LevelScene : SKScene {
         // scene nodes
         self.addChild(self.gameNode)
         self.addChild(self.pauseNode)
+    }
+    
+    private func setVolumes() {
+        let bgmVolumekey = "bgmVolume"
+        let sfxVolumeKey = "sfxVolume"
+        
+        // setando volume da musica
+        if UserDefaults.standard.float(forKey: bgmVolumekey) >= 1 { audioManager?.unMuteAllMusics() }
+        else { audioManager?.muteAllMusics() }
+        
+        // setando volume dos efeitos sonoros
+        if UserDefaults.standard.float(forKey: sfxVolumeKey) >= 1 { audioManager?.unMuteAllSounds() }
+        else { audioManager?.muteAllSounds() }
     }
     
     private func generateJunks() {
