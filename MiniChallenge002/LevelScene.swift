@@ -127,9 +127,10 @@ class LevelScene : SKScene {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "StopSound"), object: self, userInfo: menuMusic)
         UserDefaults.standard.set(true, forKey: "playMenuMusicAgain")
         
-        //adding music to the scene
+        //adding audios to the scene
         let levelMusicNumber = Int.random(in: 1...2)
         audioManager?.addGameMusic(fileName: "LevelMusic_\(levelMusicNumber)")
+        audioManager?.addGameSounds(fileNames: ["CountError", "CountSuccess"])
     }
     
     private func configNodes() {
@@ -335,17 +336,23 @@ class LevelScene : SKScene {
     
     //MARK: OK PRESSED
     private func pressedOk() {
+        // acertou
         if junkCounter == self.levelManager.CorrectJunkQuantity {
+            self.audioManager?.playAudio("CountSuccess")
             self.levelManager.TimeLeft += 30
             self.counterTime.invalidate()
             self.virtualController?.disconnect()
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = MenuMudancaFase(levelManager: self.levelManager)
-            self.view?.presentScene(scene, transition: transition)
-            print("Ganhou")
+            self.gameNode.removeChildren(in: [self.hudNode])
+            self.run(TimeUtils.actionAfterAsyncTime(waitTime: 1.5) {
+                self.view?.presentScene(scene, transition: transition)
+            })
         }
-        
+        // errou
         else {
+            self.audioManager?.stopAudio("CountError")
+            self.audioManager?.playAudio("CountError")
             self.counter -= 10
             self.levelManager.TimeLeft -= 10
         }

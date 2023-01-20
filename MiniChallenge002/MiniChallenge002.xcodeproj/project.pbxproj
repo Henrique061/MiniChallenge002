@@ -30,9 +30,12 @@
 		916403572937D7BD007FF497 /* PlayerMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916403562937D7BD007FF497 /* PlayerMovement.swift */; };
 		916403592937FA20007FF497 /* LevelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916403582937FA20007FF497 /* LevelManager.swift */; };
 		9164B5522978BDAB00DB3BFA /* VolumeOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9164B5512978BDAB00DB3BFA /* VolumeOptions.swift */; };
+		917F7939297A1D1D002AB0D1 /* LevelPassed.wav in Resources */ = {isa = PBXBuildFile; fileRef = 917F7936297A1D1D002AB0D1 /* LevelPassed.wav */; };
+		917F793A297A1D1D002AB0D1 /* CountError.wav in Resources */ = {isa = PBXBuildFile; fileRef = 917F7937297A1D1D002AB0D1 /* CountError.wav */; };
+		917F793B297A1D1D002AB0D1 /* CountSuccess.wav in Resources */ = {isa = PBXBuildFile; fileRef = 917F7938297A1D1D002AB0D1 /* CountSuccess.wav */; };
+		917F793D297A2174002AB0D1 /* LevelMusic_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 917F793C297A2174002AB0D1 /* LevelMusic_2.wav */; };
 		91AA1B41293833D60087F432 /* JSON in Resources */ = {isa = PBXBuildFile; fileRef = 91AA1B40293833D60087F432 /* JSON */; };
 		91AA1B44293835060087F432 /* JsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AA1B43293835060087F432 /* JsonUtils.swift */; };
-		91CC89E329763983002F0CA2 /* LevelMusic_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91CC89E229763983002F0CA2 /* LevelMusic_2.wav */; };
 		91CC89E529763992002F0CA2 /* MenuMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91CC89E429763992002F0CA2 /* MenuMusic.wav */; };
 		91CC89E72976399A002F0CA2 /* LevelMusic_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91CC89E62976399A002F0CA2 /* LevelMusic_1.wav */; };
 		BA86537F292EB3C500A199AE /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA86537E292EB3C500A199AE /* Info.swift */; };
@@ -79,9 +82,12 @@
 		916403562937D7BD007FF497 /* PlayerMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMovement.swift; sourceTree = "<group>"; };
 		916403582937FA20007FF497 /* LevelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelManager.swift; sourceTree = "<group>"; };
 		9164B5512978BDAB00DB3BFA /* VolumeOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeOptions.swift; sourceTree = "<group>"; };
+		917F7936297A1D1D002AB0D1 /* LevelPassed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LevelPassed.wav; sourceTree = "<group>"; };
+		917F7937297A1D1D002AB0D1 /* CountError.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CountError.wav; sourceTree = "<group>"; };
+		917F7938297A1D1D002AB0D1 /* CountSuccess.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CountSuccess.wav; sourceTree = "<group>"; };
+		917F793C297A2174002AB0D1 /* LevelMusic_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LevelMusic_2.wav; sourceTree = "<group>"; };
 		91AA1B40293833D60087F432 /* JSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JSON; sourceTree = "<group>"; };
 		91AA1B43293835060087F432 /* JsonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtils.swift; sourceTree = "<group>"; };
-		91CC89E229763983002F0CA2 /* LevelMusic_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LevelMusic_2.wav; sourceTree = "<group>"; };
 		91CC89E429763992002F0CA2 /* MenuMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuMusic.wav; sourceTree = "<group>"; };
 		91CC89E62976399A002F0CA2 /* LevelMusic_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LevelMusic_1.wav; sourceTree = "<group>"; };
 		BA0259CD292D3CFC001934D6 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -358,7 +364,7 @@
 			children = (
 				91CC89E429763992002F0CA2 /* MenuMusic.wav */,
 				91CC89E62976399A002F0CA2 /* LevelMusic_1.wav */,
-				91CC89E229763983002F0CA2 /* LevelMusic_2.wav */,
+				917F793C297A2174002AB0D1 /* LevelMusic_2.wav */,
 			);
 			path = Musics;
 			sourceTree = "<group>";
@@ -366,6 +372,9 @@
 		91CC89E12976395B002F0CA2 /* Sfx */ = {
 			isa = PBXGroup;
 			children = (
+				917F7937297A1D1D002AB0D1 /* CountError.wav */,
+				917F7938297A1D1D002AB0D1 /* CountSuccess.wav */,
+				917F7936297A1D1D002AB0D1 /* LevelPassed.wav */,
 			);
 			path = Sfx;
 			sourceTree = "<group>";
@@ -436,12 +445,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB74A87291EC3470045259D /* Main.storyboard in Resources */,
-				91CC89E329763983002F0CA2 /* LevelMusic_2.wav in Resources */,
+				917F793B297A1D1D002AB0D1 /* CountSuccess.wav in Resources */,
+				917F793D297A2174002AB0D1 /* LevelMusic_2.wav in Resources */,
 				D4D16A7B292D43260078F7F7 /* Pink_Monster.png in Resources */,
 				3DB74A8B291EC3470045259D /* Actions.sks in Resources */,
 				3DB74A8A291EC3470045259D /* LaunchScreen.storyboard in Resources */,
 				DF1AB91229392E3700470539 /* Menu.sks in Resources */,
+				917F793A297A1D1D002AB0D1 /* CountError.wav in Resources */,
 				91AA1B41293833D60087F432 /* JSON in Resources */,
+				917F7939297A1D1D002AB0D1 /* LevelPassed.wav in Resources */,
 				91CC89E72976399A002F0CA2 /* LevelMusic_1.wav in Resources */,
 				3DB7184B292FE61300BE98FF /* Party Confetti.ttf in Resources */,
 				3DB74A8E291EC3470045259D /* Assets.xcassets in Resources */,

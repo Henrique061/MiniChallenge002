@@ -10,10 +10,12 @@ import SpriteKit
 
 class MenuMudancaFase: SKScene {
     let levelManager: LevelManager
+    var audioManager: AudioManager? = nil
     
     init(levelManager: LevelManager) {
         self.levelManager = levelManager
         super.init(size: CGSize(width: 1920, height: 1080))
+        self.audioManager = AudioManager(scene: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -29,6 +31,10 @@ class MenuMudancaFase: SKScene {
         self.scaleMode = .resizeFill
         addChild(botaoJogar())
         
+        //audio
+        self.audioManager?.addGameSound(fileName: "LevelPassed")
+        self.setVolumes()
+        
         //add contador
         var textoNode: SKLabelNode
         textoNode = SKLabelNode(fontNamed: "Party Confetti")
@@ -39,7 +45,7 @@ class MenuMudancaFase: SKScene {
         addChild(textoNode)
         // converter SKLabelNode p/ inteiro
         
-        var texto = SKLabelNode(fontNamed: "Party Confetti")
+        let texto = SKLabelNode(fontNamed: "Party Confetti")
         texto.fontSize = 100
         texto.text = "Muito bem, passe para a próxima fase!"
         texto.horizontalAlignmentMode = .left
@@ -83,11 +89,13 @@ class MenuMudancaFase: SKScene {
             //addChild(lixo)
             
         }
-        
- 
         //lixeira
         self.addChild(criarLixeira(tipo: lataSelecionada))
         
+        // para dar um pequeno delay antes de tocar o som de vitória, para evitar estranhamento
+        self.run(TimeUtils.actionAfterAsyncTime(waitTime: 0.05, action: {
+            self.audioManager?.playAudio("LevelPassed")
+        }))
     }
     
     
@@ -138,5 +146,16 @@ class MenuMudancaFase: SKScene {
         return lixeira
     }
     
-    
+    private func setVolumes() {
+        let bgmVolumekey = "bgmVolume"
+        let sfxVolumeKey = "sfxVolume"
+        
+        // setando volume da musica
+        if UserDefaults.standard.float(forKey: bgmVolumekey) >= 1 { audioManager?.unMuteAllMusics() }
+        else { audioManager?.muteAllMusics() }
+        
+        // setando volume dos efeitos sonoros
+        if UserDefaults.standard.float(forKey: sfxVolumeKey) >= 1 { audioManager?.unMuteAllSounds() }
+        else { audioManager?.muteAllSounds() }
+    }
 }
