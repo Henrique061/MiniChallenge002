@@ -31,6 +31,7 @@ class LevelScene : SKScene {
     var botaoOk: ButtonPrefab?
     var botaoRemove: ButtonPrefab?
     var botaoAdd: ButtonPrefab?
+    var maxAppeared: Bool = false
     
     // time
     var lastTimeInterval: TimeInterval = 0
@@ -59,6 +60,18 @@ class LevelScene : SKScene {
        texto.text = ("\(junkCounter)")
         return texto
    }()
+    
+    lazy var maxJunkLabel: SKLabelNode = {
+       var label = SKLabelNode(fontNamed: "Party Confetti")
+        label.fontSize = CGFloat(50)
+        label.zPosition = 10
+        label.fontColor = UIColor(red: 0.984, green: 0.878, blue: 0.105, alpha: 1)
+        label.horizontalAlignmentMode = .center
+        label.verticalAlignmentMode = .center
+        label.text = "MAX"
+        
+        return label
+    }()
    
 
   lazy var timeLeftCount: SKLabelNode = {
@@ -70,6 +83,16 @@ class LevelScene : SKScene {
        label.verticalAlignmentMode = .center
        return label
    }()
+    
+    lazy var timeErrorLabel: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "Party Confetti")
+        label.fontSize = CGFloat(80)
+        label.zPosition = 10
+        label.fontColor = UIColor(red: 0.67, green: 0.15, blue: 0.0, alpha: 1)
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        return label
+    }()
     
     lazy var collectTypeLbl: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "Party Confetti")
@@ -133,6 +156,7 @@ class LevelScene : SKScene {
         audioManager?.addGameSounds(fileNames: ["CountError", "CountSuccess"])
     }
     
+    //MARK: CONFIG NODES
     private func configNodes() {
         // bg
         let background = SKSpriteNode(imageNamed: "cenário")
@@ -146,6 +170,7 @@ class LevelScene : SKScene {
         let treadmillNode = TreadmillPrefab()
         treadmillNode.zPosition = 0
         
+        //MARK: NODES POSITION
         // player
         self.playerNode = PlayerPrefab(trashColor: self.levelManager.getPlayerTrashColor())
         self.playerNode.zPosition = 4
@@ -153,9 +178,13 @@ class LevelScene : SKScene {
         
         // text nodes
         self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -245)
+        self.maxJunkLabel.position = CGPoint(x: self.frame.width * 0.3983, y: 20)
         
         self.timeLeftCount.position = CGPoint(x: self.frame.width * -0.45, y: 425)
         self.timeLeftCount.text = "\(self.levelManager.TimeLeft)"
+        
+        self.timeErrorLabel.position = CGPoint(x: self.frame.width * -0.434, y: 340)
+        self.timeErrorLabel.text = "- 10s"
         
         self.collectTypeLbl.text = "Conte os \(self.levelManager.getTypeCollectInfo())!"
         self.collectTypeLbl.fontColor = self.levelManager.getTypeCollectColor()
@@ -179,6 +208,7 @@ class LevelScene : SKScene {
         botaoRemove!.zPosition = 10
         botaoAdd!.zPosition = 10
         
+        //MARK: NODES ADDITION
         // game nodes
         self.gameNode.addChild(self.playerNode)
         self.gameNode.addChild(treadmillNode)
@@ -270,11 +300,21 @@ class LevelScene : SKScene {
         if self.junkCounter > 0 {
             self.junkCounter -= 1
         }
+        
+        if self.maxAppeared {
+            self.maxAppeared = false
+            self.hudNode.removeChildren(in: [self.maxJunkLabel])
+        }
     }
     
     private func addScore() {
         if self.junkCounter < self.levelManager.getActualLevelModel().maxTotalJunk {
             self.junkCounter += 1
+        }
+        
+        if self.junkCounter >= self.levelManager.getActualLevelModel().maxTotalJunk && !self.maxAppeared {
+            self.maxAppeared = true
+            self.hudNode.addChild(self.maxJunkLabel)
         }
     }
     
@@ -351,10 +391,19 @@ class LevelScene : SKScene {
         }
         // errou
         else {
+            // feedback tatil
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.notificationOccurred(.error)
+            
+            self.hudNode.addChild(self.timeErrorLabel)
             self.audioManager?.stopAudio("CountError")
             self.audioManager?.playAudio("CountError")
             self.counter -= 10
             self.levelManager.TimeLeft -= 10
+            
+            self.run(TimeUtils.actionAfterAsyncTime(waitTime: 1.0, action: {
+                self.hudNode.removeChildren(in: [self.timeErrorLabel])
+            }))
         }
     }
     
