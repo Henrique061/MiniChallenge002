@@ -36,12 +36,15 @@ class CreditosScene: SKScene{
         addChild(creditos)
         
         let musica = SKLabelNode(fontNamed: "Party Confetti")
-        musica.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.7)
-        musica.text = "Música: "
+        musica.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.2)
+        musica.text = "Músicas: Kevin MacLeod (incompetech.com)"
         musica.fontSize = 70
         musica.fontColor = .black
         musica.horizontalAlignmentMode = .left
-        //addChild(musica)
+        musica.lineBreakMode = NSLineBreakMode.byWordWrapping
+        musica.numberOfLines = 0
+        musica.preferredMaxLayoutWidth = 1000
+        addChild(musica)
         
        let efeitosSonoros = SKLabelNode(fontNamed: "Party Confetti")
         efeitosSonoros.position = CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.6)
@@ -86,14 +89,5 @@ class CreditosScene: SKScene{
             self.view?.presentScene(scene, transition: transition)
         })
         addChild(voltar)
-        
-        
-        
     }
-    
-    
-    
-    
-    
-    
 }

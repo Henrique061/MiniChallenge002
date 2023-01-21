@@ -1,7 +1,7 @@
 {
   "levelId": 2,
-  "maxTotalJunk": 28,
-  "minTotalJunk": 18,
+  "maxTotalJunk": 18,
+  "minTotalJunk": 12,
   "maxTreadmillJunk": 10,
   "junkVariety": "Reciclados e Orgânicos",
   "numOfVariety": 2

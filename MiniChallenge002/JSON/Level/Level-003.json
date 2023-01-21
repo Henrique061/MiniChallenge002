@@ -1,8 +1,8 @@
 {
   "levelId": 3,
-  "maxTotalJunk": 38,
-  "minTotalJunk": 28,
-  "maxTreadmillJunk": 14,
+  "maxTotalJunk": 22,
+  "minTotalJunk": 14,
+  "maxTreadmillJunk": 12,
   "junkVariety": "Variedade de reciclados",
   "numOfVariety": 2
 }

@@ -32,6 +32,7 @@ class LevelScene : SKScene {
     var botaoRemove: ButtonPrefab?
     var botaoAdd: ButtonPrefab?
     var pauseButton: ButtonPrefab?
+    var maxAppeared: Bool = false
     
     // time
     var lastTimeInterval: TimeInterval = 0
@@ -66,6 +67,18 @@ class LevelScene : SKScene {
        texto.text = ("\(junkCounter)")
         return texto
    }()
+    
+    lazy var maxJunkLabel: SKLabelNode = {
+       var label = SKLabelNode(fontNamed: "Party Confetti")
+        label.fontSize = CGFloat(50)
+        label.zPosition = 10
+        label.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+        label.horizontalAlignmentMode = .center
+        label.verticalAlignmentMode = .center
+        label.text = "MAX"
+        
+        return label
+    }()
    
 
   lazy var timeLeftCount: SKLabelNode = {
@@ -77,6 +90,16 @@ class LevelScene : SKScene {
        label.verticalAlignmentMode = .center
        return label
    }()
+    
+    lazy var timeErrorLabel: SKLabelNode = {
+        var label = SKLabelNode(fontNamed: "Party Confetti")
+        label.fontSize = CGFloat(80)
+        label.zPosition = 10
+        label.fontColor = UIColor(red: 0.67, green: 0.15, blue: 0.0, alpha: 1)
+        label.horizontalAlignmentMode = .left
+        label.verticalAlignmentMode = .center
+        return label
+    }()
     
     lazy var collectTypeLbl: SKLabelNode = {
         var label = SKLabelNode(fontNamed: "Party Confetti")
@@ -103,6 +126,7 @@ class LevelScene : SKScene {
     override func sceneDidLoad() {
         self.generateJunks()
         self.setSceneParams()
+        self.setVolumes()
         self.configNodes()
         self.connectVirtuallController()
         self.configTime()
@@ -123,12 +147,24 @@ class LevelScene : SKScene {
         self.size = CGSize(width: 1920, height: 1080)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.camera = self.cameraNode
+        self.addChild(self.cameraNode)
         self.audioManager = AudioManager(scene: self)
         self.gameNode.position = CGPoint.zero
         self.pauseNode.position = CGPoint.zero
         self.scene?.scaleMode = .fill
+        
+        //stoping music from menu
+        let menuMusic: [String : String] = ["file" : "MenuMusic"]
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "StopSound"), object: self, userInfo: menuMusic)
+        UserDefaults.standard.set(true, forKey: "playMenuMusicAgain")
+        
+        //adding audios to the scene
+        let levelMusicNumber = Int.random(in: 1...2)
+        audioManager?.addGameMusic(fileName: "LevelMusic_\(levelMusicNumber)")
+        audioManager?.addGameSounds(fileNames: ["CountError", "CountSuccess"])
     }
     
+    //MARK: CONFIG NODES
     private func configNodes() {
         // bg
         let background = SKSpriteNode(imageNamed: "cenário")
@@ -142,16 +178,21 @@ class LevelScene : SKScene {
         let treadmillNode = TreadmillPrefab()
         treadmillNode.zPosition = 0
         
+        //MARK: NODES POSITION
         // player
         self.playerNode = PlayerPrefab(trashColor: self.levelManager.getPlayerTrashColor())
         self.playerNode.zPosition = 4
         self.playerMovement = PlayerMovement(player: playerNode)
         
         // text nodes
-        self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -245)
+        self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -245) // -220 para ficar mais aciminha, -245 para meio
+        self.maxJunkLabel.position = CGPoint(x: self.frame.width * 0.3983, y: -285) // -285 para ficar abaixo do contador, 20 para acima
         
         self.timeLeftCount.position = CGPoint(x: self.frame.width * -0.45, y: 425)
         self.timeLeftCount.text = "\(self.levelManager.TimeLeft)"
+        
+        self.timeErrorLabel.position = CGPoint(x: self.frame.width * -0.434, y: 340)
+        self.timeErrorLabel.text = "- 10s"
         
         self.collectTypeLbl.text = "Conte os \(self.levelManager.getTypeCollectInfo())!"
         self.collectTypeLbl.fontColor = self.levelManager.getTypeCollectColor()
@@ -195,11 +236,11 @@ class LevelScene : SKScene {
         resumirJogo!.zPosition = 20
         sairJogo!.zPosition = 20
         
+        //MARK: NODES ADDITION
         // game nodes
         self.gameNode.addChild(self.playerNode)
         self.gameNode.addChild(treadmillNode)
         self.gameNode.addChild(background)
-        self.gameNode.addChild(self.hudNode)
         
         // hud node
         self.hudNode.addChild(self.junkCountLbl)
@@ -216,7 +257,21 @@ class LevelScene : SKScene {
         self.pauseNode.addChild(sairJogo!)
         
         // scene nodes
+        self.cameraNode.addChild(self.hudNode)
         self.addChild(self.gameNode)
+    }
+    
+    private func setVolumes() {
+        let bgmVolumekey = "bgmVolume"
+        let sfxVolumeKey = "sfxVolume"
+        
+        // setando volume da musica
+        if UserDefaults.standard.float(forKey: bgmVolumekey) >= 1 { audioManager?.unMuteAllMusics() }
+        else { audioManager?.muteAllMusics() }
+        
+        // setando volume dos efeitos sonoros
+        if UserDefaults.standard.float(forKey: sfxVolumeKey) >= 1 { audioManager?.unMuteAllSounds() }
+        else { audioManager?.muteAllSounds() }
     }
     
     private func generateJunks() {
@@ -278,11 +333,29 @@ class LevelScene : SKScene {
         if self.junkCounter > 0 {
             self.junkCounter -= 1
         }
+        
+        if self.maxAppeared {
+            self.maxAppeared = false
+            
+            //self.hudNode.removeChildren(in: [self.maxJunkLabel])
+            //self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -245)
+            //self.junkCountLbl.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+            self.botaoAdd!.alpha = 1
+        }
     }
     
     private func addScore() {
         if self.junkCounter < self.levelManager.getActualLevelModel().maxTotalJunk {
             self.junkCounter += 1
+        }
+        
+        if self.junkCounter >= self.levelManager.getActualLevelModel().maxTotalJunk && !self.maxAppeared {
+            self.maxAppeared = true
+            
+            //self.hudNode.addChild(self.maxJunkLabel)
+            //self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -220)
+            //self.junkCountLbl.fontColor = UIColor(red: 0.67, green: 0.15, blue: 0.0, alpha: 1)
+            self.botaoAdd!.alpha = 0.5
         }
     }
     
@@ -309,8 +382,6 @@ class LevelScene : SKScene {
     
     //MARK: CAMERA
     private func moveCamera() {
-        guard let lastCamPos = self.camera?.position.x else { return }
-        
         let cameraBounds = self.frame.width / 2
         let bounds = self.calculateAccumulatedFrame().width/2 - cameraBounds
         
@@ -318,12 +389,6 @@ class LevelScene : SKScene {
         
         if positionPlayer < bounds && positionPlayer > -(bounds) {
             self.camera?.position.x = positionPlayer
-        }
-        
-        guard let actualCamPos = self.camera?.position.x else { return }
-        
-        if lastCamPos != actualCamPos {
-            self.hudNode.position.x += self.playerMovement?.actualSpeed ?? 12
         }
     }
     
@@ -365,19 +430,39 @@ class LevelScene : SKScene {
     
     //MARK: OK PRESSED
     private func pressedOk() {
+        // acertou
         if junkCounter == self.levelManager.CorrectJunkQuantity {
+            self.audioManager?.playAudio("CountSuccess")
             self.levelManager.TimeLeft += 30
             self.counterTime.invalidate()
             self.virtualController?.disconnect()
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = MenuMudancaFase(levelManager: self.levelManager)
-            self.view?.presentScene(scene, transition: transition)
-            print("Ganhou")
+            self.cameraNode.removeChildren(in: [self.hudNode])
+            self.run(TimeUtils.actionAfterAsyncTime(waitTime: 1.5) {
+                self.view?.presentScene(scene, transition: transition)
+            })
         }
-        
+        // errou
         else {
+            // feedback tatil
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.notificationOccurred(.error)
+            
+            // verifica se o node de -10s já nao esta na cena, pra evitar crash
+            if hudNode.children.contains(self.timeErrorLabel) {
+                self.hudNode.removeChildren(in: [self.timeErrorLabel])
+            }
+            
+            self.hudNode.addChild(self.timeErrorLabel)
+            self.audioManager?.stopAudio("CountError")
+            self.audioManager?.playAudio("CountError")
             self.counter -= 10
             self.levelManager.TimeLeft -= 10
+            
+            self.run(TimeUtils.actionAfterAsyncTime(waitTime: 1.0, action: {
+                self.hudNode.removeChildren(in: [self.timeErrorLabel])
+            }))
         }
     }
     
@@ -389,6 +474,5 @@ class LevelScene : SKScene {
         let transition:SKTransition = SKTransition.fade(withDuration: 1)
         let scene:SKScene = GameOver(size: self.size)
         self.view?.presentScene(scene, transition: transition)
-        print("perdeu")
     }
 }
