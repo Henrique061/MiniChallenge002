@@ -65,7 +65,7 @@ class LevelScene : SKScene {
        var label = SKLabelNode(fontNamed: "Party Confetti")
         label.fontSize = CGFloat(50)
         label.zPosition = 10
-        label.fontColor = UIColor(red: 0.984, green: 0.878, blue: 0.105, alpha: 1)
+        label.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
         label.horizontalAlignmentMode = .center
         label.verticalAlignmentMode = .center
         label.text = "MAX"
@@ -140,6 +140,7 @@ class LevelScene : SKScene {
         self.size = CGSize(width: 1920, height: 1080)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.camera = self.cameraNode
+        self.addChild(self.cameraNode)
         self.audioManager = AudioManager(scene: self)
         self.gameNode.position = CGPoint.zero
         self.pauseNode.position = CGPoint.zero
@@ -177,8 +178,8 @@ class LevelScene : SKScene {
         self.playerMovement = PlayerMovement(player: playerNode)
         
         // text nodes
-        self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -245)
-        self.maxJunkLabel.position = CGPoint(x: self.frame.width * 0.3983, y: 20)
+        self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -245) // -220 para ficar mais aciminha, -245 para meio
+        self.maxJunkLabel.position = CGPoint(x: self.frame.width * 0.3983, y: -285) // -285 para ficar abaixo do contador, 20 para acima
         
         self.timeLeftCount.position = CGPoint(x: self.frame.width * -0.45, y: 425)
         self.timeLeftCount.text = "\(self.levelManager.TimeLeft)"
@@ -213,7 +214,6 @@ class LevelScene : SKScene {
         self.gameNode.addChild(self.playerNode)
         self.gameNode.addChild(treadmillNode)
         self.gameNode.addChild(background)
-        self.gameNode.addChild(self.hudNode)
         
         // hud node
         self.hudNode.addChild(self.junkCountLbl)
@@ -226,6 +226,7 @@ class LevelScene : SKScene {
         //pause nodes
         
         // scene nodes
+        self.cameraNode.addChild(self.hudNode)
         self.addChild(self.gameNode)
         self.addChild(self.pauseNode)
     }
@@ -303,7 +304,11 @@ class LevelScene : SKScene {
         
         if self.maxAppeared {
             self.maxAppeared = false
-            self.hudNode.removeChildren(in: [self.maxJunkLabel])
+            
+            //self.hudNode.removeChildren(in: [self.maxJunkLabel])
+            //self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -245)
+            //self.junkCountLbl.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
+            self.botaoAdd!.alpha = 1
         }
     }
     
@@ -314,14 +319,16 @@ class LevelScene : SKScene {
         
         if self.junkCounter >= self.levelManager.getActualLevelModel().maxTotalJunk && !self.maxAppeared {
             self.maxAppeared = true
-            self.hudNode.addChild(self.maxJunkLabel)
+            
+            //self.hudNode.addChild(self.maxJunkLabel)
+            //self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -220)
+            //self.junkCountLbl.fontColor = UIColor(red: 0.67, green: 0.15, blue: 0.0, alpha: 1)
+            self.botaoAdd!.alpha = 0.5
         }
     }
     
     //MARK: CAMERA
     private func moveCamera() {
-        guard let lastCamPos = self.camera?.position.x else { return }
-        
         let cameraBounds = self.frame.width / 2
         let bounds = self.calculateAccumulatedFrame().width/2 - cameraBounds
         
@@ -329,12 +336,6 @@ class LevelScene : SKScene {
         
         if positionPlayer < bounds && positionPlayer > -(bounds) {
             self.camera?.position.x = positionPlayer
-        }
-        
-        guard let actualCamPos = self.camera?.position.x else { return }
-        
-        if lastCamPos != actualCamPos {
-            self.hudNode.position.x += self.playerMovement?.actualSpeed ?? 12
         }
     }
     
@@ -384,7 +385,7 @@ class LevelScene : SKScene {
             self.virtualController?.disconnect()
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = MenuMudancaFase(levelManager: self.levelManager)
-            self.gameNode.removeChildren(in: [self.hudNode])
+            self.cameraNode.removeChildren(in: [self.hudNode])
             self.run(TimeUtils.actionAfterAsyncTime(waitTime: 1.5) {
                 self.view?.presentScene(scene, transition: transition)
             })
@@ -394,6 +395,11 @@ class LevelScene : SKScene {
             // feedback tatil
             let feedbackGenerator = UINotificationFeedbackGenerator()
             feedbackGenerator.notificationOccurred(.error)
+            
+            // verifica se o node de -10s já nao esta na cena, pra evitar crash
+            if hudNode.children.contains(self.timeErrorLabel) {
+                self.hudNode.removeChildren(in: [self.timeErrorLabel])
+            }
             
             self.hudNode.addChild(self.timeErrorLabel)
             self.audioManager?.stopAudio("CountError")
@@ -415,6 +421,5 @@ class LevelScene : SKScene {
         let transition:SKTransition = SKTransition.fade(withDuration: 1)
         let scene:SKScene = GameOver(size: self.size)
         self.view?.presentScene(scene, transition: transition)
-        print("perdeu")
     }
 }
