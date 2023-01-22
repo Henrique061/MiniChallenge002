@@ -33,6 +33,7 @@ class LevelScene : SKScene {
     var botaoAdd: ButtonPrefab?
     var pauseButton: ButtonPrefab?
     var maxAppeared: Bool = false
+    var minAppeared: Bool = true
     
     // time
     var lastTimeInterval: TimeInterval = 0
@@ -225,6 +226,7 @@ class LevelScene : SKScene {
         
         // hud
         botaoOk!.zPosition = 10
+        botaoRemove!.alpha = 0.5
         botaoRemove!.zPosition = 10
         botaoAdd!.zPosition = 10
         pauseButton!.zPosition = 10
@@ -336,6 +338,11 @@ class LevelScene : SKScene {
             //self.junkCountLbl.fontColor = UIColor(red: 0.0, green: 0.51, blue: 0.22, alpha: 1)
             self.botaoAdd!.alpha = 1
         }
+        
+        if self.junkCounter <= 0 && !minAppeared {
+            self.minAppeared = true
+            self.botaoRemove!.alpha = 0.5
+        }
     }
     
     private func addScore() {
@@ -350,6 +357,11 @@ class LevelScene : SKScene {
             //self.junkCountLbl.position = CGPoint(x: self.frame.width * 0.3983, y: -220)
             //self.junkCountLbl.fontColor = UIColor(red: 0.67, green: 0.15, blue: 0.0, alpha: 1)
             self.botaoAdd!.alpha = 0.5
+        }
+        
+        if self.minAppeared {
+            self.minAppeared = false
+            self.botaoRemove!.alpha = 1
         }
     }
     
