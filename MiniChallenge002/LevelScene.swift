@@ -52,8 +52,7 @@ class LevelScene : SKScene {
     
     // pause
     var gameIsPaused: Bool = false
-    var resumirJogo: ButtonPrefab? // node do botao de resumir o game na tela de pause
-    var sairJogo: ButtonPrefab? // node do botao de voltar pro menu principal na tela de pause
+    var pauseMenu: PausePrefab?
     
     
     lazy var junkCountLbl: SKLabelNode = {
@@ -149,6 +148,14 @@ class LevelScene : SKScene {
         self.camera = self.cameraNode
         self.addChild(self.cameraNode)
         self.audioManager = AudioManager(scene: self)
+        
+        self.pauseMenu = PausePrefab(scene: self, exitAction: {
+            self.virtualController?.disconnect()
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = MenuScene(size: self.size)
+            self.view?.presentScene(scene, transition: transition)
+        }, resumeAction: self.pausarJogo, verifyAudioAction: self.setVolumes)
+        
         self.gameNode.position = CGPoint.zero
         self.pauseNode.position = CGPoint.zero
         self.scene?.scaleMode = .fill
@@ -213,28 +220,16 @@ class LevelScene : SKScene {
         })
         
         // pause button
-        self.pauseButton = ButtonPrefab(positionPoint: CGPoint(x: self.frame.width * 0.45, y: 425), spriteSize: CGSize(width: 130, height: 200), labelText: "", fontSize: 0, textureName: "Botao pause", buttonType: .withoutAnim, action: pausarJogo)
+        self.pauseButton = ButtonPrefab(positionPoint: CGPoint(x: self.frame.width * 0.45, y: 425), spriteSize: CGSize(width: 130, height: 200), labelText: "", fontSize: 0, textureName: "Botao pause", buttonType: .withoutAnim, action: self.pausarJogo)
         
-        // botao de resumir jogo
-        self.resumirJogo = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.1, y: self.size.height * 0.1), spriteSize: CGSize(width: 600, height: 250), labelText: "Jogar", fontSize: 60, textPosition: CGPoint(x: -120, y: 15), textureName: "Botão verde garrafa", buttonType: .withoutAnim, action: pausarJogo)
-        
-        // botao de sair do jogo
-        self.sairJogo = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.3, y: self.size.height * 0.1), spriteSize: CGSize(width: 500, height: 400), labelText: "Sair", fontSize: 60, textPosition: CGPoint(x: -90, y: 0), textureName: "Botão vermelho lata", buttonType: .withoutAnim, action: {
-            self.virtualController?.disconnect()
-            let transition:SKTransition = SKTransition.fade(withDuration: 1)
-            let scene:SKScene = MenuScene(size: self.size)
-            self.view?.presentScene(scene, transition: transition)
-        })
         
         // hud
         botaoOk!.zPosition = 10
         botaoRemove!.zPosition = 10
         botaoAdd!.zPosition = 10
         pauseButton!.zPosition = 10
+        self.pauseNode.zPosition = 20
         
-        // pause
-        resumirJogo!.zPosition = 20
-        sairJogo!.zPosition = 20
         
         //MARK: NODES ADDITION
         // game nodes
@@ -252,15 +247,14 @@ class LevelScene : SKScene {
         self.hudNode.addChild(self.pauseButton!)
 
         //pause nodes
-        //self.pauseNode.addChild(quadradoNode)
-        self.pauseNode.addChild(resumirJogo!)
-        self.pauseNode.addChild(sairJogo!)
+        self.pauseNode.addChild(self.pauseMenu!)
         
         // scene nodes
         self.cameraNode.addChild(self.hudNode)
         self.addChild(self.gameNode)
     }
     
+    //MARK: VOLUMES
     private func setVolumes() {
         let bgmVolumekey = "bgmVolume"
         let sfxVolumeKey = "sfxVolume"
@@ -360,25 +354,28 @@ class LevelScene : SKScene {
     }
     
     //MARK: PAUSE
-    func pausarJogo() {
+    public func pausarJogo() {
         // se o jogo estiver rolando, ele pausa
         if !self.gameIsPaused {
             self.gameNode.isPaused = true // pausa o node pai do jogo
+            self.pauseButton?.isPaused = true
             self.gameIsPaused = true
             self.counterTime.invalidate() // para o tempo
+            self.virtualController?.disconnect()
             
-            self.addChild(self.pauseNode)
+            self.cameraNode.addChild(self.pauseNode)
             
             return
         }
         
-        // codigo de quando resume o jogo aqui vvv
+        // codigo de quando resume o jogo aqui
         self.gameNode.isPaused = false // pausa o node pai do jogo
+        self.pauseButton?.isPaused = false
         self.gameIsPaused = false
-        self.removeChildren(in: [self.pauseNode])
+        self.cameraNode.removeChildren(in: [self.pauseNode])
+        self.virtualController?.connect()
         self.configTime()
     }
-    
     
     //MARK: CAMERA
     private func moveCamera() {

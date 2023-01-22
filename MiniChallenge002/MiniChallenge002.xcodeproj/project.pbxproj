@@ -34,6 +34,7 @@
 		917F793A297A1D1D002AB0D1 /* CountError.wav in Resources */ = {isa = PBXBuildFile; fileRef = 917F7937297A1D1D002AB0D1 /* CountError.wav */; };
 		917F793B297A1D1D002AB0D1 /* CountSuccess.wav in Resources */ = {isa = PBXBuildFile; fileRef = 917F7938297A1D1D002AB0D1 /* CountSuccess.wav */; };
 		917F793D297A2174002AB0D1 /* LevelMusic_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 917F793C297A2174002AB0D1 /* LevelMusic_2.wav */; };
+		91839627297CA98C00C90C92 /* PausePrefab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91839626297CA98C00C90C92 /* PausePrefab.swift */; };
 		91AA1B41293833D60087F432 /* JSON in Resources */ = {isa = PBXBuildFile; fileRef = 91AA1B40293833D60087F432 /* JSON */; };
 		91AA1B44293835060087F432 /* JsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AA1B43293835060087F432 /* JsonUtils.swift */; };
 		91CC89E529763992002F0CA2 /* MenuMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 91CC89E429763992002F0CA2 /* MenuMusic.wav */; };
@@ -86,6 +87,7 @@
 		917F7937297A1D1D002AB0D1 /* CountError.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CountError.wav; sourceTree = "<group>"; };
 		917F7938297A1D1D002AB0D1 /* CountSuccess.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CountSuccess.wav; sourceTree = "<group>"; };
 		917F793C297A2174002AB0D1 /* LevelMusic_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = LevelMusic_2.wav; sourceTree = "<group>"; };
+		91839626297CA98C00C90C92 /* PausePrefab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePrefab.swift; sourceTree = "<group>"; };
 		91AA1B40293833D60087F432 /* JSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JSON; sourceTree = "<group>"; };
 		91AA1B43293835060087F432 /* JsonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonUtils.swift; sourceTree = "<group>"; };
 		91CC89E429763992002F0CA2 /* MenuMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuMusic.wav; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				3DB7184D292FF25E00BE98FF /* TreadmillPrefab.swift */,
 				D4F55449292FE546000D2CAF /* ClasseGenericaLixo.swift */,
 				914F94652937C9FB00FF2A04 /* PlayerPrefab.swift */,
+				91839626297CA98C00C90C92 /* PausePrefab.swift */,
 			);
 			path = Prefabs;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				3DB74A9B291ECA840045259D /* TimeUtils.swift in Sources */,
 				3DB74A9D291ECA910045259D /* AnimationUtils.swift in Sources */,
 				3DB74A8D291EC3470045259D /* GameScene.swift in Sources */,
+				91839627297CA98C00C90C92 /* PausePrefab.swift in Sources */,
 				912A54FC29390BF700026821 /* JunkData.swift in Sources */,
 				914F94662937C9FB00FF2A04 /* PlayerPrefab.swift in Sources */,
 				3DB7184E292FF25E00BE98FF /* TreadmillPrefab.swift in Sources */,

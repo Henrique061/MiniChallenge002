@@ -27,6 +27,12 @@ class VolumeOptions {
             yMusica = 0.606
         }
         
+        else {
+            xLigado = 180
+            xDesligado = 180
+            yMusica = 160
+        }
+        
         // se esta com volume ativo, vai para o mudo
         if UserDefaults.standard.float(forKey: musicVolumeKey) == 1.0 {
             UserDefaults.standard.set(0.0, forKey: musicVolumeKey)
@@ -37,21 +43,24 @@ class VolumeOptions {
                 return
             }
             
-            // codigo para o pause aqui
+            label.position = CGPoint(x: xDesligado, y: yMusica)
+            label.text = "Desligado"
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "MuteSound"), object: self, userInfo: ["file" : "MenuMusic"])
             return
         }
         
         // se esta mudo, vai para ativo
         UserDefaults.standard.set(1.0, forKey: musicVolumeKey)
         if fromMenu {
-            print("era pra desmutar")
             label.position = CGPoint(x: scene.size.width * xLigado, y: scene.size.height * yMusica)
             label.text = "Ligado"
             NotificationCenter.default.post(name: Notification.Name(rawValue: "UnmuteSound"), object: self, userInfo: ["file" : "MenuMusic"])
             return
         }
         
-        // codigo para o pause aqui
+        label.position = CGPoint(x: xLigado, y: yMusica)
+        label.text = "Ligado"
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "UnmuteSound"), object: self, userInfo: ["file" : "MenuMusic"])
     }
     
     //MARK: SOUND EFFECTS
@@ -71,6 +80,12 @@ class VolumeOptions {
             xDesligado = 0.416
             yEfeitos = 0.402
         }
+        
+        else {
+            xLigado = 180
+            xDesligado = 180
+            yEfeitos = 0
+        }
 
         // se esta com volume ativo, vai para o mudo
         if UserDefaults.standard.float(forKey: sfxVolumeKey) == 1.0 {
@@ -81,7 +96,8 @@ class VolumeOptions {
                 return
             }
             
-            // codigo para o pause aqui
+            label.position = CGPoint(x: xDesligado, y: yEfeitos)
+            label.text = "Desligado"
             return
         }
         
@@ -93,6 +109,7 @@ class VolumeOptions {
             return
         }
         
-        // codigo para o pause aqui
+        label.position = CGPoint(x: xLigado, y: yEfeitos)
+        label.text = "Ligado"
     }
 }

@@ -54,6 +54,10 @@ class AjustesScene: SKScene {
         
         addChild(musica)
         
+        let soundLine = SKShapeNode(rect: CGRect(x: self.size.width * 0.08, y: self.size.height * 0.52, width: 950, height: 4))
+        soundLine.fillColor = .black
+        self.addChild(soundLine)
+        
         //MARK: SOM
         let som = SKLabelNode(fontNamed: "Party Confetti")
         som.text = "Efeitos Sonoros"

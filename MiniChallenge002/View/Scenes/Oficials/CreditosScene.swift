@@ -13,13 +13,7 @@ class CreditosScene: SKScene{
     
     private var lixo: SKNode?
     
-
-    
-    
-    
     override func didMove(to view: SKView) {
-        
-        
         backgroundColor = .white
         let lixo = SKSpriteNode(imageNamed: "LixoVerde21")
         lixo.position = CGPoint(x: self.size.width * 0.75, y: self.size.height * 0.38)
@@ -85,7 +79,7 @@ class CreditosScene: SKScene{
         
         let voltar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.09, y: self.size.height * 0.9), spriteSize: CGSize(width: 60, height: 70), labelText: "", fontSize: 0, textureName: "voltar", buttonType: .withoutAnim, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
-            let scene:SKScene = MenuScene(size: self.size)
+            let scene:SKScene = AjustesScene(size: self.size)
             self.view?.presentScene(scene, transition: transition)
         })
         addChild(voltar)
