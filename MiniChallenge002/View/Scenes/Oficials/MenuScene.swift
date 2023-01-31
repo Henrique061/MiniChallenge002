@@ -51,7 +51,7 @@ class MenuScene: SKScene{
         addChild(ajustes)
         
         //botao de jogar
-        let botao = ButtonPrefab(positionPoint:  CGPoint(x: 20, y: -250), spriteSize: CGSize(width: 500, height: 166), labelText: "Iniciar", fontSize: 100, textureName: "spr_buttonIdle",  buttonType: .sprite, action: {
+        let botao = ButtonPrefab(positionPoint:  CGPoint(x: 20, y: -250), spriteSize: CGSize(width: 400, height: 200), labelText: "Iniciar", fontSize: 100, textureName: "Botao verde",  buttonType: .sprite, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = Info(size: self.size)
                 

@@ -37,7 +37,7 @@ class Info: SKScene {
 
         addChild(nome)
         let levelManager = LevelManager()
-        let jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.78, y: self.size.height * 0.20), spriteSize: CGSize(width:500, height: 166), labelText: "Jogar", fontSize: 100, textureName: "spr_buttonIdle", buttonType: .sprite, action: {
+        let jogar = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.78, y: self.size.height * 0.20), spriteSize: CGSize(width:400, height: 200), labelText: "Jogar", fontSize: 100, textureName: "Botao verde", buttonType: .sprite, action: {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = LevelScene(levelManager: levelManager)
             self.view?.presentScene(scene, transition: transition)

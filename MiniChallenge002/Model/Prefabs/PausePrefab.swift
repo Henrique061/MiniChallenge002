@@ -55,9 +55,9 @@ class PausePrefab : SKNode {
         self.leftSfx = self.createOnOffButton(spriteName: "leftBlack", onOffLabel: self.onOffSfxLbl, position: CGPoint(x: 60, y: 16), isMusic: false)
         self.rightSfx = self.createOnOffButton(spriteName: "rightBlack", onOffLabel: self.onOffSfxLbl, position: CGPoint(x: 310, y: 16), isMusic: false)
         
-        self.resumirJogo = ButtonPrefab(positionPoint: CGPoint(x: -btsDistance, y: 0), spriteSize: CGSize(width: 600, height: 250), labelText: "Jogar", fontSize: 60, textPosition: CGPoint(x: -120, y: 15), textureName: "Botão verde garrafa", buttonType: .withoutAnim, action: resumeAction)
+        self.resumirJogo = ButtonPrefab(positionPoint:  CGPoint(x: -btsDistance, y: 0), spriteSize: CGSize(width: 300, height: 150), labelText: "Jogar", fontSize: 80, textureName: "Botao verde",  buttonType: .withoutAnim, action:  resumeAction)
         
-        self.sairJogo = ButtonPrefab(positionPoint: CGPoint(x: btsDistance, y: 0), spriteSize: CGSize(width: 500, height: 400), labelText: "Sair", fontSize: 60, textPosition: CGPoint(x: -90, y: 0), textureName: "Botão vermelho lata", buttonType: .withoutAnim, action: exitAction)
+        self.sairJogo = ButtonPrefab(positionPoint: CGPoint(x: btsDistance, y: 0), spriteSize: CGSize(width: 300, height: 150), labelText: "Sair", fontSize: 80, textureName: "Botao vermelho", buttonType: .withoutAnim, action: exitAction)
         
         self.addNodes()
         self.positionNodes()
@@ -138,7 +138,7 @@ class PausePrefab : SKNode {
     }
     
     private func positionNodes() {
-        self.resumeExitBts.position = CGPoint(x: self.cena.frame.width * 0.05, y: self.cena.frame.height * -0.17)
+        self.resumeExitBts.position = CGPoint(x: self.cena.frame.width * 0.005, y: self.cena.frame.height * -0.17)
         
         self.menuBg.position = CGPoint(x: -400, y: -320)
         

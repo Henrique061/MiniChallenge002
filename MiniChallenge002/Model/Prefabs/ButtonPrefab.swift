@@ -46,7 +46,7 @@ class ButtonPrefab : SKNode {
         self.buttonSpriteNode = SKSpriteNode(imageNamed: textureName)
         self.buttonSpriteNode.position = positionPoint
         self.buttonSpriteNode.size = spriteSize
-        self.buttonSpriteNode.anchorPoint.x = 0.65
+        self.buttonSpriteNode.anchorPoint.x = 0.5
         self.buttonSpriteNode.zPosition = 0
         
         // cria texto
