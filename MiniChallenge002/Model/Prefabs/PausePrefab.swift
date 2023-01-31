@@ -20,6 +20,8 @@ class PausePrefab : SKNode {
     
     var verifyAudio: () -> Void
     
+    let volumeGroup = SKNode()
+    
     let cena: SKScene
     let resumeExitBts = SKNode()
     let btsDistance: CGFloat = 170
@@ -49,9 +51,9 @@ class PausePrefab : SKNode {
         super.init()
         
         self.leftBgm = self.createOnOffButton(spriteName: "leftBlack", onOffLabel: self.onOffBgmLbl, position: CGPoint(x: 60, y: 177))
-        self.rightBgm = self.createOnOffButton(spriteName: "rightBlack", onOffLabel: self.onOffBgmLbl, position: CGPoint(x: 305, y: 177))
+        self.rightBgm = self.createOnOffButton(spriteName: "rightBlack", onOffLabel: self.onOffBgmLbl, position: CGPoint(x: 310, y: 177))
         self.leftSfx = self.createOnOffButton(spriteName: "leftBlack", onOffLabel: self.onOffSfxLbl, position: CGPoint(x: 60, y: 16), isMusic: false)
-        self.rightSfx = self.createOnOffButton(spriteName: "rightBlack", onOffLabel: self.onOffSfxLbl, position: CGPoint(x: 305, y: 16), isMusic: false)
+        self.rightSfx = self.createOnOffButton(spriteName: "rightBlack", onOffLabel: self.onOffSfxLbl, position: CGPoint(x: 310, y: 16), isMusic: false)
         
         self.resumirJogo = ButtonPrefab(positionPoint: CGPoint(x: -btsDistance, y: 0), spriteSize: CGSize(width: 600, height: 250), labelText: "Jogar", fontSize: 60, textPosition: CGPoint(x: -120, y: 15), textureName: "Botão verde garrafa", buttonType: .withoutAnim, action: resumeAction)
         
@@ -102,23 +104,35 @@ class PausePrefab : SKNode {
         
         self.setOnOffLabel()
         
-        self.menuBg.fillColor = .systemGray5
+        let grayValue: CGFloat = 0.9
+        self.menuBg.fillColor = UIColor(red: grayValue, green: grayValue, blue: grayValue, alpha: 1)
         self.menuBg.zPosition = 9
         
         self.blackBg.fillColor = .black
         self.blackBg.alpha = 0.7
         self.blackBg.zPosition = 8
         
+        self.volumeGroup.addChild(self.bgmLbl)
+        self.volumeGroup.addChild(self.onOffBgmLbl)
+        self.volumeGroup.addChild(self.leftBgm!)
+        self.volumeGroup.addChild(self.rightBgm!)
+        self.volumeGroup.addChild(self.soundLine)
+        self.volumeGroup.addChild(self.sfxLbl)
+        self.volumeGroup.addChild(self.onOffSfxLbl)
+        self.volumeGroup.addChild(self.leftSfx!)
+        self.volumeGroup.addChild(self.rightSfx!)
+        
         self.addChild(self.resumeExitBts)
-        self.addChild(self.bgmLbl)
-        self.addChild(self.onOffBgmLbl)
-        self.addChild(self.leftBgm!)
-        self.addChild(self.rightBgm!)
-        self.addChild(self.soundLine)
-        self.addChild(self.sfxLbl)
-        self.addChild(self.onOffSfxLbl)
-        self.addChild(self.leftSfx!)
-        self.addChild(self.rightSfx!)
+//        self.addChild(self.bgmLbl)
+//        self.addChild(self.onOffBgmLbl)
+//        self.addChild(self.leftBgm!)
+//        self.addChild(self.rightBgm!)
+//        self.addChild(self.soundLine)
+//        self.addChild(self.sfxLbl)
+//        self.addChild(self.onOffSfxLbl)
+//        self.addChild(self.leftSfx!)
+//        self.addChild(self.rightSfx!)
+        self.addChild(self.volumeGroup)
         self.addChild(self.menuBg)
         self.addChild(self.blackBg)
     }
@@ -135,17 +149,19 @@ class PausePrefab : SKNode {
         //--
         self.sfxLbl.position = CGPoint(x: -310, y: 0)
         self.onOffSfxLbl.position = CGPoint(x: 180, y: 0)
+        
+        self.volumeGroup.position.y = 50
     }
     
     private func createOnOffButton(spriteName: String, onOffLabel: SKLabelNode, position: CGPoint, isMusic: Bool = true) -> ButtonPrefab {
         if isMusic {
-            return ButtonPrefab(positionPoint: position, spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName: spriteName , buttonType: .withoutAnim, action: {
+            return ButtonPrefab(positionPoint: position, spriteSize: CGSize(width: 50, height: 60), labelText: "", fontSize: 0, textureName: spriteName , buttonType: .withoutAnim, action: {
                 VolumeOptions.toggleMusicVolume(onOffLabel: onOffLabel, scene: self.cena, fromMenu: false)
                 self.verifyAudio()
             })
         }
         
-        return ButtonPrefab(positionPoint: position, spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName: spriteName , buttonType: .withoutAnim, action: {
+        return ButtonPrefab(positionPoint: position, spriteSize: CGSize(width: 50, height: 60), labelText: "", fontSize: 0, textureName: spriteName , buttonType: .withoutAnim, action: {
             VolumeOptions.toggleSoundEffectsVolume(onOffLabel: onOffLabel, scene: self.cena, fromMenu: false)
             self.verifyAudio()
         })

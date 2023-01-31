@@ -114,28 +114,32 @@ class AjustesScene: SKScene {
         addChild(self.onOffEfeitos)
        
         //MARK: SETAS DE MUTE MUSICA
-        let esquerdaBgm = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
+        let arrowWidth: CGFloat = 70
+        let arrowHeight: CGFloat = 130
+        
+        let esquerdaBgm = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.39, y: self.size.height * 0.625), spriteSize: CGSize(width: arrowWidth, height: arrowHeight), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
             VolumeOptions.toggleMusicVolume(onOffLabel: self.onOffMusica, scene: self)
         })
         addChild(esquerdaBgm)
         
-        let direitaBgm = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.625), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
+        let direitaBgm = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.57, y: self.size.height * 0.625), spriteSize: CGSize(width: arrowWidth, height: arrowHeight), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
             VolumeOptions.toggleMusicVolume(onOffLabel: self.onOffMusica, scene: self)
         })
         addChild(direitaBgm)
         
         //MARK: SETAS DE MUTE EFEITOS
-        let esquerdaSfx = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.4, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
+        let esquerdaSfx = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.39, y: self.size.height * 0.42), spriteSize: CGSize(width: arrowWidth, height: arrowHeight), labelText: "", fontSize: 0, textureName:"ligado" , buttonType: .withoutAnim, action: {
             VolumeOptions.toggleSoundEffectsVolume(onOffLabel: self.onOffEfeitos, scene: self)
         })
         addChild(esquerdaSfx)
         
-       let direitaSfx = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.55, y: self.size.height * 0.42), spriteSize: CGSize(width: 30, height: 40), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
+       let direitaSfx = ButtonPrefab(positionPoint: CGPoint(x: self.size.width * 0.57, y: self.size.height * 0.42), spriteSize: CGSize(width: arrowWidth, height: arrowHeight), labelText: "", fontSize: 0, textureName:"desligado" , buttonType: .withoutAnim, action: {
            VolumeOptions.toggleSoundEffectsVolume(onOffLabel: self.onOffEfeitos, scene: self)
         })
         addChild(direitaSfx)
     }
     
+    //MARK: CHECK SOUND LABEL
     private func checkOnOffLabel() {
         // se o volume da musica esta ligado, fica na label de "ligado"
         if UserDefaults.standard.float(forKey: "bgmVolume") >= 1 {
